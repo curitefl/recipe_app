@@ -42,6 +42,9 @@ class MyPage extends StatelessWidget {
                 leading: Icon(icons[index]),
                 title: Text(myPageColumns[index]),
                 trailing: const Icon(Icons.arrow_forward),
+                onTap: () {
+                  //TODO
+                },
               ),
             );
           },
