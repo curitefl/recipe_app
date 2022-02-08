@@ -11,6 +11,23 @@ class MyPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(title),
       ),
+      body: Container(
+        color: Colors.green,
+        child: Material(
+          child: ListView(
+              children: [
+                ListTile(
+                  title: Text('ListTile with red background'),
+                  tileColor: Colors.red,
+                ),
+                ListTile(
+                  title: Text('ListTile with red background'),
+                  tileColor: Colors.red,
+                ),
+              ],
+          ),
+        ),
+      ),
     );
   }
 }
