@@ -14,6 +14,20 @@ class MyPage extends StatelessWidget {
     MyPageListTile('冷蔵庫共有', Icons.kitchen),
     MyPageListTile('設定', Icons.settings),
   ];
+  static const List<String> bottomBarLabels = [
+    'ホーム',
+    '食材',
+    'レシピ',
+    'レポート',
+    'マイページ',
+  ];
+  static const List<IconData> bottomBarIcons = [
+    Icons.kitchen,
+    Icons.blender,
+    Icons.analytics_outlined,
+    Icons.perm_identity,
+    Icons.perm_identity,
+  ];
 
   MyPage(this.title, {Key? key}) : super(key: key);
 
@@ -44,6 +58,17 @@ class MyPage extends StatelessWidget {
             );
           },
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        currentIndex: 4,
+        items: [
+          BottomNavigationBarItem(label: bottomBarLabels[0], icon: Icon(bottomBarIcons[0])),
+          BottomNavigationBarItem(label: bottomBarLabels[1], icon: Icon(bottomBarIcons[1])),
+          BottomNavigationBarItem(label: bottomBarLabels[2], icon: Icon(bottomBarIcons[2])),
+          BottomNavigationBarItem(label: bottomBarLabels[3], icon: Icon(bottomBarIcons[3])),
+          BottomNavigationBarItem(label: bottomBarLabels[4], icon: Icon(bottomBarIcons[4])),
+        ],
       ),
     );
   }
