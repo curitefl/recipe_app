@@ -28,25 +28,22 @@ class MyPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(title),
       ),
-      body: Container(
-        color: Colors.green,
-        child: Material(
-          child: ListView.builder(
-            itemCount: myPageColumns.length,
-            itemBuilder: (BuildContext context, int index) {
-              return Container(
-                decoration: const BoxDecoration(
-                    border: Border(
-                  bottom: BorderSide(color: Colors.black38),
-                )),
-                child: ListTile(
-                  leading: Icon(icons[index]),
-                  title: Text(myPageColumns[index]),
-                  trailing: const Icon(Icons.arrow_forward),
-                ),
-              );
-            },
-          ),
+      body: Material(
+        child: ListView.builder(
+          itemCount: myPageColumns.length,
+          itemBuilder: (BuildContext context, int index) {
+            return Container(
+              decoration: const BoxDecoration(
+                  border: Border(
+                bottom: BorderSide(color: Colors.black38),
+              )),
+              child: ListTile(
+                leading: Icon(icons[index]),
+                title: Text(myPageColumns[index]),
+                trailing: const Icon(Icons.arrow_forward),
+              ),
+            );
+          },
         ),
       ),
     );
