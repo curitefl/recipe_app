@@ -24,6 +24,22 @@ class MyPage extends StatelessWidget {
                   title: Text('ListTile with red background'),
                   tileColor: Colors.red,
                 ),
+                ListTile(
+                  title: Text('ListTile with red background'),
+                  tileColor: Colors.red,
+                ),
+                ListTile(
+                  title: Text('ListTile with red background'),
+                  tileColor: Colors.red,
+                ),
+                ListTile(
+                  title: Text('ListTile with red background'),
+                  tileColor: Colors.red,
+                ),
+                ListTile(
+                  title: Text('ListTile with red background'),
+                  tileColor: Colors.red,
+                ),
               ],
           ),
         ),
