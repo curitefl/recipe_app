@@ -41,7 +41,7 @@ class MyPage extends StatelessWidget {
               decoration: const BoxDecoration(
                   border: Border(
                 bottom: BorderSide(color: Colors.black38),
-              )),
+              ),),
               child: ListTile(
                 leading: Icon(myPageListView[index].icon),
                 title: Text(myPageListView[index].text),
