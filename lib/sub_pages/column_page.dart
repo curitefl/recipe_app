@@ -12,6 +12,31 @@ class ColumnPage extends StatelessWidget{
         centerTitle: true,
         title: Text(title),
       ),
+      body: Column(
+        children: const [
+          Padding(
+            padding: EdgeInsets.all(8.0),
+            child: TextField(
+              decoration: InputDecoration(
+                prefixIcon: Icon(Icons.search_outlined,color: Colors.pink,),
+                hintText: '検索',
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.pink,
+                    width: 2,
+                  ),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.pink,
+                    width: 2,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
