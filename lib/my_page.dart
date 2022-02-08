@@ -1,26 +1,21 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'my_page_list_tile.dart';
+
 class MyPage extends StatelessWidget {
   final String title;
-  static const List<String> myPageColumns = [
-    'お気に入りレシピ',
-    'コラム',
-    'プロフィール変更',
-    'メールアドレス登録',
-    '冷蔵庫共有',
-    '設定',
-  ];
-  static const List<IconData> icons = [
-    Icons.favorite_border,
-    Icons.book_outlined,
-    Icons.perm_identity,
-    Icons.mail_outline,
-    Icons.kitchen,
-    Icons.settings
+
+  final List<MyPageListTile> myPageListView = [
+    MyPageListTile('お気に入りレシピ', Icons.favorite_border),
+    MyPageListTile('コラム', Icons.book_outlined),
+    MyPageListTile('プロフィール変更', Icons.perm_identity),
+    MyPageListTile('メールアドレス登録', Icons.mail_outline),
+    MyPageListTile('冷蔵庫共有', Icons.kitchen),
+    MyPageListTile('設定', Icons.settings),
   ];
 
-  const MyPage(this.title, {Key? key}) : super(key: key);
+  MyPage(this.title, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +26,7 @@ class MyPage extends StatelessWidget {
       ),
       body: Material(
         child: ListView.builder(
-          itemCount: myPageColumns.length,
+          itemCount: myPageListView.length,
           itemBuilder: (BuildContext context, int index) {
             return Container(
               decoration: const BoxDecoration(
@@ -39,8 +34,8 @@ class MyPage extends StatelessWidget {
                 bottom: BorderSide(color: Colors.black38),
               )),
               child: ListTile(
-                leading: Icon(icons[index]),
-                title: Text(myPageColumns[index]),
+                leading: Icon(myPageListView[index].icon),
+                title: Text(myPageListView[index].text),
                 trailing: const Icon(Icons.arrow_forward),
                 onTap: () {
                   //TODO
