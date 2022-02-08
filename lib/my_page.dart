@@ -47,7 +47,7 @@ class MyPage extends StatelessWidget {
                 title: Text(myPageListView[index].text),
                 trailing: const Icon(Icons.arrow_forward),
                 onTap: () {
-                  Navigator.of(context).pushNamed('/'+myPageListView[index].text);
+                  Navigator.of(context).pushNamed('/' + myPageListView[index].text);
                 },
               ),
             );
