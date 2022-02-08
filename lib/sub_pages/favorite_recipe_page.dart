@@ -8,21 +8,22 @@ class FavoriteRecipePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text(title),
-      ),
-      body: const DefaultTabController(
-        length: 5,
-        child: TabBar(
-          tabs: [
-            Tab(text: '主菜'),
-            Tab(text: '副菜'),
-            Tab(text: '汁物'),
-            Tab(text: 'ご飯物'),
-            Tab(text: 'デザート'),
-          ],
+    return DefaultTabController(
+      length: 5,
+      child: Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          title: Text(title),
+          bottom: const TabBar(
+            isScrollable: true,
+            tabs: [
+              Tab(text: '主菜'),
+              Tab(text: '副菜'),
+              Tab(text: '汁物'),
+              Tab(text: 'ご飯物'),
+              Tab(text: 'デザート'),
+            ],
+          ),
         ),
       ),
     );
