@@ -42,6 +42,7 @@ class MyPage extends StatelessWidget {
                 child: ListTile(
                   leading: Icon(icons[index]),
                   title: Text(myPageColumns[index]),
+                  trailing: const Icon(Icons.arrow_forward),
                 ),
               );
             },
