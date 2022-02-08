@@ -22,10 +22,10 @@ class MyPage extends StatelessWidget {
     'マイページ',
   ];
   static const List<IconData> bottomBarIcons = [
+    Icons.home_outlined,
     Icons.kitchen,
     Icons.blender,
     Icons.analytics_outlined,
-    Icons.perm_identity,
     Icons.perm_identity,
   ];
 
