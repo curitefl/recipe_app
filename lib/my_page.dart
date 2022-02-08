@@ -55,6 +55,9 @@ class MyPage extends StatelessWidget {
       ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
+        backgroundColor: Colors.amber,
+        selectedItemColor: Colors.black54,
+        unselectedItemColor: Colors.white,
         currentIndex: 4,
         items: [
           BottomNavigationBarItem(label: bottomBarItems[0].label, icon: Icon(bottomBarItems[0].icon)),
