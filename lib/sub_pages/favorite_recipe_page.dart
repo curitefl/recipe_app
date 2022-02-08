@@ -3,6 +3,13 @@ import 'package:flutter/material.dart';
 
 class FavoriteRecipePage extends StatelessWidget {
   final String title;
+  static const List<String> tabTexts = [
+    '主菜',
+    '副菜',
+    '汁物',
+    'ご飯物',
+    'デザート',
+  ];
 
   const FavoriteRecipePage({Key? key, required this.title}) : super(key: key);
 
@@ -14,14 +21,14 @@ class FavoriteRecipePage extends StatelessWidget {
         appBar: AppBar(
           centerTitle: true,
           title: Text(title),
-          bottom: const TabBar(
+          bottom: TabBar(
             isScrollable: true,
             tabs: [
-              Tab(text: '主菜'),
-              Tab(text: '副菜'),
-              Tab(text: '汁物'),
-              Tab(text: 'ご飯物'),
-              Tab(text: 'デザート'),
+              Tab(text: tabTexts[0]),
+              Tab(text: tabTexts[1]),
+              Tab(text: tabTexts[2]),
+              Tab(text: tabTexts[3]),
+              Tab(text: tabTexts[4]),
             ],
           ),
         ),

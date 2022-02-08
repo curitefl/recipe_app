@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../text_data.dart';
+
 class ColumnPage extends StatelessWidget{
   final String title;
   const ColumnPage({Key? key, required this.title}) : super(key: key);
@@ -19,7 +21,7 @@ class ColumnPage extends StatelessWidget{
             child: TextField(
               decoration: InputDecoration(
                 prefixIcon: Icon(Icons.search_outlined,color: Colors.pink,),
-                hintText: '検索',
+                hintText: TextData.search,
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(
                     color: Colors.pink,
