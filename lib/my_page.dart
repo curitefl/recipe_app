@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:recipe_app/bototm_bar_item.dart';
 
 import 'my_page_list_tile.dart';
 
@@ -14,19 +15,12 @@ class MyPage extends StatelessWidget {
     MyPageListTile('冷蔵庫共有', Icons.kitchen),
     MyPageListTile('設定', Icons.settings),
   ];
-  static const List<String> bottomBarLabels = [
-    'ホーム',
-    '食材',
-    'レシピ',
-    'レポート',
-    'マイページ',
-  ];
-  static const List<IconData> bottomBarIcons = [
-    Icons.home_outlined,
-    Icons.kitchen,
-    Icons.blender,
-    Icons.analytics_outlined,
-    Icons.perm_identity,
+  final List<BottomBarItem> bottomBarItems = [
+    BottomBarItem('ホーム', Icons.home_outlined),
+    BottomBarItem('食材', Icons.kitchen),
+    BottomBarItem('レシピ', Icons.blender),
+    BottomBarItem('レポート', Icons.analytics_outlined),
+    BottomBarItem('マイページ', Icons.perm_identity),
   ];
 
   MyPage(this.title, {Key? key}) : super(key: key);
@@ -63,11 +57,11 @@ class MyPage extends StatelessWidget {
         type: BottomNavigationBarType.fixed,
         currentIndex: 4,
         items: [
-          BottomNavigationBarItem(label: bottomBarLabels[0], icon: Icon(bottomBarIcons[0])),
-          BottomNavigationBarItem(label: bottomBarLabels[1], icon: Icon(bottomBarIcons[1])),
-          BottomNavigationBarItem(label: bottomBarLabels[2], icon: Icon(bottomBarIcons[2])),
-          BottomNavigationBarItem(label: bottomBarLabels[3], icon: Icon(bottomBarIcons[3])),
-          BottomNavigationBarItem(label: bottomBarLabels[4], icon: Icon(bottomBarIcons[4])),
+          BottomNavigationBarItem(label: bottomBarItems[0].label, icon: Icon(bottomBarItems[0].icon)),
+          BottomNavigationBarItem(label: bottomBarItems[1].label, icon: Icon(bottomBarItems[1].icon)),
+          BottomNavigationBarItem(label: bottomBarItems[2].label, icon: Icon(bottomBarItems[2].icon)),
+          BottomNavigationBarItem(label: bottomBarItems[3].label, icon: Icon(bottomBarItems[3].icon)),
+          BottomNavigationBarItem(label: bottomBarItems[4].label, icon: Icon(bottomBarItems[4].icon)),
         ],
       ),
     );
