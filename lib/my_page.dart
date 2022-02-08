@@ -23,33 +23,14 @@ class MyPage extends StatelessWidget {
       body: Container(
         color: Colors.green,
         child: Material(
-          child: ListView(
-              children: [
-                ListTile(
-                  title: Text(myPageColumns[0]),
+          child: ListView.builder(
+            itemCount: myPageColumns.length,
+              itemBuilder: (BuildContext context, int index) {
+                return ListTile(
+                  title: Text(myPageColumns[index]),
                   tileColor: Colors.red,
-                ),
-                ListTile(
-                  title: Text(myPageColumns[1]),
-                  tileColor: Colors.red,
-                ),
-                ListTile(
-                  title: Text(myPageColumns[2]),
-                  tileColor: Colors.red,
-                ),
-                ListTile(
-                  title: Text(myPageColumns[3]),
-                  tileColor: Colors.red,
-                ),
-                ListTile(
-                  title: Text(myPageColumns[4]),
-                  tileColor: Colors.red,
-                ),
-                ListTile(
-                  title: Text(myPageColumns[5]),
-                  tileColor: Colors.red,
-                ),
-              ],
+                );
+              },
           ),
         ),
       ),
