@@ -26,9 +26,15 @@ class MyPage extends StatelessWidget {
           child: ListView.builder(
             itemCount: myPageColumns.length,
               itemBuilder: (BuildContext context, int index) {
-                return ListTile(
-                  title: Text(myPageColumns[index]),
-                  tileColor: Colors.red,
+                return Container(
+                  decoration: const BoxDecoration(
+                    border: Border(
+                      bottom: BorderSide(color: Colors.black38),
+                    )
+                  ),
+                  child: ListTile(
+                    title: Text(myPageColumns[index]),
+                  ),
                 );
               },
           ),
