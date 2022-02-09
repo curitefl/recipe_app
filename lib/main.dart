@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
       routes: <String, WidgetBuilder> {
         '/お気に入りレシピ': (BuildContext context) => const FavoriteRecipePage(title: 'お気に入りレシピ'),
         '/コラム': (BuildContext context) => ColumnPage(title: 'コラム'),
-        '/プロフィール変更': (BuildContext context) => const ProfilePage(title: 'プロフィール変更'),
+        '/プロフィール変更': (BuildContext context) => ProfilePage(title: 'プロフィール変更'),
         '/メールアドレス登録': (BuildContext context) => const MailRegisterPage(title: 'メールアドレス登録'),
         '/冷蔵庫共有': (BuildContext context) => const FridgeSharePage(title: '冷蔵庫共有'),
         '/設定': (BuildContext context) => const SettingsPage(title: '設定'),
