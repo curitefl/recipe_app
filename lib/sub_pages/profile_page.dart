@@ -29,8 +29,9 @@ class ProfilePage extends StatelessWidget {
               const Divider(),
               Expanded(
                 child: CupertinoPicker(
+                  scrollController: FixedExtentScrollController(initialItem: int.parse(model.initNumber) - 1,),
                   // ループさせるかどうか
-                  looping: true,
+                  looping: false,
                   // Pickerのそれぞれの高さ
                   itemExtent: 30,
                   //先程作成したnumberOfPeopleリストをText Widgetに変換して読み込み。
@@ -39,9 +40,7 @@ class ProfilePage extends StatelessWidget {
                   //Pickerの操作を行う度に呼び出し。
                   //selectNumberに選択したnumberOfPeopleを代入。
                   onSelectedItemChanged: (index) {
-                    setState(() {
-                      initNumber = numberOfPeople[index];
-                    });
+                    model.selectNumberOfPeople(numberOfPeople[index]);
                   },
                 ),
               ),
