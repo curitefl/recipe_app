@@ -7,6 +7,7 @@ import 'package:recipe_app/sub_pages/profile_page.dart';
 import 'package:recipe_app/sub_pages/mail_register_page.dart';
 import 'package:recipe_app/sub_pages/fridge_share_page.dart';
 import 'package:recipe_app/sub_pages/settings_page.dart';
+import 'package:recipe_app/text_data.dart';
 
 void main() {
   runApp(const MyApp());
