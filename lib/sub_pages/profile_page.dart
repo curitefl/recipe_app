@@ -12,6 +12,44 @@ class ProfilePage extends StatelessWidget{
         centerTitle: true,
         title: Text(title),
       ),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('必須'),
+                TextField(
+                  decoration: InputDecoration(
+                    hintText: TextData.nickName,
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Colors.pink,
+                        width: 2.0,
+                      ),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Colors.pink,
+                        width: 2.0,
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 20.0,
+                ),
+                Row(
+                  children: [
+                    Text('いつも作る量'),
+                  ],
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 }
