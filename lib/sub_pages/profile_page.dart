@@ -5,8 +5,50 @@ import '../text_data.dart';
 
 class ProfilePage extends StatelessWidget {
   final String title;
+  static String selectNumber = '1';
+  final List<String> numberOfPeople = List.generate(10, (index) => '$index');
 
-  const ProfilePage({Key? key, required this.title}) : super(key: key);
+  ProfilePage({Key? key, required this.title}) : super(key: key);
+
+  void _cupertinoPicker(BuildContext context) {
+    showCupertinoModalPopup(
+      context: context,
+      builder: (context) {
+        return Container(
+          //Pickerの高さを指定。指定しない場合はフルスクリーン。
+          height: 250,
+          color: Colors.white,
+          child: Column(
+            children: [
+              TextButton(
+                child: const Text('閉じる'),
+                onPressed: () => Navigator.of(context).pop(),
+              ),
+              const Divider(),
+              Expanded(
+                child: CupertinoPicker(
+                  // ループさせるかどうか
+                  looping: true,
+                  // Pickerのそれぞれの高さ
+                  itemExtent: 30,
+                  //先程作成したnumberOfPeopleリストをText Widgetに変換して読み込み。
+                  children:
+                      numberOfPeople.map((number) => Text(number)).toList(),
+                  //Pickerの操作を行う度に呼び出し。
+                  //selectNumberに選択したnumberOfPeopleを代入。
+                  onSelectedItemChanged: (index) {
+                    setState(() {
+                      selectNumber = numberOfPeople[index];
+                    });
+                  },
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
