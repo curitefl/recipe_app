@@ -1,12 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:recipe_app/sub_pages/profile_page_model.dart';
 
 import '../text_data.dart';
 
 class ProfilePage extends StatelessWidget {
   final String title;
-  static String selectNumber = '1';
+  static String initNumber = '1';
   final List<String> numberOfPeople = List.generate(10, (index) => '$index');
 
   ProfilePage({Key? key, required this.title}) : super(key: key);
@@ -39,7 +40,7 @@ class ProfilePage extends StatelessWidget {
                   //selectNumberに選択したnumberOfPeopleを代入。
                   onSelectedItemChanged: (index) {
                     setState(() {
-                      selectNumber = numberOfPeople[index];
+                      initNumber = numberOfPeople[index];
                     });
                   },
                 ),
