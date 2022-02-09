@@ -11,5 +11,6 @@ class TextData {
   static const String recipes = 'レシピ';
   static const String report = 'レポート';
   static const String myPage = 'マイページ';
+  static const String nickName = 'ニックネーム';
   static const String search = '検索';
 }
