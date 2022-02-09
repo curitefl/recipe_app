@@ -30,5 +30,27 @@ class TextData {
   static const String required = '必須';
   static const String nickName = 'ニックネーム';
   static const String usualAmount = 'いつも作る量';
+  static const String close = '閉じる';
   static const String people = '人前';
+  static const String birth = '生年月日';
+  static const String male = '男性';
+  static const String female = '女性';
+  static const String others = 'その他';
+  static const String optional = '任意';
+  static const String address = 'お住まい';
+  static const String prefecture = '都道府県';
+  static const String municipalities = '市区町村';
+  static const String japaneseFood = '和食';
+  static const String westernFood = '洋食';
+  static const String chineseFood = '中華';
+  static const String lightFood = 'あっさり';
+  static const String heavyFood = 'こってり';
+  static const String allergies = 'アレルギー';
+  static const String eggs = 'たまご';
+  static const String milk = '乳';
+  static const String wheat = '小麦';
+  static const String soba = '蕎麦';
+  static const String peanut = '落花生';
+  static const String shrimp = 'エビ';
+  static const String crab = 'カニ';
 }
