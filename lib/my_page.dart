@@ -60,11 +60,9 @@ class MyPage extends StatelessWidget {
         unselectedItemColor: Colors.white,
         currentIndex: 4,
         items: [
-          BottomNavigationBarItem(label: bottomBarItems[0].label, icon: Icon(bottomBarItems[0].icon)),
-          BottomNavigationBarItem(label: bottomBarItems[1].label, icon: Icon(bottomBarItems[1].icon)),
-          BottomNavigationBarItem(label: bottomBarItems[2].label, icon: Icon(bottomBarItems[2].icon)),
-          BottomNavigationBarItem(label: bottomBarItems[3].label, icon: Icon(bottomBarItems[3].icon)),
-          BottomNavigationBarItem(label: bottomBarItems[4].label, icon: Icon(bottomBarItems[4].icon)),
+          for( int i = 0; i < bottomBarItems.length; i++)...{
+            BottomNavigationBarItem(label: bottomBarItems[i].label, icon: Icon(bottomBarItems[i].icon)),
+          }
         ],
       ),
     );
