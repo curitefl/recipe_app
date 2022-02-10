@@ -30,6 +30,7 @@ class TextData {
   static const String required = '必須';
   static const String nickName = 'ニックネーム';
   static const String usualAmount = 'いつも作る量';
+  static const String people = '人前';
   static const String close = '閉じる';
   static const String people = '人前';
   static const String birth = '生年月日';

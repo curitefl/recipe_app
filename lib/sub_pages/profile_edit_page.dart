@@ -52,6 +52,39 @@ class ProfileEditPage extends StatelessWidget {
     );
   }
 
+  void _cupertinoDatePicker(BuildContext context) {
+    showCupertinoModalPopup(
+      context: context,
+      builder: (BuildContext context) => Container(
+        height: 500.0,
+        color: const Color.fromARGB(255, 255, 255, 255),
+        child: Column(
+          children: [
+            SizedBox(
+              height: 400.0,
+              child: CupertinoDatePicker(
+                mode: CupertinoDatePickerMode.date,
+                dateOrder: DatePickerDateOrder.ymd,
+                minimumYear: 1900,
+                maximumYear: DateTime.now().year,
+                initialDateTime: DateTime(
+                  context.read<ProfileEditPageModel>().initDateOfBirth[0],
+                  context.read<ProfileEditPageModel>().initDateOfBirth[1],
+                  context.read<ProfileEditPageModel>().initDateOfBirth[2],
+                ),
+                onDateTimeChanged: (DateTime selectedDate) {
+                  context
+                      .read<ProfileEditPageModel>()
+                      .selectDateOfBirth(selectedDate);
+                },
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -97,6 +130,26 @@ class ProfileEditPage extends StatelessWidget {
                       child: Consumer<ProfileEditPageModel>(
                         builder: (context, model, child) => Text(
                             context.watch<ProfileEditPageModel>().initNumber),
+                      ),
+                    ),
+                    const Text(TextData.people),
+                  ],
+                ),
+                const SizedBox(
+                  height: 20.0,
+                ),
+                Row(
+                  children: [
+                    const Text(TextData.birth),
+                    OutlinedButton(
+                      onPressed: () {
+                        _cupertinoDatePicker(context);
+                      },
+                      child: Consumer<ProfileEditPageModel>(
+                        builder: (context, model, child) => Text(
+                            '${context.watch<ProfileEditPageModel>().initDateOfBirth[0].toString()}年'
+                            '${context.watch<ProfileEditPageModel>().initDateOfBirth[1].toString()}月'
+                            '${context.watch<ProfileEditPageModel>().initDateOfBirth[2].toString()}日'),
                       ),
                     ),
                   ],
