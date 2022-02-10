@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-class ProfilePageModel extends ChangeNotifier {
+class ProfileEditPageModel extends ChangeNotifier {
   String initNumber = '1';
 
   void selectNumberOfPeople(String numberOfPeople) {

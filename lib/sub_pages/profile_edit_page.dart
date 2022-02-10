@@ -7,7 +7,8 @@ import '../text_data.dart';
 
 class ProfileEditPage extends StatelessWidget {
   final String title;
-  final List<String> numberOfPeople = List.generate(10, (index) => '${index+1}');
+  final List<String> numberOfPeople =
+      List.generate(10, (index) => '${index + 1}');
 
   ProfileEditPage({Key? key, required this.title}) : super(key: key);
 
