@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:recipe_app/bototm_bar_item.dart';
+import 'package:recipe_app/text_data.dart';
 
 import 'my_page_list_tile.dart';
 
@@ -8,19 +9,19 @@ class MyPage extends StatelessWidget {
   final String title;
 
   final List<MyPageListTile> myPageListView = [
-    MyPageListTile('お気に入りレシピ', Icons.favorite_border),
-    MyPageListTile('コラム', Icons.book_outlined),
-    MyPageListTile('プロフィール変更', Icons.perm_identity),
-    MyPageListTile('メールアドレス登録', Icons.mail_outline),
-    MyPageListTile('冷蔵庫共有', Icons.kitchen),
-    MyPageListTile('設定', Icons.settings),
+    MyPageListTile(TextData.favoriteRecipe, Icons.favorite_border),
+    MyPageListTile(TextData.recipes, Icons.book_outlined),
+    MyPageListTile(TextData.profileEdit, Icons.perm_identity),
+    MyPageListTile(TextData.mailRegistration, Icons.mail_outline),
+    MyPageListTile(TextData.fridgeShare, Icons.kitchen),
+    MyPageListTile(TextData.settings, Icons.settings),
   ];
   final List<BottomBarItem> bottomBarItems = [
-    BottomBarItem('ホーム', Icons.home_outlined),
-    BottomBarItem('食材', Icons.kitchen),
-    BottomBarItem('レシピ', Icons.blender),
-    BottomBarItem('レポート', Icons.analytics_outlined),
-    BottomBarItem('マイページ', Icons.perm_identity),
+    BottomBarItem(TextData.home, Icons.home_outlined),
+    BottomBarItem(TextData.foodStuffs, Icons.kitchen),
+    BottomBarItem(TextData.recipes, Icons.blender),
+    BottomBarItem(TextData.report, Icons.analytics_outlined),
+    BottomBarItem(TextData.myPage, Icons.perm_identity),
   ];
 
   MyPage(this.title, {Key? key}) : super(key: key);
