@@ -1,15 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:recipe_app/my_page.dart';
 import 'package:recipe_app/text_data.dart';
 import 'package:recipe_app/sub_pages/favorite_recipe_page.dart';
 import 'package:recipe_app/sub_pages/column_page.dart';
-import 'package:recipe_app/sub_pages/profile_page.dart';
+import 'package:recipe_app/sub_pages/profile_edit_page.dart';
+import 'package:recipe_app/sub_pages/profile_edit_page_model.dart';
 import 'package:recipe_app/sub_pages/mail_register_page.dart';
 import 'package:recipe_app/sub_pages/fridge_share_page.dart';
 import 'package:recipe_app/sub_pages/settings_page.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => ProfileEditPageModel(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
