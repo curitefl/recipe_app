@@ -32,11 +32,9 @@ class TextData {
   static const String usualAmount = 'いつも作る量';
   static const String people = '人前';
   static const String close = '閉じる';
-  static const String people = '人前';
   static const String birth = '生年月日';
   static const String male = '男性';
   static const String female = '女性';
-  static const String others = 'その他';
   static const String optional = '任意';
   static const String address = 'お住まい';
   static const String prefecture = '都道府県';
