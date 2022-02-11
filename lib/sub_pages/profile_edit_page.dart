@@ -98,8 +98,13 @@ class ProfileEditPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text(TextData.required),
-                const TextField(
-                  decoration: InputDecoration(
+                TextField(
+                  controller: TextEditingController(
+                      text: context.watch<ProfileEditPageModel>().initNickname),
+                  onSubmitted: (text) {
+                    context.read<ProfileEditPageModel>().setNickname(text);
+                  },
+                  decoration: const InputDecoration(
                     hintText: TextData.nickName,
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(

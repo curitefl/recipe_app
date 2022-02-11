@@ -1,12 +1,18 @@
 import 'package:flutter/cupertino.dart';
 
 class ProfileEditPageModel extends ChangeNotifier {
+  String initNickname = '';
   String initNumber = '1';
   final List<int> initDateOfBirth = [
     DateTime.now().year,
     DateTime.now().month,
     DateTime.now().day,
   ];
+
+  void setNickname(String nickname) {
+    initNickname = nickname;
+    notifyListeners();
+  }
 
   void selectNumberOfPeople(String numberOfPeople) {
     initNumber = numberOfPeople;
