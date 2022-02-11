@@ -13,6 +13,7 @@ class ProfileEditPage extends StatelessWidget {
   ProfileEditPage({Key? key, required this.title}) : super(key: key);
 
   void _cupertinoPicker(BuildContext context) {
+    ProfileEditPageModel readModel = context.read<ProfileEditPageModel>();
     showCupertinoModalPopup(
       context: context,
       builder: (context) {
@@ -30,18 +31,13 @@ class ProfileEditPage extends StatelessWidget {
               Expanded(
                 child: CupertinoPicker(
                   scrollController: FixedExtentScrollController(
-                    initialItem: int.parse(
-                            context.read<ProfileEditPageModel>().initNumber) -
-                        1,
-                  ),
+                    initialItem: int.parse(readModel.initNumber) - 1),
                   looping: false,
                   itemExtent: 30.0,
                   children:
                       numberOfPeople.map((number) => Text(number)).toList(),
                   onSelectedItemChanged: (index) {
-                    context
-                        .read<ProfileEditPageModel>()
-                        .selectNumberOfPeople(numberOfPeople[index]);
+                    readModel.selectNumberOfPeople(numberOfPeople[index]);
                   },
                 ),
               ),
@@ -55,33 +51,35 @@ class ProfileEditPage extends StatelessWidget {
   void _cupertinoDatePicker(BuildContext context) {
     showCupertinoModalPopup(
       context: context,
-      builder: (BuildContext context) => Container(
-        height: 500.0,
-        color: const Color.fromARGB(255, 255, 255, 255),
-        child: Column(
-          children: [
-            SizedBox(
-              height: 400.0,
-              child: CupertinoDatePicker(
-                mode: CupertinoDatePickerMode.date,
-                dateOrder: DatePickerDateOrder.ymd,
-                minimumYear: 1900,
-                maximumYear: DateTime.now().year,
-                initialDateTime: DateTime(
-                  context.read<ProfileEditPageModel>().initDateOfBirth[0],
-                  context.read<ProfileEditPageModel>().initDateOfBirth[1],
-                  context.read<ProfileEditPageModel>().initDateOfBirth[2],
+      builder: (BuildContext context) {
+        final ProfileEditPageModel readModel = context.read<ProfileEditPageModel>();
+        final List<int> date = readModel.initDateOfBirth;
+        return Container(
+          height: 500.0,
+          color: const Color.fromARGB(255, 255, 255, 255),
+          child: Column(
+            children: [
+              SizedBox(
+                height: 400.0,
+                child: CupertinoDatePicker(
+                  mode: CupertinoDatePickerMode.date,
+                  dateOrder: DatePickerDateOrder.ymd,
+                  minimumYear: 1900,
+                  maximumYear: DateTime.now().year,
+                  initialDateTime: DateTime(
+                    date[0],
+                    date[1],
+                    date[2],
+                  ),
+                  onDateTimeChanged: (DateTime selectedDate) {
+                    readModel.selectDateOfBirth(selectedDate);
+                  },
                 ),
-                onDateTimeChanged: (DateTime selectedDate) {
-                  context
-                      .read<ProfileEditPageModel>()
-                      .selectDateOfBirth(selectedDate);
-                },
-              ),
-            )
-          ],
-        ),
-      ),
+              )
+            ],
+          ),
+        );
+      },
     );
   }
 

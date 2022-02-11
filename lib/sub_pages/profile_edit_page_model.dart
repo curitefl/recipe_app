@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 
 class ProfileEditPageModel extends ChangeNotifier {
   String initNumber = '1';
-  List<int> initDateOfBirth = [
+  final List<int> initDateOfBirth = [
     DateTime.now().year,
     DateTime.now().month,
     DateTime.now().day,
