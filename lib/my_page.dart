@@ -10,7 +10,7 @@ class MyPage extends StatelessWidget {
 
   final List<MyPageListTile> myPageListView = [
     MyPageListTile(TextData.favoriteRecipe, Icons.favorite_border),
-    MyPageListTile(TextData.recipes, Icons.book_outlined),
+    MyPageListTile(TextData.columns, Icons.book_outlined),
     MyPageListTile(TextData.profileEdit, Icons.perm_identity),
     MyPageListTile(TextData.mailRegistration, Icons.mail_outline),
     MyPageListTile(TextData.fridgeShare, Icons.kitchen),
@@ -47,7 +47,7 @@ class MyPage extends StatelessWidget {
                 title: Text(myPageListView[index].text),
                 trailing: const Icon(Icons.arrow_forward),
                 onTap: () {
-                  Navigator.of(context).pushNamed('/' + myPageListView[index].text);
+                  Navigator.of(context).pushNamed('/${myPageListView[index].text}');
                 },
               ),
             );

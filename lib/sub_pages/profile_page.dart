@@ -5,6 +5,7 @@ import '../text_data.dart';
 
 class ProfilePage extends StatelessWidget {
   final String title;
+
   const ProfilePage({Key? key, required this.title}) : super(key: key);
 
   @override
@@ -21,8 +22,8 @@ class ProfilePage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('必須'),
-                TextField(
+                const Text(TextData.required),
+                const TextField(
                   decoration: InputDecoration(
                     hintText: TextData.nickName,
                     enabledBorder: OutlineInputBorder(
@@ -39,12 +40,18 @@ class ProfilePage extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20.0,
                 ),
                 Row(
                   children: [
-                    Text('いつも作る量'),
+                    const Text(TextData.usualAmount),
+                    OutlinedButton(
+                        onPressed: () {
+                          // TODO
+                        },
+                        child: const Text('人数を表示予定')),
+                    const Text(TextData.people),
                   ],
                 ),
               ],

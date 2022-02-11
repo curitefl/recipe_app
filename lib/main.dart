@@ -24,12 +24,12 @@ class MyApp extends StatelessWidget {
       ),
       home: MyPage(TextData.myPage),
       routes: <String, WidgetBuilder> {
-        '/お気に入りレシピ': (BuildContext context) => const FavoriteRecipePage(title: 'お気に入りレシピ'),
-        '/コラム': (BuildContext context) => ColumnPage(title: 'コラム'),
-        '/プロフィール変更': (BuildContext context) => ProfilePage(title: 'プロフィール変更'),
-        '/メールアドレス登録': (BuildContext context) => const MailRegisterPage(title: 'メールアドレス登録'),
-        '/冷蔵庫共有': (BuildContext context) => const FridgeSharePage(title: '冷蔵庫共有'),
-        '/設定': (BuildContext context) => const SettingsPage(title: '設定'),
+        '/${TextData.favoriteRecipe}': (BuildContext context) => const FavoriteRecipePage(title: TextData.favoriteRecipe),
+        '/${TextData.columns}': (BuildContext context) => const ColumnPage(title: TextData.columns),
+        '/${TextData.profileEdit}': (BuildContext context) => const ProfilePage(title: TextData.profileEdit),
+        '/${TextData.mailRegistration}': (BuildContext context) => const MailRegisterPage(title: TextData.mailRegistration),
+        '/${TextData.fridgeShare}': (BuildContext context) => const FridgeSharePage(title: TextData.fridgeShare),
+        '/${TextData.settings}': (BuildContext context) => const SettingsPage(title: TextData.settings),
       },
     );
   }

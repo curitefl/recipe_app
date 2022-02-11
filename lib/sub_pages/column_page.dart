@@ -6,11 +6,11 @@ import '../text_data.dart';
 class ColumnPage extends StatelessWidget {
   final String title;
   static const List<String> columnPageListView = [
-    '旬の食材',
-    '料理の基本',
-    '栄養素',
-    '調味料',
-    'その他',
+    TextData.seasonalFoodStuffs,
+    TextData.cookingBasics,
+    TextData.nutrients,
+    TextData.seasoning,
+    TextData.others,
   ];
 
   const ColumnPage({Key? key, required this.title}) : super(key: key);

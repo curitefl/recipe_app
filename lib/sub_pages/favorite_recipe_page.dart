@@ -1,14 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../text_data.dart';
+
 class FavoriteRecipePage extends StatelessWidget {
   final String title;
   static const List<String> tabTexts = [
-    '主菜',
-    '副菜',
-    '汁物',
-    'ご飯物',
-    'デザート',
+    TextData.mainDishes,
+    TextData.sideDishes,
+    TextData.soup,
+    TextData.riceDishes,
+    TextData.desserts,
   ];
 
   const FavoriteRecipePage({Key? key, required this.title}) : super(key: key);
