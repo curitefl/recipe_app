@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:recipe_app/my_page.dart';
 import 'package:recipe_app/text_data.dart';
 import 'package:recipe_app/sub_pages/favorite_recipe_page.dart';
-import 'package:recipe_app/sub_pages/column_page.dart';
+import 'package:recipe_app/sub_pages/foundation_page.dart';
 import 'package:recipe_app/sub_pages/profile_page.dart';
 import 'package:recipe_app/sub_pages/mail_register_page.dart';
 import 'package:recipe_app/sub_pages/fridge_share_page.dart';
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
       home: MyPage(TextData.myPage),
       routes: <String, WidgetBuilder> {
         '/${TextData.favoriteRecipe}': (BuildContext context) => const FavoriteRecipePage(title: TextData.favoriteRecipe),
-        '/${TextData.columns}': (BuildContext context) => const ColumnPage(title: TextData.columns),
+        '/${TextData.columns}': (BuildContext context) => const FoundationPage(title: TextData.columns),
         '/${TextData.profileEdit}': (BuildContext context) => const ProfilePage(title: TextData.profileEdit),
         '/${TextData.mailRegistration}': (BuildContext context) => const MailRegisterPage(title: TextData.mailRegistration),
         '/${TextData.fridgeShare}': (BuildContext context) => const FridgeSharePage(title: TextData.fridgeShare),
