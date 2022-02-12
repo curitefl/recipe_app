@@ -1,11 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:recipe_app/text_data.dart';
 
-import '../text_data.dart';
-
-class ColumnPage extends StatelessWidget {
+class FoundationPage extends StatelessWidget {
   final String title;
-  static const List<String> columnPageListView = [
+  static const List<String> foundationPageListView = [
     TextData.seasonalFoodStuffs,
     TextData.cookingBasics,
     TextData.nutrients,
@@ -13,7 +11,7 @@ class ColumnPage extends StatelessWidget {
     TextData.others,
   ];
 
-  const ColumnPage({Key? key, required this.title}) : super(key: key);
+  const FoundationPage({Key? key, required this.title}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +49,7 @@ class ColumnPage extends StatelessWidget {
           Material(
             child: ListView.builder(
               shrinkWrap: true,
-              itemCount: columnPageListView.length,
+              itemCount: foundationPageListView.length,
               itemBuilder: (BuildContext context, int index) {
                 return Container(
                   decoration: const BoxDecoration(
@@ -60,10 +58,10 @@ class ColumnPage extends StatelessWidget {
                     ),
                   ),
                   child: ListTile(
-                    title: Text(columnPageListView[index]),
+                    title: Text(foundationPageListView[index]),
                     trailing: const Icon(Icons.arrow_forward),
                     onTap: () {
-                      // TODO
+                      // TODO 各コラムの詳細ページに遷移できるようにする
                     },
                   ),
                 );
