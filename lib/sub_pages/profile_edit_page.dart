@@ -54,6 +54,8 @@ class ProfileEditPage extends StatelessWidget {
       builder: (BuildContext context) {
         final ProfileEditPageModel readModel = context.read<ProfileEditPageModel>();
         final List<int> date = readModel.initDateOfBirth;
+        assert(date.length == 3,
+          'initDateOfBirthリストの要素数が変更されています（要素は3つでなければいけません）');
         return Container(
           height: 500.0,
           color: const Color.fromARGB(255, 255, 255, 255),
