@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '../text_data.dart';
+import 'package:recipe_app/text_data.dart';
 
 class FavoriteRecipePage extends StatelessWidget {
   final String title;

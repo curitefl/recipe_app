@@ -1,9 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:recipe_app/text_data.dart';
 import 'package:recipe_app/bottom_bar_item.dart';
-
-import 'my_page_list_tile.dart';
+import 'package:recipe_app/my_page_list_tile.dart';
 
 class MyPage extends StatelessWidget {
   final String title;
