@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
       routes: <String, WidgetBuilder> {
         '/${TextData.favoriteRecipe}': (BuildContext context) => const FavoriteRecipePage(title: TextData.favoriteRecipe),
         '/${TextData.columns}': (BuildContext context) => const FoundationPage(title: TextData.columns),
-        '/${TextData.profileEdit}': (BuildContext context) => const ProfilePage(title: TextData.profileEdit),
+        '/${TextData.profileEdit}': (BuildContext context) => ProfileEditPage(title: TextData.profileEdit),
         '/${TextData.mailRegistration}': (BuildContext context) => const MailRegisterPage(title: TextData.mailRegistration),
         '/${TextData.fridgeShare}': (BuildContext context) => const FridgeSharePage(title: TextData.fridgeShare),
         '/${TextData.settings}': (BuildContext context) => const SettingsPage(title: TextData.settings),
