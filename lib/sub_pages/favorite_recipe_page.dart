@@ -16,7 +16,7 @@ class FavoriteRecipePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 5,
+      length: tabTexts.length,
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
