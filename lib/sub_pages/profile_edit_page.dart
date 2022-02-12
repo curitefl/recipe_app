@@ -87,6 +87,10 @@ class ProfileEditPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ProfileEditPageModel watchModel = context.watch<ProfileEditPageModel>();
+    final List<int> date = watchModel.initDateOfBirth;
+    assert(date.length == 3,
+        'initDateOfBirthリストの要素数が変更されています（要素は3つでなければいけません）');
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -152,9 +156,9 @@ class ProfileEditPage extends StatelessWidget {
                       },
                       child: Consumer<ProfileEditPageModel>(
                         builder: (context, model, child) => Text(
-                            '${context.watch<ProfileEditPageModel>().initDateOfBirth[0].toString()}年'
-                            '${context.watch<ProfileEditPageModel>().initDateOfBirth[1].toString()}月'
-                            '${context.watch<ProfileEditPageModel>().initDateOfBirth[2].toString()}日'),
+                            '${date[0].toString()}年'
+                            '${date[1].toString()}月'
+                            '${date[2].toString()}日'),
                       ),
                     ),
                   ],
