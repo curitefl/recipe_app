@@ -58,7 +58,7 @@ class ProfileEditPage extends StatelessWidget {
           'initDateOfBirthリストの要素数が変更されています（要素は3つでなければいけません）');
         return Container(
           height: 500.0,
-          color: const Color.fromARGB(255, 255, 255, 255),
+          color: Colors.white,
           child: Column(
             children: [
               SizedBox(
