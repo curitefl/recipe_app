@@ -61,7 +61,7 @@ class FoundationPage extends StatelessWidget {
                     title: Text(foundationPageListView[index]),
                     trailing: const Icon(Icons.arrow_forward),
                     onTap: () {
-                      // TODO
+                      // TODO 各コラムの詳細ページに遷移できるようにする
                     },
                   ),
                 );

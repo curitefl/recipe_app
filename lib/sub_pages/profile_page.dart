@@ -46,7 +46,7 @@ class ProfilePage extends StatelessWidget {
                     const Text(TextData.usualAmount),
                     OutlinedButton(
                         onPressed: () {
-                          // TODO
+                          // TODO 押したら人数を１～１０で選べるようにする
                         },
                         child: const Text('人数を表示予定')),
                     const Text(TextData.people),
