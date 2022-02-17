@@ -108,7 +108,7 @@ class ProfileEditPage extends StatelessWidget {
                   builder: (context, model, child) => TextField(
                     controller: model.nicknameController,
                     onSubmitted: (text) {
-                      context.read<ProfileEditPageModel>().setNickname(text);
+                      model.setNickname(text);
                     },
                     decoration: const InputDecoration(
                       hintText: TextData.nickName,
