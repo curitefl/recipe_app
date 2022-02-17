@@ -1,6 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 
 class ProfileEditPageModel extends ChangeNotifier {
+  final Stream<QuerySnapshot> _usersStream = FirebaseFirestore.instance.collection('profile').snapshots();
+
   final nicknameController = TextEditingController(text: '');
   String initNumber = '1';
 
@@ -9,6 +12,17 @@ class ProfileEditPageModel extends ChangeNotifier {
     DateTime.now().month,
     DateTime.now().day,
   ];
+
+  void fetchProfile() {
+    _usersStream.listen((QuerySnapshot snapshot) {
+      snapshot.docs.map((document) {
+        Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
+        // return ListTile(
+        //     title: Text(data['full_name']),
+        //     subtitle: Text(data['company']),
+      }).toList();
+    });
+  }
 
   void setNickname(String nickname) {
     nicknameController.text = nickname;
