@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
 class ProfileEditPageModel extends ChangeNotifier {
-  String initNickname = '';
+
   String initNumber = '1';
   final List<int> initDateOfBirth = [
     DateTime.now().year,
@@ -9,8 +9,10 @@ class ProfileEditPageModel extends ChangeNotifier {
     DateTime.now().day,
   ];
 
+  final nicknameController = TextEditingController(text: '');
+
   void setNickname(String nickname) {
-    initNickname = nickname;
+    nicknameController.text = nickname;
     notifyListeners();
   }
 

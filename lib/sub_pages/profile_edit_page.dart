@@ -104,24 +104,25 @@ class ProfileEditPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text(TextData.required),
-                TextField(
-                  controller: TextEditingController(
-                      text: context.watch<ProfileEditPageModel>().initNickname),
-                  onSubmitted: (text) {
-                    context.read<ProfileEditPageModel>().setNickname(text);
-                  },
-                  decoration: const InputDecoration(
-                    hintText: TextData.nickName,
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.pink,
-                        width: 2.0,
+                Consumer<ProfileEditPageModel>(
+                  builder: (context, model, child) => TextField(
+                    controller: model.nicknameController,
+                    onSubmitted: (text) {
+                      context.read<ProfileEditPageModel>().setNickname(text);
+                    },
+                    decoration: const InputDecoration(
+                      hintText: TextData.nickName,
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.pink,
+                          width: 2.0,
+                        ),
                       ),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.pink,
-                        width: 2.0,
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.pink,
+                          width: 2.0,
+                        ),
                       ),
                     ),
                   ),
