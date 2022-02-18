@@ -10,7 +10,7 @@ Future<void> main() async {
   await Firebase.initializeApp();
   runApp(
     ChangeNotifierProvider(
-      create: (context) => ProfileEditPageModel(),
+      create: (context) => ProfileEditPageModel()..fetchProfile(),
       child: const MyApp(),
     ),
   );

@@ -146,7 +146,7 @@ class ProfileEditPage extends StatelessWidget {
                         },
                         child: Consumer<ProfileEditPageModel>(
                           builder: (context, model, child) => Text(
-                              context.watch<ProfileEditPageModel>().initNumber),
+                              model.servingsController.text),
                         ),
                       ),
                       const Text(TextData.people),
