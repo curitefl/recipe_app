@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:recipe_app/domain/profile.dart';
 import 'package:recipe_app/sub_pages/profile_edit_page_model.dart';
 
 import '../text_data.dart';
@@ -92,83 +93,89 @@ class ProfileEditPage extends StatelessWidget {
     assert(date.length == 3,
         'initDateOfBirthリストの要素数が変更されています（要素は3つでなければいけません）');
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text(title),
-      ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(TextData.required),
-                Consumer<ProfileEditPageModel>(
-                  builder: (context, model, child) => TextField(
-                    controller: model.nicknameController,
-                    onSubmitted: (text) {
-                      model.setNickname(text);
+        appBar: AppBar(
+          centerTitle: true,
+          title: Text(title),
+        ),
+        body: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(TextData.required),
+                  Consumer<ProfileEditPageModel>(
+                    builder: (context, model, child) {
+                      // final Profile? profile = model.profile;
+                      // if ( profile == null) {
+                      //   return const CircularProgressIndicator();
+                      // }
+                      return TextField(
+                      controller: model.nicknameController,
+                      onSubmitted: (text) {
+                        model.setNickname(text);
+                      },
+                      decoration: const InputDecoration(
+                        hintText: TextData.nickName,
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.pink,
+                            width: 2.0,
+                          ),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.pink,
+                            width: 2.0,
+                          ),
+                        ),
+                      ),
+                    );
                     },
-                    decoration: const InputDecoration(
-                      hintText: TextData.nickName,
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.pink,
-                          width: 2.0,
-                        ),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.pink,
-                          width: 2.0,
-                        ),
-                      ),
-                    ),
                   ),
-                ),
-                const SizedBox(
-                  height: 20.0,
-                ),
-                Row(
-                  children: [
-                    const Text(TextData.usualAmount),
-                    OutlinedButton(
-                      onPressed: () {
-                        _cupertinoPicker(context);
-                      },
-                      child: Consumer<ProfileEditPageModel>(
-                        builder: (context, model, child) => Text(
-                            context.watch<ProfileEditPageModel>().initNumber),
+                  const SizedBox(
+                    height: 20.0,
+                  ),
+                  Row(
+                    children: [
+                      const Text(TextData.usualAmount),
+                      OutlinedButton(
+                        onPressed: () {
+                          _cupertinoPicker(context);
+                        },
+                        child: Consumer<ProfileEditPageModel>(
+                          builder: (context, model, child) => Text(
+                              context.watch<ProfileEditPageModel>().initNumber),
+                        ),
                       ),
-                    ),
-                    const Text(TextData.people),
-                  ],
-                ),
-                const SizedBox(
-                  height: 20.0,
-                ),
-                Row(
-                  children: [
-                    const Text(TextData.birth),
-                    OutlinedButton(
-                      onPressed: () {
-                        _cupertinoDatePicker(context);
-                      },
-                      child: Consumer<ProfileEditPageModel>(
-                        builder: (context, model, child) => Text(
-                            '${date[0].toString()}年'
-                            '${date[1].toString()}月'
-                            '${date[2].toString()}日'),
+                      const Text(TextData.people),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 20.0,
+                  ),
+                  Row(
+                    children: [
+                      const Text(TextData.birth),
+                      OutlinedButton(
+                        onPressed: () {
+                          _cupertinoDatePicker(context);
+                        },
+                        child: Consumer<ProfileEditPageModel>(
+                          builder: (context, model, child) => Text(
+                              '${date[0].toString()}年'
+                              '${date[1].toString()}月'
+                              '${date[2].toString()}日'),
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          )
-        ],
-      ),
+                    ],
+                  ),
+                ],
+              ),
+            )
+          ],
+        ),
     );
   }
 }
