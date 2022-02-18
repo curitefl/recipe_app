@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 
 class ProfileEditPageModel extends ChangeNotifier {
 
-  final String documentID = '';
+  final String profileID = '4c7xNirdfDjfXQv0LAIH';
   final TextEditingController nicknameController = TextEditingController();
   final TextEditingController servingsController = TextEditingController();
 
@@ -14,7 +14,7 @@ class ProfileEditPageModel extends ChangeNotifier {
   ];
 
   Future <void> fetchProfile() async {
-    final DocumentSnapshot snapshot = await FirebaseFirestore.instance.collection('profile').doc('4c7xNirdfDjfXQv0LAIH').get();
+    final DocumentSnapshot snapshot = await FirebaseFirestore.instance.collection('profile').doc(profileID).get();
     Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
     nicknameController.text = data['nickname'];
     servingsController.text = data['servings'];
@@ -22,7 +22,7 @@ class ProfileEditPageModel extends ChangeNotifier {
   }
 
   Future <void> updateProfile() async {
-    await FirebaseFirestore.instance.collection('profile').doc('4c7xNirdfDjfXQv0LAIH').update({
+    await FirebaseFirestore.instance.collection('profile').doc(profileID).update({
           'nickname' : nicknameController.text,
           'servings' : servingsController.text,
         });
