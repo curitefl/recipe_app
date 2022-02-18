@@ -35,7 +35,7 @@ class ProfileEditPageModel extends ChangeNotifier {
   }
 
   void selectNumberOfPeople(String numberOfPeople) {
-    initNumber = numberOfPeople;
+    servingsController.text = numberOfPeople;
     notifyListeners();
   }
 

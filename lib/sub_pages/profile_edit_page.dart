@@ -30,13 +30,14 @@ class ProfileEditPage extends StatelessWidget {
               Expanded(
                 child: CupertinoPicker(
                   scrollController: FixedExtentScrollController(
-                    initialItem: int.parse(readModel.initNumber) - 1),
+                    initialItem: int.parse(readModel.servingsController.text) - 1),
                   looping: false,
                   itemExtent: 30.0,
                   children:
                       numberOfPeople.map((number) => Text(number)).toList(),
                   onSelectedItemChanged: (index) {
                     readModel.selectNumberOfPeople(numberOfPeople[index]);
+                    readModel.updateProfile();
                   },
                 ),
               ),
@@ -105,10 +106,6 @@ class ProfileEditPage extends StatelessWidget {
                   const Text(TextData.required),
                   Consumer<ProfileEditPageModel>(
                     builder: (context, model, child) {
-                      // final Profile? profile = model.profile;
-                      // if ( profile == null) {
-                      //   return const CircularProgressIndicator();
-                      // }
                       return TextField(
                       controller: model.nicknameController,
                       onSubmitted: (text) {
