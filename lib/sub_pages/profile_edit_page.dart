@@ -1,10 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:recipe_app/domain/profile.dart';
 import 'package:recipe_app/sub_pages/profile_edit_page_model.dart';
-
-import '../text_data.dart';
+import 'package:recipe_app/text_data.dart';
 
 class ProfileEditPage extends StatelessWidget {
   final String title;
