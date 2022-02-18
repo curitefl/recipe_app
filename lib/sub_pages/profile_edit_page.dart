@@ -37,7 +37,6 @@ class ProfileEditPage extends StatelessWidget {
                       numberOfPeople.map((number) => Text(number)).toList(),
                   onSelectedItemChanged: (index) {
                     readModel.selectNumberOfPeople(numberOfPeople[index]);
-                    readModel.updateProfile();
                   },
                 ),
               ),

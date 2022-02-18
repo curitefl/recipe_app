@@ -6,7 +6,6 @@ class ProfileEditPageModel extends ChangeNotifier {
   final String documentID = '';
   final TextEditingController nicknameController = TextEditingController();
   final TextEditingController servingsController = TextEditingController();
-  String initNumber = '1';
 
   final List<int> initDateOfBirth = [
     DateTime.now().year,
