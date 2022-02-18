@@ -6,8 +6,7 @@ import 'package:recipe_app/text_data.dart';
 
 class ProfileEditPage extends StatelessWidget {
   final String title;
-  final List<String> numberOfPeople =
-      List.generate(10, (index) => '${index + 1}');
+  final List<String> servings = List.generate(10, (index) => '${index + 1}');
 
   ProfileEditPage({Key? key, required this.title}) : super(key: key);
 
@@ -33,10 +32,9 @@ class ProfileEditPage extends StatelessWidget {
                     initialItem: int.parse(readModel.servingsController.text) - 1),
                   looping: false,
                   itemExtent: 30.0,
-                  children:
-                      numberOfPeople.map((number) => Text(number)).toList(),
+                  children: servings.map((number) => Text(number)).toList(),
                   onSelectedItemChanged: (index) {
-                    readModel.selectNumberOfPeople(numberOfPeople[index]);
+                    readModel.selectServings(servings[index]);
                   },
                 ),
               ),
@@ -91,90 +89,91 @@ class ProfileEditPage extends StatelessWidget {
     assert(date.length == 3,
         'initDateOfBirthリストの要素数が変更されています（要素は3つでなければいけません）');
     return Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: Text(title),
-        ),
-        body: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Consumer<ProfileEditPageModel>(
-                builder: (context, model, child) {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(TextData.required),
-                      TextField(
-                        controller: model.nicknameController,
-                        onSubmitted: (text) {
-                          model.setNickname(text);
-                        },
-                        decoration: const InputDecoration(
-                          hintText: TextData.nickName,
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors.pink,
-                              width: 2.0,
-                            ),
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text(title),
+      ),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Consumer<ProfileEditPageModel>(
+              builder: (context, model, child) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(TextData.required),
+                    TextField(
+                      controller: model.nicknameController,
+                      onSubmitted: (text) {
+                        model.setNickname(text);
+                      },
+                      decoration: const InputDecoration(
+                        hintText: TextData.nickName,
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.pink,
+                            width: 2.0,
                           ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors.pink,
-                              width: 2.0,
-                            ),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.pink,
+                            width: 2.0,
                           ),
                         ),
                       ),
-                      const SizedBox(
-                        height: 20.0,
-                      ),
-                      Row(
-                        children: [
-                          const Text(TextData.usualAmount),
-                          OutlinedButton(
-                            onPressed: () {
-                              _cupertinoPicker(context);
-                            },
-                            child: Consumer<ProfileEditPageModel>(
-                              builder: (context, model, child) =>
-                                  Text(model.servingsController.text),
-                            ),
-                          ),
-                          const Text(TextData.people),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 20.0,
-                      ),
-                      Row(
-                        children: [
-                          const Text(TextData.birth),
-                          OutlinedButton(
-                            onPressed: () {
-                              _cupertinoDatePicker(context);
-                            },
-                            child: Consumer<ProfileEditPageModel>(
-                              builder: (context, model, child) =>
-                                  Text('${date[0].toString()}年'
-                                      '${date[1].toString()}月'
-                                      '${date[2].toString()}日'),
-                            ),
-                          ),
-                        ],
-                      ),
-                      Center(
-                        child: ElevatedButton(
-                          child: const Text('変更する'),
+                    ),
+                    const SizedBox(
+                      height: 20.0,
+                    ),
+                    Row(
+                      children: [
+                        const Text(TextData.usualAmount),
+                        OutlinedButton(
                           onPressed: () {
-                            model.updateProfile();
+                            _cupertinoPicker(context);
                           },
+                          child: Consumer<ProfileEditPageModel>(
+                            builder: (context, model, child) =>
+                                Text(model.servingsController.text),
+                          ),
                         ),
+                        const Text(TextData.people),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 20.0,
+                    ),
+                    Row(
+                      children: [
+                        const Text(TextData.birth),
+                        OutlinedButton(
+                          onPressed: () {
+                            _cupertinoDatePicker(context);
+                          },
+                          child: Consumer<ProfileEditPageModel>(
+                            builder: (context, model, child) =>
+                                Text('${date[0].toString()}年'
+                                    '${date[1].toString()}月'
+                                    '${date[2].toString()}日'),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Center(
+                      child: ElevatedButton(
+                        child: const Text('変更する'),
+                        onPressed: () {
+                          model.updateProfile();
+                        },
                       ),
-                    ],
-                  );
-                },
-              ))
+                    ),
+                  ],
+                );
+              },
+            ),
+          ),
         ],
       ),
     );
