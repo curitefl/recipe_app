@@ -1,8 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 
+import '../domain/profile.dart';
+
 class ProfileEditPageModel extends ChangeNotifier {
   final Stream<QuerySnapshot> _usersStream = FirebaseFirestore.instance.collection('profile').snapshots();
+
+  List<Profile>? profile;
 
   final nicknameController = TextEditingController(text: '');
   String initNumber = '1';
@@ -15,12 +19,14 @@ class ProfileEditPageModel extends ChangeNotifier {
 
   void fetchProfile() {
     _usersStream.listen((QuerySnapshot snapshot) {
-      snapshot.docs.map((document) {
+      final List<Profile> profile = snapshot.docs.map((document) {
         Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
-        // return ListTile(
-        //     title: Text(data['full_name']),
-        //     subtitle: Text(data['company']),
+        final String nickname = data['nickname'];
+        final String servings = data['servings'];
+        return Profile(nickname, servings);
       }).toList();
+      this.profile = profile;
+      notifyListeners();
     });
   }
 
