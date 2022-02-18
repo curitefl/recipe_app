@@ -113,6 +113,7 @@ class ProfileEditPage extends StatelessWidget {
                       controller: model.nicknameController,
                       onSubmitted: (text) {
                         model.setNickname(text);
+                        model.updateProfile();
                       },
                       decoration: const InputDecoration(
                         hintText: TextData.nickName,
