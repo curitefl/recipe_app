@@ -29,7 +29,8 @@ class ProfileEditPage extends StatelessWidget {
               Expanded(
                 child: CupertinoPicker(
                   scrollController: FixedExtentScrollController(
-                    initialItem: int.parse(readModel.servingsController.text) - 1),
+                      initialItem:
+                          int.parse(readModel.servingsController.text) - 1),
                   looping: false,
                   itemExtent: 30.0,
                   children: servings.map((number) => Text(number)).toList(),
@@ -49,10 +50,15 @@ class ProfileEditPage extends StatelessWidget {
     showCupertinoModalPopup(
       context: context,
       builder: (BuildContext context) {
-        final ProfileEditPageModel readModel = context.read<ProfileEditPageModel>();
-        final List<int> date = readModel.initDateOfBirth;
-        assert(date.length == 3,
-          'initDateOfBirthリストの要素数が変更されています（要素は3つでなければいけません）');
+        final ProfileEditPageModel readModel =
+            context.read<ProfileEditPageModel>();
+        final int? year = readModel.birthYear;
+        final int? month = readModel.birthMonth;
+        final int? day = readModel.birthDay;
+        if (year == null || month == null || day == null) {
+          return const CircularProgressIndicator();
+        }
+
         return Container(
           height: 500.0,
           color: Colors.white,
@@ -65,11 +71,7 @@ class ProfileEditPage extends StatelessWidget {
                   dateOrder: DatePickerDateOrder.ymd,
                   minimumYear: 1900,
                   maximumYear: DateTime.now().year,
-                  initialDateTime: DateTime(
-                    date[0],
-                    date[1],
-                    date[2],
-                  ),
+                  initialDateTime: DateTime(year, month, day),
                   onDateTimeChanged: (DateTime selectedDate) {
                     readModel.selectDateOfBirth(selectedDate);
                   },
@@ -84,10 +86,8 @@ class ProfileEditPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ProfileEditPageModel watchModel = context.watch<ProfileEditPageModel>();
-    final List<int> date = watchModel.initDateOfBirth;
-    assert(date.length == 3,
-        'initDateOfBirthリストの要素数が変更されています（要素は3つでなければいけません）');
+    final ProfileEditPageModel watchModel =
+        context.watch<ProfileEditPageModel>();
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -154,9 +154,9 @@ class ProfileEditPage extends StatelessWidget {
                           },
                           child: Consumer<ProfileEditPageModel>(
                             builder: (context, model, child) =>
-                                Text('${date[0].toString()}年'
-                                    '${date[1].toString()}月'
-                                    '${date[2].toString()}日'),
+                                Text('${watchModel.birthYear.toString()}年'
+                                    '${watchModel.birthMonth.toString()}月'
+                                    '${watchModel.birthDay.toString()}日'),
                           ),
                         ),
                       ],
