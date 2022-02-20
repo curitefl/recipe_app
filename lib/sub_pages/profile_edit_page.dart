@@ -28,8 +28,8 @@ class ProfileEditPage extends StatelessWidget {
               Expanded(
                 child: CupertinoPicker(
                   scrollController: FixedExtentScrollController(
-                      initialItem:
-                          int.parse(readModel.servingsController.text) - 1),
+                    initialItem: int.parse(readModel.getServingsController().text) - 1,
+                  ),
                   looping: false,
                   itemExtent: 30.0,
                   children: servings.map((number) => Text(number)).toList(),
@@ -49,11 +49,10 @@ class ProfileEditPage extends StatelessWidget {
     showCupertinoModalPopup(
       context: context,
       builder: (BuildContext context) {
-        final ProfileEditPageModel readModel =
-            context.read<ProfileEditPageModel>();
-        final int? year = readModel.birthYear;
-        final int? month = readModel.birthMonth;
-        final int? day = readModel.birthDay;
+        final ProfileEditPageModel readModel = context.read<ProfileEditPageModel>();
+        final int? year = readModel.getBirthYear();
+        final int? month = readModel.getBirthMonth();
+        final int? day = readModel.getBirthDay();
         if (year == null || month == null || day == null) {
           return const CircularProgressIndicator();
         }
@@ -102,7 +101,7 @@ class ProfileEditPage extends StatelessWidget {
                   children: [
                     const Text(TextData.required),
                     TextField(
-                      controller: model.nicknameController,
+                      controller: model.getNicknameController(),
                       onSubmitted: (text) {
                         model.setNickname(text);
                       },
@@ -133,8 +132,7 @@ class ProfileEditPage extends StatelessWidget {
                             _cupertinoPicker(context);
                           },
                           child: Consumer<ProfileEditPageModel>(
-                            builder: (context, model, child) =>
-                                Text(model.servingsController.text),
+                            builder: (context, model, child) => Text(model.getServingsController().text),
                           ),
                         ),
                         const Text(TextData.people),
@@ -152,9 +150,9 @@ class ProfileEditPage extends StatelessWidget {
                           },
                           child: Consumer<ProfileEditPageModel>(
                             builder: (context, model, child) =>
-                                Text('${watchModel.birthYear.toString()}年'
-                                    '${watchModel.birthMonth.toString()}月'
-                                    '${watchModel.birthDay.toString()}日'),
+                                Text('${watchModel.getBirthYear().toString()}年'
+                                    '${watchModel.getBirthMonth().toString()}月'
+                                    '${watchModel.getBirthDay().toString()}日'),
                           ),
                         ),
                       ],

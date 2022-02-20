@@ -2,48 +2,70 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 
 class ProfileEditPageModel extends ChangeNotifier {
-  final String profileID = '4c7xNirdfDjfXQv0LAIH';
-  final TextEditingController nicknameController = TextEditingController();
-  final TextEditingController servingsController = TextEditingController();
-  int? birthYear;
-  int? birthMonth;
-  int? birthDay;
+  final String _profileID = '4c7xNirdfDjfXQv0LAIH';
+  final TextEditingController _nicknameController = TextEditingController();
+  final TextEditingController _servingsController = TextEditingController();
 
-  Future <void> fetchProfile() async {
-    final DocumentSnapshot snapshot = await FirebaseFirestore.instance.collection('profile').doc(profileID).get();
+  int? _birthYear;
+  int? _birthMonth;
+  int? _birthDay;
+
+  TextEditingController getNicknameController() {
+    return _nicknameController;
+  }
+
+  TextEditingController getServingsController() {
+    return _servingsController;
+  }
+
+  int? getBirthYear() {
+    return _birthYear;
+  }
+
+  int? getBirthMonth() {
+    return _birthMonth;
+  }
+
+  int? getBirthDay() {
+    return _birthDay;
+  }
+
+  Future<void> fetchProfile() async {
+    final DocumentSnapshot snapshot =
+        await FirebaseFirestore.instance.collection('profile').doc(_profileID).get();
     Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
-    nicknameController.text = data['nickname'];
-    servingsController.text = data['servings'];
-    birthYear = data['birthYear'];
-    birthMonth = data['birthMonth'];
-    birthDay = data['birthDay'];
+    _nicknameController.text = data['nickname'];
+    _servingsController.text = data['servings'];
+    _birthYear = data['birthYear'];
+    _birthMonth = data['birthMonth'];
+    _birthDay = data['birthDay'];
     notifyListeners();
   }
 
-  Future <void> updateProfile() async {
-    await FirebaseFirestore.instance.collection('profile').doc(profileID).update( {
-      'nickname' : nicknameController.text,
-      'servings' : servingsController.text,
-      'birthYear' : birthYear,
-      'birthMonth' : birthMonth,
-      'birthDay' : birthDay,
-              });
+  Future<void> updateProfile() async {
+    await FirebaseFirestore.instance.collection('profile').doc(_profileID).update({
+      'nickname': _nicknameController.text,
+      'servings': _servingsController.text,
+      'birthYear': _birthYear,
+      'birthMonth': _birthMonth,
+      'birthDay': _birthDay,
+    });
   }
 
   void setNickname(String nickname) {
-    nicknameController.text = nickname;
+    _nicknameController.text = nickname;
     notifyListeners();
   }
 
   void selectServings(String numberOfPeople) {
-    servingsController.text = numberOfPeople;
+    _servingsController.text = numberOfPeople;
     notifyListeners();
   }
 
   void selectDateOfBirth(DateTime selectedDate) {
-    birthYear = selectedDate.year;
-    birthMonth = selectedDate.month;
-    birthDay = selectedDate.day;
+    _birthYear = selectedDate.year;
+    _birthMonth = selectedDate.month;
+    _birthDay = selectedDate.day;
     notifyListeners();
   }
 }
