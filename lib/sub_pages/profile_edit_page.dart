@@ -16,7 +16,6 @@ class ProfileEditPage extends StatelessWidget {
       context: context,
       builder: (context) {
         return Container(
-          //Pickerの高さを指定。指定しない場合はフルスクリーン。
           height: 250.0,
           color: Colors.white,
           child: Column(
@@ -86,8 +85,7 @@ class ProfileEditPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ProfileEditPageModel watchModel =
-        context.watch<ProfileEditPageModel>();
+    final ProfileEditPageModel watchModel = context.watch<ProfileEditPageModel>();
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,

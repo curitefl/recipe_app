@@ -24,7 +24,7 @@ class FavoriteRecipePage extends StatelessWidget {
           bottom: TabBar(
             isScrollable: true,
             tabs: [
-              for( int i = 0; i < tabTexts.length; ++i)...{
+              for (int i = 0; i < tabTexts.length; ++i) ...{
                 Tab(text: tabTexts[i]),
               }
             ],

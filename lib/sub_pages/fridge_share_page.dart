@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-class FridgeSharePage extends StatelessWidget{
+class FridgeSharePage extends StatelessWidget {
   final String title;
+
   const FridgeSharePage({Key? key, required this.title}) : super(key: key);
 
   @override

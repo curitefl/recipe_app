@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 
 class ProfileEditPageModel extends ChangeNotifier {
-
   final String profileID = '4c7xNirdfDjfXQv0LAIH';
   final TextEditingController nicknameController = TextEditingController();
   final TextEditingController servingsController = TextEditingController();
