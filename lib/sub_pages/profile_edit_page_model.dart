@@ -5,7 +5,7 @@ class ProfileEditPageModel extends ChangeNotifier {
   final String _profileID = '4c7xNirdfDjfXQv0LAIH';
   final TextEditingController _nicknameController = TextEditingController();
   final TextEditingController _servingsController = TextEditingController();
-  DateTime? _dateOfBirth;
+  String? _dateOfBirth;
 
   TextEditingController getNicknameController() {
     return _nicknameController;
@@ -15,7 +15,7 @@ class ProfileEditPageModel extends ChangeNotifier {
     return _servingsController;
   }
 
-  DateTime? getDateOfBirth() {
+  String? getDateOfBirth() {
     return _dateOfBirth;
   }
 
@@ -25,7 +25,7 @@ class ProfileEditPageModel extends ChangeNotifier {
     Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
     _nicknameController.text = data['nickname'];
     _servingsController.text = data['servings'];
-    _dateOfBirth = data['dateOfBirth'].toDate();
+    _dateOfBirth = data['dateOfBirth'];
     notifyListeners();
   }
 
@@ -48,7 +48,7 @@ class ProfileEditPageModel extends ChangeNotifier {
   }
 
   void selectDateOfBirth(DateTime selectedDate) {
-    _dateOfBirth = selectedDate;
+    _dateOfBirth = '${selectedDate.year}/${selectedDate.month}/${selectedDate.day}';
     notifyListeners();
   }
 }

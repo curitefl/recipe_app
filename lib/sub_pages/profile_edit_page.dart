@@ -50,10 +50,15 @@ class ProfileEditPage extends StatelessWidget {
       context: context,
       builder: (BuildContext context) {
         final ProfileEditPageModel readModel = context.read<ProfileEditPageModel>();
-        final DateTime? dateOfBirth = readModel.getDateOfBirth();
-        if (dateOfBirth == null) {
+        final String? birthday = readModel.getDateOfBirth();
+        if(birthday == null) {
           return const CircularProgressIndicator();
         }
+        final birthdayArray = birthday.split('/');
+        assert(birthdayArray.length == 3, 'birthdayArrayの要素は3つでなければいけません');
+        final year = int.parse(birthdayArray[0]);
+        final month = int.parse(birthdayArray[1]);
+        final day = int.parse(birthdayArray[2]);
 
         return Container(
           height: 500.0,
@@ -67,7 +72,7 @@ class ProfileEditPage extends StatelessWidget {
                   dateOrder: DatePickerDateOrder.ymd,
                   minimumYear: 1900,
                   maximumYear: DateTime.now().year,
-                  initialDateTime: DateTime(dateOfBirth.year, dateOfBirth.month, dateOfBirth.day),
+                  initialDateTime: DateTime(year, month, day),
                   onDateTimeChanged: (DateTime selectedDate) {
                     readModel.selectDateOfBirth(selectedDate);
                   },
@@ -147,14 +152,16 @@ class ProfileEditPage extends StatelessWidget {
                           },
                           child: Consumer<ProfileEditPageModel>(
                             builder: (context, model, child) {
-                              if(model.getDateOfBirth()?.year == null ||
-                                  model.getDateOfBirth()?.month == null ||
-                                  model.getDateOfBirth()?.day == null) {
+                              final String? birthday = model.getDateOfBirth();
+                              if(birthday == null) {
                                 return const CircularProgressIndicator();
                               }
-                              return Text('${model.getDateOfBirth()!.year.toString()}年'
-                                  '${model.getDateOfBirth()!.month.toString()}月'
-                                  '${model.getDateOfBirth()!.day.toString()}日');
+                              final birthdayArray = birthday.split('/');
+                              assert(birthdayArray.length == 3, 'birthdayArrayの要素は3つでなければいけません');
+                              final year = int.parse(birthdayArray[0]);
+                              final month = int.parse(birthdayArray[1]);
+                              final day = int.parse(birthdayArray[2]);
+                              return Text('${year.toString()}年${month.toString()}月${day.toString()}日');
                             },
                           ),
                         ),
