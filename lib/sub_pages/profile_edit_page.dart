@@ -50,10 +50,8 @@ class ProfileEditPage extends StatelessWidget {
       context: context,
       builder: (BuildContext context) {
         final ProfileEditPageModel readModel = context.read<ProfileEditPageModel>();
-        final int? year = readModel.getBirthYear();
-        final int? month = readModel.getBirthMonth();
-        final int? day = readModel.getBirthDay();
-        if (year == null || month == null || day == null) {
+        final DateTime? dateOfBirth = readModel.getDateOfBirth();
+        if (dateOfBirth == null) {
           return const CircularProgressIndicator();
         }
 
@@ -69,7 +67,7 @@ class ProfileEditPage extends StatelessWidget {
                   dateOrder: DatePickerDateOrder.ymd,
                   minimumYear: 1900,
                   maximumYear: DateTime.now().year,
-                  initialDateTime: DateTime(year, month, day),
+                  initialDateTime: DateTime(dateOfBirth.year, dateOfBirth.month, dateOfBirth.day),
                   onDateTimeChanged: (DateTime selectedDate) {
                     readModel.selectDateOfBirth(selectedDate);
                   },
@@ -84,7 +82,6 @@ class ProfileEditPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ProfileEditPageModel watchModel = context.watch<ProfileEditPageModel>();
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -149,10 +146,16 @@ class ProfileEditPage extends StatelessWidget {
                             _cupertinoDatePicker(context);
                           },
                           child: Consumer<ProfileEditPageModel>(
-                            builder: (context, model, child) =>
-                                Text('${watchModel.getBirthYear().toString()}年'
-                                    '${watchModel.getBirthMonth().toString()}月'
-                                    '${watchModel.getBirthDay().toString()}日'),
+                            builder: (context, model, child) {
+                              if(model.getDateOfBirth()?.year == null ||
+                                  model.getDateOfBirth()?.month == null ||
+                                  model.getDateOfBirth()?.day == null) {
+                                return const CircularProgressIndicator();
+                              }
+                              return Text('${model.getDateOfBirth()!.year.toString()}年'
+                                  '${model.getDateOfBirth()!.month.toString()}月'
+                                  '${model.getDateOfBirth()!.day.toString()}日');
+                            },
                           ),
                         ),
                       ],
