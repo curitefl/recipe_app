@@ -16,7 +16,7 @@ class FavoriteRecipePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 5,
+      length: tabTexts.length,
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
@@ -24,7 +24,7 @@ class FavoriteRecipePage extends StatelessWidget {
           bottom: TabBar(
             isScrollable: true,
             tabs: [
-              for( int i = 0; i < tabTexts.length; ++i)...{
+              for (int i = 0; i < tabTexts.length; ++i) ...{
                 Tab(text: tabTexts[i]),
               }
             ],

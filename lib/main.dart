@@ -1,13 +1,16 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:recipe_app/my_page.dart';
 import 'package:recipe_app/text_data.dart';
 import 'package:recipe_app/sub_pages/index.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(
     ChangeNotifierProvider(
-      create: (context) => ProfileEditPageModel(),
+      create: (context) => ProfileEditPageModel()..fetchProfile(),
       child: const MyApp(),
     ),
   );

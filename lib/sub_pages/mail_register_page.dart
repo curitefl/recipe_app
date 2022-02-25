@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-class MailRegisterPage extends StatelessWidget{
+class MailRegisterPage extends StatelessWidget {
   final String title;
+
   const MailRegisterPage({Key? key, required this.title}) : super(key: key);
 
   @override
