@@ -1,9 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:recipe_app/my_page.dart';
+import 'package:recipe_app/pages/greeting/greeting_page.dart';
+import 'package:recipe_app/pages/my_page/my_page.dart';
+import 'package:recipe_app/pages/sign_in/sign_in_page.dart';
 import 'package:recipe_app/text_data.dart';
-import 'package:recipe_app/sub_pages/index.dart';
+import 'package:recipe_app/pages/index.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
