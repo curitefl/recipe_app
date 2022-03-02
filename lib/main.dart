@@ -28,8 +28,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.amber,
       ),
-      home: MyPage(TextData.myPage),
+      home: SignInPage(),
       routes: <String, WidgetBuilder> {
+        '/${TextData.welcome}': (BuildContext context) => const GreetingPage(),
+        '/${TextData.myPage}': (BuildContext context) => MyPage(title: TextData.myPage),
         '/${TextData.favoriteRecipe}': (BuildContext context) => const FavoriteRecipePage(title: TextData.favoriteRecipe),
         '/${TextData.columns}': (BuildContext context) => const FoundationPage(title: TextData.columns),
         '/${TextData.profileEdit}': (BuildContext context) => ProfileEditPage(title: TextData.profileEdit),
