@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -71,6 +72,13 @@ class SignInPage extends StatelessWidget {
                           arguments: ScreenArguments(
                             '${user!.email}${TextData.honorific}',
                           ),);
+                        final doc = FirebaseFirestore.instance.collection('users').doc(user!.uid);
+                        doc.set({
+                          'uid': user!.uid,
+                          'nickname': '',
+                          'servings': '1',
+                          'dateOfBirth': '2000/1/1',
+                        });
                       } catch (e) {
                         debugPrint(e.toString());
                       }
