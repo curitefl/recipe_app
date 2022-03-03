@@ -46,10 +46,10 @@ class ProfileEditPage extends StatelessWidget {
   }
 
   void _cupertinoDatePicker(BuildContext context) {
+    ProfileEditPageModel readModel = context.read<ProfileEditPageModel>();
     showCupertinoModalPopup(
       context: context,
-      builder: (BuildContext context) {
-        final ProfileEditPageModel readModel = context.read<ProfileEditPageModel>();
+      builder: (context) {
         final String? birthday = readModel.getDateOfBirth();
         if(birthday == null) {
           return const CircularProgressIndicator();
