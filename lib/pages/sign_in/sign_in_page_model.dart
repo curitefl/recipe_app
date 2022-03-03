@@ -43,6 +43,7 @@ class SignInPageModel extends ChangeNotifier {
         final doc = FirebaseFirestore.instance.collection(TextData.fireStoreUsers).doc(user!.uid);
         doc.set({
           TextData.fireStoreUserID: user!.uid,
+          TextData.fireStoreEmail: user!.email,
           TextData.fireStoreNickname: TextData.fireStoreInitialNickname,
           TextData.fireStoreServings: TextData.fireStoreInitialServings,
           TextData.fireStoreDateOfBirth: TextData.fireStoreInitialDateOfBirth,

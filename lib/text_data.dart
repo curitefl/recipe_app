@@ -76,6 +76,7 @@ class TextData {
   static const String fireStoreDateOfBirth = 'dateOfBirth';
   static const String fireStoreUsers = 'users';
   static const String fireStoreUserID = 'userID';
+  static const String fireStoreEmail = 'email';
   static const String fireStoreInitialNickname = '';
   static const String fireStoreInitialServings = '1';
   static const String fireStoreInitialDateOfBirth = '2000/1/1';
