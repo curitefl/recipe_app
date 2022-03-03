@@ -28,11 +28,14 @@ class TextData {
   static const String others = 'その他';
 
   static const String required = '必須';
-  static const String nickName = 'ニックネーム';
+  static const String nickname = 'ニックネーム';
   static const String usualAmount = 'いつも作る量';
   static const String people = '人前';
   static const String close = '閉じる';
   static const String birth = '生年月日';
+  static const String year = '年';
+  static const String month = '月';
+  static const String day = '日';
   static const String male = '男性';
   static const String female = '女性';
   static const String optional = '任意';
@@ -52,6 +55,8 @@ class TextData {
   static const String peanut = '落花生';
   static const String shrimp = 'エビ';
   static const String crab = 'カニ';
+  static const String apply = '変更する';
+  static const String needThreeLength = 'birthdayArrayの要素は3つでなければいけません';
 
   static const String googleScopesEmail = 'email';
   static const String googleScopesUrl = 'https://www.googleapis.com/auth/contacts.readonly';
@@ -65,4 +70,13 @@ class TextData {
 
   static const String welcome = 'ようこそ';
   static const String goToMyPage = 'マイページへ進む';
+
+  static const String fireStoreNickname = 'nickname';
+  static const String fireStoreServings = 'servings';
+  static const String fireStoreDateOfBirth = 'dateOfBirth';
+  static const String fireStoreUsers = 'users';
+  static const String fireStoreUserID = 'userID';
+  static const String fireStoreInitialNickname = '';
+  static const String fireStoreInitialServings = '1';
+  static const String fireStoreInitialDateOfBirth = '2000/1/1';
 }

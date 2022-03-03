@@ -55,7 +55,7 @@ class ProfileEditPage extends StatelessWidget {
           return const CircularProgressIndicator();
         }
         final birthdayArray = birthday.split('/');
-        assert(birthdayArray.length == 3, 'birthdayArrayの要素は3つでなければいけません');
+        assert(birthdayArray.length == 3, TextData.needThreeLength);
         final year = int.parse(birthdayArray[0]);
         final month = int.parse(birthdayArray[1]);
         final day = int.parse(birthdayArray[2]);
@@ -110,7 +110,7 @@ class ProfileEditPage extends StatelessWidget {
                           model.setNickname(text);
                         },
                         decoration: const InputDecoration(
-                          hintText: TextData.nickName,
+                          hintText: TextData.nickname,
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
                               color: Colors.pink,
@@ -159,11 +159,12 @@ class ProfileEditPage extends StatelessWidget {
                                   return const CircularProgressIndicator();
                                 }
                                 final birthdayArray = birthday.split('/');
-                                assert(birthdayArray.length == 3, 'birthdayArrayの要素は3つでなければいけません');
+                                assert(birthdayArray.length == 3, TextData.needThreeLength);
                                 final year = int.parse(birthdayArray[0]);
                                 final month = int.parse(birthdayArray[1]);
                                 final day = int.parse(birthdayArray[2]);
-                                return Text('${year.toString()}年${month.toString()}月${day.toString()}日');
+                                return Text(
+                                    '${year.toString()}${TextData.year}${month.toString()}${TextData.month}${day.toString()}${TextData.day}');
                               },
                             ),
                           ),
@@ -171,7 +172,7 @@ class ProfileEditPage extends StatelessWidget {
                       ),
                       Center(
                         child: ElevatedButton(
-                          child: const Text('変更する'),
+                          child: const Text(TextData.apply),
                           onPressed: () {
                             model.updateProfile();
                           },

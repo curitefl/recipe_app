@@ -40,12 +40,12 @@ class SignInPageModel extends ChangeNotifier {
           '${user!.email}${TextData.honorific}',
         ),);
       if(result!.additionalUserInfo!.isNewUser) {
-        final doc = FirebaseFirestore.instance.collection('users').doc(user!.uid);
+        final doc = FirebaseFirestore.instance.collection(TextData.fireStoreUsers).doc(user!.uid);
         doc.set({
-          'uid': user!.uid,
-          'nickname': '',
-          'servings': '1',
-          'dateOfBirth': '2000/1/1',
+          TextData.fireStoreUserID: user!.uid,
+          TextData.fireStoreNickname: TextData.fireStoreInitialNickname,
+          TextData.fireStoreServings: TextData.fireStoreInitialServings,
+          TextData.fireStoreDateOfBirth: TextData.fireStoreInitialDateOfBirth,
         });
       }
 
