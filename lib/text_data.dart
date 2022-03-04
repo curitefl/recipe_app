@@ -52,4 +52,17 @@ class TextData {
   static const String peanut = '落花生';
   static const String shrimp = 'エビ';
   static const String crab = 'カニ';
+
+  static const String googleScopesEmail = 'email';
+  static const String googleScopesUrl = 'https://www.googleapis.com/auth/contacts.readonly';
+  static const String signInWithGoogle = 'Googleでサインイン';
+  static const String useAsGuest = 'ゲストとして使用する';
+  static const String guest = 'ゲスト';
+  static const String honorific = 'さん';
+  static const String signOutOfGoogle = 'Googleからサインアウト';
+  static const String youHaveSignedOut = 'サインアウトしました';
+  static const String pleaseSignOutFirst = '他のGoogleアカウントでログインしたい場合は、先にサインアウトしてください。';
+
+  static const String welcome = 'ようこそ';
+  static const String goToMyPage = 'マイページへ進む';
 }

@@ -22,7 +22,7 @@ class MyPage extends StatelessWidget {
     BottomBarItem(TextData.myPage, Icons.perm_identity),
   ];
 
-  MyPage(this.title, {Key? key}) : super(key: key);
+  MyPage({Key? key, required this.title}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

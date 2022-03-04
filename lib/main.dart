@@ -1,9 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:recipe_app/my_page.dart';
+import 'package:recipe_app/pages/greeting/greeting_page.dart';
+import 'package:recipe_app/pages/my_page/my_page.dart';
+import 'package:recipe_app/pages/sign_in/sign_in_page.dart';
 import 'package:recipe_app/text_data.dart';
-import 'package:recipe_app/sub_pages/index.dart';
+import 'package:recipe_app/pages/index.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,9 +27,17 @@ class MyApp extends StatelessWidget {
       title: TextData.appTitle,
       theme: ThemeData(
         primarySwatch: Colors.amber,
+        textTheme: const TextTheme(
+            headline6: TextStyle(
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
+            ),
+        ),
       ),
-      home: MyPage(TextData.myPage),
+      home: SignInPage(),
       routes: <String, WidgetBuilder> {
+        '/${TextData.welcome}': (BuildContext context) => const GreetingPage(),
+        '/${TextData.myPage}': (BuildContext context) => MyPage(title: TextData.myPage),
         '/${TextData.favoriteRecipe}': (BuildContext context) => const FavoriteRecipePage(title: TextData.favoriteRecipe),
         '/${TextData.columns}': (BuildContext context) => const FoundationPage(title: TextData.columns),
         '/${TextData.profileEdit}': (BuildContext context) => ProfileEditPage(title: TextData.profileEdit),
