@@ -16,7 +16,7 @@ class GreetingPage extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text('${args.message}${TextData.welcome}',
-                style: const TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold)),
+                style: Theme.of(context).textTheme.headline6,),
             ElevatedButton(
                 onPressed: () => Navigator.of(context).pushReplacementNamed('/${TextData.myPage}',),
                 child: const Text(TextData.goToMyPage)),
