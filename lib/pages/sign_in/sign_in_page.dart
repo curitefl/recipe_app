@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:recipe_app/pages/sign_in/sign_in_page_model.dart';
@@ -44,8 +45,14 @@ class SignInPage extends StatelessWidget {
                           style: ElevatedButton.styleFrom(
                             textStyle: const TextStyle(fontWeight: FontWeight.bold),
                           ),
-                          onPressed: () {
-                            model.signIn(context);
+                          onPressed: () async {
+                            await model.signIn();
+                            // final user = model.getUser();
+                            final User? user = Provider.of<SignInPageModel>(context, listen: false).getUser();
+                            Navigator.pushNamed(context, '/${TextData.welcome}',
+                              arguments: ScreenArguments(
+                                '${user!.email}${TextData.honorific}',
+                              ),);
                             }
                           ),
                     ),
@@ -58,8 +65,13 @@ class SignInPage extends StatelessWidget {
                             primary: Colors.grey,
                             onPrimary: Colors.white,
                           ),
-                          onPressed: () {
-                            model.signOut(context);
+                          onPressed: () async {
+                            await model.signOut();
+                            const SnackBar snackBar = SnackBar(
+                              content: Text(TextData.youHaveSignedOut,
+                                style: TextStyle(fontWeight: FontWeight.bold),),
+                              backgroundColor: Colors.grey,);
+                            ScaffoldMessenger.of(context).showSnackBar(snackBar);
                           }),
                     ),
                     const SizedBox(height: 8.0),
