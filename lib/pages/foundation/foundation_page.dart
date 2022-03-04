@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_app/screen_arguments.dart';
 import 'package:recipe_app/text_data.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -62,7 +63,10 @@ class FoundationPage extends StatelessWidget {
                     title: Text(_foundationPageListView[index]),
                     trailing: const Icon(Icons.arrow_forward),
                     onTap: () {
-                      // TODO 各コラムの詳細ページに遷移できるようにする
+                      Navigator.pushNamed(context, '/${TextData.webViewPage}',
+                        arguments: ScreenArguments(foundationPageListView[index],
+                        ),);
+                      // Navigator.of(context).pushNamed('/${TextData.webViewPage}');
                     },
                   ),
                 );
