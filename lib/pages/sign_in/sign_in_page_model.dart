@@ -22,7 +22,7 @@ class SignInPageModel extends ChangeNotifier {
   User? _user; // Firebaseのユーザー情報
   User? get user => _user;
 
-  Future<bool?> signIn() async {
+  Future<bool> signIn() async {
     // Google認証の部分
     googleUser = await _googleSignIn.signIn();
     googleAuth = await googleUser?.authentication;
@@ -44,13 +44,12 @@ class SignInPageModel extends ChangeNotifier {
           TextData.fireStoreServings: TextData.fireStoreInitialServings,
           TextData.fireStoreDateOfBirth: TextData.fireStoreInitialDateOfBirth,
         });
-        return true;
       }
+      return true;
     } catch (e) {
       debugPrint(e.toString());
       return false;
     }
-    return null;
   }
 
   Future signOut () async {
