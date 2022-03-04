@@ -20,7 +20,7 @@ class SignInPageModel extends ChangeNotifier {
   final _fireBaseAuth = FirebaseAuth.instance; // Firebase認証におけるエントリーポイント
   UserCredential? result; // Firebaseの認証要求
   User? _user; // Firebaseのユーザー情報
-  User? getUser () => _user;
+  User? get user => _user;
 
   Future<bool?> signIn() async {
     // Google認証の部分
