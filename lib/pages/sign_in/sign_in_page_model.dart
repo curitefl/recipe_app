@@ -48,6 +48,7 @@ class SignInPageModel extends ChangeNotifier {
       }
     } catch (e) {
       debugPrint(e.toString());
+      return false;
     }
     return null;
   }
