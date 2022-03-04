@@ -47,8 +47,7 @@ class SignInPage extends StatelessWidget {
                           ),
                           onPressed: () async {
                             await model.signIn();
-                            // final User? user = model.user;
-                            final User? user = Provider.of<SignInPageModel>(context, listen: false).user;
+                            final User? user = model.user;
                             Navigator.pushNamed(context, '/${TextData.welcome}',
                               arguments: ScreenArguments(
                                 '${user!.email}${TextData.honorific}',
