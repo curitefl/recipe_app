@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_app/text_data.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FoundationPage extends StatelessWidget {
   final String title;
@@ -22,11 +23,11 @@ class FoundationPage extends StatelessWidget {
       ),
       body: Column(
         children: [
-          const Padding(
-            padding: EdgeInsets.all(8.0),
+          Padding(
+            padding: EdgeInsets.all(8.0.w),
             child: TextField(
               decoration: InputDecoration(
-                prefixIcon: Icon(
+                prefixIcon: const Icon(
                   Icons.search_outlined,
                   color: Colors.pink,
                 ),
@@ -34,13 +35,13 @@ class FoundationPage extends StatelessWidget {
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(
                     color: Colors.pink,
-                    width: 2.0,
+                    width: 2.0.w,
                   ),
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(
                     color: Colors.pink,
-                    width: 2.0,
+                    width: 2.0.w,
                   ),
                 ),
               ),

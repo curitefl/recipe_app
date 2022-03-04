@@ -8,6 +8,7 @@ import 'package:recipe_app/pages/sign_in/sign_in_page.dart';
 import 'package:recipe_app/pages/sign_in/sign_in_page_model.dart';
 import 'package:recipe_app/text_data.dart';
 import 'package:recipe_app/pages/index.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

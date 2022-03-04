@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:recipe_app/pages/sign_in/sign_in_page_model.dart';
 import 'package:recipe_app/screen_arguments.dart';
 import 'package:recipe_app/text_data.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SignInPage extends StatelessWidget {
 
@@ -14,14 +15,14 @@ class SignInPage extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: EdgeInsets.all(8.0.w),
           child: Consumer<SignInPageModel>(
             builder: (context, model, child) {
               return Column(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   ButtonTheme(
-                    minWidth: 350.0,
+                    minWidth: 350.0.w,
                     child: ElevatedButton(
                         child: const Text(TextData.useAsGuest),
                         style: ElevatedButton.styleFrom(
@@ -35,9 +36,9 @@ class SignInPage extends StatelessWidget {
                         },
                     ),
                   ),
-                  const SizedBox(height: 8.0),
+                  SizedBox(height: 8.0.h),
                   ButtonTheme(
-                    minWidth: 350.0,
+                    minWidth: 350.0.w,
                     child: ElevatedButton(
                         child: const Text(TextData.signInWithGoogle),
                         style: ElevatedButton.styleFrom(
@@ -53,9 +54,9 @@ class SignInPage extends StatelessWidget {
                           }
                         ),
                   ),
-                  const SizedBox(height: 8.0),
+                  SizedBox(height: 8.0.h),
                   ButtonTheme(
-                    minWidth: 350.0,
+                    minWidth: 350.0.w,
                     child: ElevatedButton(
                         child: const Text(TextData.signOutOfGoogle),
                         style: ElevatedButton.styleFrom(
@@ -71,7 +72,7 @@ class SignInPage extends StatelessWidget {
                           ScaffoldMessenger.of(context).showSnackBar(snackBar);
                         }),
                   ),
-                  const SizedBox(height: 8.0),
+                  SizedBox(height: 8.0.h),
                   const Text(TextData.pleaseSignOutFirst),
                 ],
               );

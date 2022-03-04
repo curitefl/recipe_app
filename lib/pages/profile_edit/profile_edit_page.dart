@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:recipe_app/pages/profile_edit/profile_edit_page_model.dart';
 import 'package:recipe_app/text_data.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProfileEditPage extends StatelessWidget {
   final String title;
@@ -16,7 +17,7 @@ class ProfileEditPage extends StatelessWidget {
       context: context,
       builder: (context) {
         return Container(
-          height: 250.0,
+          height: 250.0.h,
           color: Colors.white,
           child: Column(
             children: [
@@ -31,7 +32,7 @@ class ProfileEditPage extends StatelessWidget {
                     initialItem: int.parse(readModel.getServingsController().text) - 1,
                   ),
                   looping: false,
-                  itemExtent: 30.0,
+                  itemExtent: 30.0.h,
                   children: _servings.map((number) => Text(number)).toList(),
                   onSelectedItemChanged: (index) {
                     readModel.selectServings(_servings[index]);
@@ -61,12 +62,12 @@ class ProfileEditPage extends StatelessWidget {
         final day = int.parse(birthdayArray[2]);
 
         return Container(
-          height: 500.0,
+          height: 500.0.h,
           color: Colors.white,
           child: Column(
             children: [
               SizedBox(
-                height: 400.0,
+                height: 400.0.h,
                 child: CupertinoDatePicker(
                   mode: CupertinoDatePickerMode.date,
                   dateOrder: DatePickerDateOrder.ymd,
@@ -95,36 +96,36 @@ class ProfileEditPage extends StatelessWidget {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(8.0.w),
             child: Consumer<ProfileEditPageModel>(
               builder: (context, model, child) {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(TextData.required),
+                    Text(TextData.required),
                     TextField(
                       controller: model.getNicknameController(),
                       onSubmitted: (text) {
                         model.setNickname(text);
                       },
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         hintText: TextData.nickname,
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(
                             color: Colors.pink,
-                            width: 2.0,
+                            width: 2.0.w,
                           ),
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(
                             color: Colors.pink,
-                            width: 2.0,
+                            width: 2.0.w,
                           ),
                         ),
                       ),
                     ),
-                    const SizedBox(
-                      height: 20.0,
+                    SizedBox(
+                      height: 20.0.h,
                     ),
                     Row(
                       children: [
@@ -140,8 +141,8 @@ class ProfileEditPage extends StatelessWidget {
                         const Text(TextData.people),
                       ],
                     ),
-                    const SizedBox(
-                      height: 20.0,
+                    SizedBox(
+                      height: 20.0.h,
                     ),
                     Row(
                       children: [
