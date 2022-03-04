@@ -21,6 +21,12 @@ class MyApp extends StatelessWidget {
       title: TextData.appTitle,
       theme: ThemeData(
         primarySwatch: Colors.amber,
+        textTheme: const TextTheme(
+            headline6: TextStyle(
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
+            ),
+        ),
       ),
       home: const SignInPage(),
       routes: <String, WidgetBuilder> {
