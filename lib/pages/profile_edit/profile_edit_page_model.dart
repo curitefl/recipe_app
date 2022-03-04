@@ -1,8 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:recipe_app/text_data.dart';
 
 class ProfileEditPageModel extends ChangeNotifier {
-  final String _profileID = '4c7xNirdfDjfXQv0LAIH';
+  final currentUser = FirebaseAuth.instance.currentUser;
   final TextEditingController _nicknameController = TextEditingController();
   final TextEditingController _servingsController = TextEditingController();
   String? _dateOfBirth;
@@ -20,20 +22,22 @@ class ProfileEditPageModel extends ChangeNotifier {
   }
 
   Future<void> fetchProfile() async {
+    final uid = currentUser!.uid;
     final DocumentSnapshot snapshot =
-        await FirebaseFirestore.instance.collection('profile').doc(_profileID).get();
+        await FirebaseFirestore.instance.collection(TextData.fireStoreUsers).doc(uid).get();
     Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
-    _nicknameController.text = data['nickname'];
-    _servingsController.text = data['servings'];
-    _dateOfBirth = data['dateOfBirth'];
+    _nicknameController.text = data[TextData.fireStoreNickname];
+    _servingsController.text = data[TextData.fireStoreServings];
+    _dateOfBirth = data[TextData.fireStoreDateOfBirth];
     notifyListeners();
   }
 
   Future<void> updateProfile() async {
-    await FirebaseFirestore.instance.collection('profile').doc(_profileID).update({
-      'nickname': _nicknameController.text,
-      'servings': _servingsController.text,
-      'dateOfBirth': _dateOfBirth,
+    final uid = currentUser!.uid;
+    await FirebaseFirestore.instance.collection(TextData.fireStoreUsers).doc(uid).update({
+      TextData.fireStoreNickname: _nicknameController.text,
+      TextData.fireStoreServings: _servingsController.text,
+      TextData.fireStoreDateOfBirth: _dateOfBirth,
     });
   }
 

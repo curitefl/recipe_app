@@ -1,6 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:recipe_app/pages/greeting/greeting_page.dart';
 import 'package:recipe_app/pages/my_page/my_page.dart';
 import 'package:recipe_app/pages/sign_in/sign_in_page.dart';
@@ -10,12 +9,7 @@ import 'package:recipe_app/pages/index.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(
-    ChangeNotifierProvider(
-      create: (context) => ProfileEditPageModel()..fetchProfile(),
-      child: const MyApp(),
-    ),
-  );
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -34,7 +28,7 @@ class MyApp extends StatelessWidget {
             ),
         ),
       ),
-      home: SignInPage(),
+      home: const SignInPage(),
       routes: <String, WidgetBuilder> {
         '/${TextData.welcome}': (BuildContext context) => const GreetingPage(),
         '/${TextData.myPage}': (BuildContext context) => MyPage(title: TextData.myPage),
