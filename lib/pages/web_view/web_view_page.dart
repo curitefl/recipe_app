@@ -31,10 +31,23 @@ class WebViewPage extends StatelessWidget {
             body: WebView(
               initialUrl: '${TextData.googleSearch}${args.message}',
               javascriptMode: JavascriptMode.unrestricted,
-              onWebViewCreated: (controller) {
-                model.setWebViewController(controller);
+              onWebViewCreated: model.setWebViewController,
+              onPageFinished: (value) async {
+                model.setCanGoBack();
+                model.setCanGoForward();
+                // setState(() {});
               },
             ),
+            persistentFooterButtons: [
+              IconButton(
+                icon: const Icon(Icons.arrow_back),
+                onPressed: model.canGoBack ? model.goBack : null,
+              ),
+              IconButton(
+                icon: const Icon(Icons.arrow_forward),
+                onPressed: model.canGoForward ? model.goForward : null,
+              )
+            ],
           );
         }
       ),
