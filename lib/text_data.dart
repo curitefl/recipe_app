@@ -82,4 +82,19 @@ class TextData {
   static const String fireStoreInitialDateOfBirth = '2000/1/1';
 
   static const String gram = 'グラム';
+  static const String onion = 'たまねぎ';
+  static const String carrot = 'にんじん';
+  static const String burdock = 'ごぼう';
+  static const String chineseCabbage = '白菜';
+  static const String tomato = 'トマト';
+  static const String okra = 'オクラ';
+  static const String lettuce = 'レタス';
+  static const String shiitake = 'しいたけ';
+  static const String eggplant = 'ナス';
+  static const String japaneseWhiteRadish = '大根';
+  static const String greenOnion = 'ネギ';
+  static const String cucumber = 'きゅうり';
+  static const String pumpkin = 'かぼちゃ';
+  static const String potato = 'じゃがいも';
+  static const String spinach = 'ほうれん草';
 }
