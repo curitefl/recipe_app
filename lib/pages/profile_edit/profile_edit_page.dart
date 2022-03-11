@@ -87,104 +87,101 @@ class ProfileEditPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<ProfileEditPageModel>(
-      create: (context) => ProfileEditPageModel()..fetchProfile(),
-      child: Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: Text(title),
-        ),
-        body: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Consumer<ProfileEditPageModel>(
-                builder: (context, model, child) {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(TextData.required),
-                      TextField(
-                        controller: model.getNicknameController(),
-                        onSubmitted: (text) {
-                          model.setNickname(text);
-                        },
-                        decoration: const InputDecoration(
-                          hintText: TextData.nickname,
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors.pink,
-                              width: 2.0,
-                            ),
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text(title),
+      ),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Consumer<ProfileEditPageModel>(
+              builder: (context, model, child) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(TextData.required),
+                    TextField(
+                      controller: model.getNicknameController(),
+                      onSubmitted: (text) {
+                        model.setNickname(text);
+                      },
+                      decoration: const InputDecoration(
+                        hintText: TextData.nickname,
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.pink,
+                            width: 2.0,
                           ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors.pink,
-                              width: 2.0,
-                            ),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.pink,
+                            width: 2.0,
                           ),
                         ),
                       ),
-                      const SizedBox(
-                        height: 20.0,
-                      ),
-                      Row(
-                        children: [
-                          const Text(TextData.usualAmount),
-                          OutlinedButton(
-                            onPressed: () {
-                              _cupertinoPicker(context);
-                            },
-                            child: Consumer<ProfileEditPageModel>(
-                              builder: (context, model, child) => Text(model.getServingsController().text),
-                            ),
-                          ),
-                          const Text(TextData.people),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 20.0,
-                      ),
-                      Row(
-                        children: [
-                          const Text(TextData.birth),
-                          OutlinedButton(
-                            onPressed: () {
-                              _cupertinoDatePicker(context);
-                            },
-                            child: Consumer<ProfileEditPageModel>(
-                              builder: (context, model, child) {
-                                final String? birthday = model.getDateOfBirth();
-                                if(birthday == null) {
-                                  return const CircularProgressIndicator();
-                                }
-                                final birthdayArray = birthday.split('/');
-                                assert(birthdayArray.length == 3, TextData.needThreeLength);
-                                final year = int.parse(birthdayArray[0]);
-                                final month = int.parse(birthdayArray[1]);
-                                final day = int.parse(birthdayArray[2]);
-                                return Text(
-                                    '${year.toString()}${TextData.year}${month.toString()}${TextData.month}${day.toString()}${TextData.day}');
-                              },
-                            ),
-                          ),
-                        ],
-                      ),
-                      Center(
-                        child: ElevatedButton(
-                          child: const Text(TextData.apply),
+                    ),
+                    const SizedBox(
+                      height: 20.0,
+                    ),
+                    Row(
+                      children: [
+                        const Text(TextData.usualAmount),
+                        OutlinedButton(
                           onPressed: () {
-                            model.updateProfile();
+                            _cupertinoPicker(context);
                           },
+                          child: Consumer<ProfileEditPageModel>(
+                            builder: (context, model, child) => Text(model.getServingsController().text),
+                          ),
                         ),
+                        const Text(TextData.people),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 20.0,
+                    ),
+                    Row(
+                      children: [
+                        const Text(TextData.birth),
+                        OutlinedButton(
+                          onPressed: () {
+                            _cupertinoDatePicker(context);
+                          },
+                          child: Consumer<ProfileEditPageModel>(
+                            builder: (context, model, child) {
+                              final String? birthday = model.getDateOfBirth();
+                              if(birthday == null) {
+                                return const CircularProgressIndicator();
+                              }
+                              final birthdayArray = birthday.split('/');
+                              assert(birthdayArray.length == 3, TextData.needThreeLength);
+                              final year = int.parse(birthdayArray[0]);
+                              final month = int.parse(birthdayArray[1]);
+                              final day = int.parse(birthdayArray[2]);
+                              return Text(
+                                  '${year.toString()}${TextData.year}${month.toString()}${TextData.month}${day.toString()}${TextData.day}');
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                    Center(
+                      child: ElevatedButton(
+                        child: const Text(TextData.apply),
+                        onPressed: () {
+                          model.updateProfile();
+                        },
                       ),
-                    ],
-                  );
-                },
-              ),
+                    ),
+                  ],
+                );
+              },
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

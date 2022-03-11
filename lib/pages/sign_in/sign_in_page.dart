@@ -11,74 +11,71 @@ class SignInPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<SignInPageModel>(
-      create: (context) => SignInPageModel(),
-      child: Scaffold(
-        body: Center(
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Consumer<SignInPageModel>(
-              builder: (context, model, child) {
-                return Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    ButtonTheme(
-                      minWidth: 350.0,
-                      child: ElevatedButton(
-                          child: const Text(TextData.useAsGuest),
-                          style: ElevatedButton.styleFrom(
-                            primary: Colors.green,
-                            textStyle: const TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                          onPressed: () {
-                            Navigator.pushNamed(context, '/${TextData.welcome}',
-                              arguments: ScreenArguments('${TextData.guest}${TextData.honorific}',
-                              ),);
-                          },
-                      ),
+    return Scaffold(
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Consumer<SignInPageModel>(
+            builder: (context, model, child) {
+              return Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  ButtonTheme(
+                    minWidth: 350.0,
+                    child: ElevatedButton(
+                        child: const Text(TextData.useAsGuest),
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.green,
+                          textStyle: const TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/${TextData.welcome}',
+                            arguments: ScreenArguments('${TextData.guest}${TextData.honorific}',
+                            ),);
+                        },
                     ),
-                    const SizedBox(height: 8.0),
-                    ButtonTheme(
-                      minWidth: 350.0,
-                      child: ElevatedButton(
-                          child: const Text(TextData.signInWithGoogle),
-                          style: ElevatedButton.styleFrom(
-                            textStyle: const TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                          onPressed: () async {
-                            await model.signIn();
-                            final User? user = model.user;
-                            Navigator.pushNamed(context, '/${TextData.welcome}',
-                              arguments: ScreenArguments(
-                                '${user!.email}${TextData.honorific}',
-                              ),);
-                            }
-                          ),
-                    ),
-                    const SizedBox(height: 8.0),
-                    ButtonTheme(
-                      minWidth: 350.0,
-                      child: ElevatedButton(
-                          child: const Text(TextData.signOutOfGoogle),
-                          style: ElevatedButton.styleFrom(
-                            primary: Colors.grey,
-                            onPrimary: Colors.white,
-                          ),
-                          onPressed: () async {
-                            await model.signOut();
-                            const SnackBar snackBar = SnackBar(
-                              content: Text(TextData.youHaveSignedOut,
-                                style: TextStyle(fontWeight: FontWeight.bold),),
-                              backgroundColor: Colors.grey,);
-                            ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                          }),
-                    ),
-                    const SizedBox(height: 8.0),
-                    const Text(TextData.pleaseSignOutFirst),
-                  ],
-                );
-              }
-            ),
+                  ),
+                  const SizedBox(height: 8.0),
+                  ButtonTheme(
+                    minWidth: 350.0,
+                    child: ElevatedButton(
+                        child: const Text(TextData.signInWithGoogle),
+                        style: ElevatedButton.styleFrom(
+                          textStyle: const TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        onPressed: () async {
+                          await model.signIn();
+                          final User? user = model.user;
+                          Navigator.pushNamed(context, '/${TextData.welcome}',
+                            arguments: ScreenArguments(
+                              '${user!.email}${TextData.honorific}',
+                            ),);
+                          }
+                        ),
+                  ),
+                  const SizedBox(height: 8.0),
+                  ButtonTheme(
+                    minWidth: 350.0,
+                    child: ElevatedButton(
+                        child: const Text(TextData.signOutOfGoogle),
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.grey,
+                          onPrimary: Colors.white,
+                        ),
+                        onPressed: () async {
+                          await model.signOut();
+                          const SnackBar snackBar = SnackBar(
+                            content: Text(TextData.youHaveSignedOut,
+                              style: TextStyle(fontWeight: FontWeight.bold),),
+                            backgroundColor: Colors.grey,);
+                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                        }),
+                  ),
+                  const SizedBox(height: 8.0),
+                  const Text(TextData.pleaseSignOutFirst),
+                ],
+              );
+            }
           ),
         ),
       ),
