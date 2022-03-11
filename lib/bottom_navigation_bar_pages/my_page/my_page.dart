@@ -26,29 +26,32 @@ class MyPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<MyPageModel>(
       builder: (context, model, child) {
-        return Scaffold(
-          appBar: AppBar(
-            centerTitle: true,
-            title: Text(bottomBarItems[model.selectedIndex].label),
-          ),
-          body: PageView(
-            children: bottomBarItems.map((widget) => widget.page).toList(),
-            controller: model.pageController,
-            onPageChanged: model.onItemTapped,
-          ),
-          bottomNavigationBar: BottomNavigationBar(
-            type: BottomNavigationBarType.fixed,
-            backgroundColor: Colors.amber,
-            selectedItemColor: Colors.black54,
-            unselectedItemColor: Colors.white,
-            currentIndex: model.selectedIndex,
-            onTap: model.onItemTapped,
-            items: [
-              for (int i = 0; i < bottomBarItems.length; i++) ...{
-                BottomNavigationBarItem(
-                    label: bottomBarItems[i].label, icon: Icon(bottomBarItems[i].icon)),
-              }
-            ],
+        return WillPopScope(
+          onWillPop: () => model.backButtonPress(),
+          child: Scaffold(
+            appBar: AppBar(
+              centerTitle: true,
+              title: Text(bottomBarItems[model.selectedIndex].label),
+            ),
+            body: PageView(
+              children: bottomBarItems.map((widget) => widget.page).toList(),
+              controller: model.pageController,
+              onPageChanged: model.onItemTapped,
+            ),
+            bottomNavigationBar: BottomNavigationBar(
+              type: BottomNavigationBarType.fixed,
+              backgroundColor: Colors.amber,
+              selectedItemColor: Colors.black54,
+              unselectedItemColor: Colors.white,
+              currentIndex: model.selectedIndex,
+              onTap: model.onItemTapped,
+              items: [
+                for (int i = 0; i < bottomBarItems.length; i++) ...{
+                  BottomNavigationBarItem(
+                      label: bottomBarItems[i].label, icon: Icon(bottomBarItems[i].icon)),
+                }
+              ],
+            ),
           ),
         );
       }
