@@ -1,7 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:recipe_app/pages/greeting/greeting_page.dart';
-import 'package:recipe_app/pages/my_page/my_page.dart';
 import 'package:recipe_app/pages/sign_in/sign_in_page.dart';
 import 'package:recipe_app/text_data.dart';
 import 'package:recipe_app/pages/index.dart';
@@ -21,11 +20,19 @@ class MyApp extends StatelessWidget {
       title: TextData.appTitle,
       theme: ThemeData(
         primarySwatch: Colors.amber,
-        textTheme: const TextTheme(
-            headline6: TextStyle(
-                fontSize: 20.0,
-                fontWeight: FontWeight.bold,
-            ),
+        textTheme: TextTheme(
+          headline4: TextStyle(
+            fontSize: 16.0,
+            color: Colors.black,
+            backgroundColor: Colors.white.withOpacity(0.6),
+          ),
+          headline5: const TextStyle(
+            fontSize: 16.0,
+          ),
+          headline6: const TextStyle(
+            fontSize: 20.0,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
       home: const SignInPage(),
