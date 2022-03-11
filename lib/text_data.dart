@@ -80,4 +80,6 @@ class TextData {
   static const String fireStoreInitialNickname = '';
   static const String fireStoreInitialServings = '1';
   static const String fireStoreInitialDateOfBirth = '2000/1/1';
+
+  static const String gram = 'グラム';
 }
