@@ -42,7 +42,7 @@ class FoodStuffsPage extends StatelessWidget {
                               flex: 1,
                               child: CircleAvatar(
                                 radius: 20.0,
-                                backgroundColor: Colors.grey.withOpacity(0.6),
+                                backgroundColor: Colors.grey.withOpacity(0.7),
                                 child: IconButton(
                                     onPressed: () => model.decrementAmount(index),
                                     icon: const Icon(
@@ -56,7 +56,7 @@ class FoodStuffsPage extends StatelessWidget {
                               flex: 1,
                               child: CircleAvatar(
                                 radius: 20.0,
-                                backgroundColor: Colors.grey.withOpacity(0.6),
+                                backgroundColor: Colors.grey.withOpacity(0.7),
                                 child: IconButton(
                                     onPressed: () => model.incrementAmount(index),
                                     icon: const Icon(
