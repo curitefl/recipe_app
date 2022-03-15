@@ -16,8 +16,8 @@ class FoodStuffsPage extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Stack(
               children: [
-                Image.network(
-                  model.foodStuffList[index].foodImageURL,
+                Image.asset(
+                  model.foodStuffList[index].foodImagePath,
                   width: 100.0,
                   height: 100.0,
                 ),

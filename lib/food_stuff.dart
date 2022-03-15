@@ -1,6 +1,6 @@
 class FoodStuff {
   String foodStuffName;
   int foodStuffAmount;
-  String foodImageURL;
-  FoodStuff(this.foodStuffName, this.foodStuffAmount, this.foodImageURL);
+  String foodImagePath;
+  FoodStuff(this.foodStuffName, this.foodStuffAmount, this.foodImagePath);
 }
