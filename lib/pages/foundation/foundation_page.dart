@@ -3,7 +3,7 @@ import 'package:recipe_app/text_data.dart';
 
 class FoundationPage extends StatelessWidget {
   final String title;
-  static const List<String> foundationPageListView = [
+  static const List<String> _foundationPageListView = [
     TextData.seasonalFoodStuffs,
     TextData.cookingBasics,
     TextData.nutrients,
@@ -49,7 +49,7 @@ class FoundationPage extends StatelessWidget {
           Material(
             child: ListView.builder(
               shrinkWrap: true,
-              itemCount: foundationPageListView.length,
+              itemCount: _foundationPageListView.length,
               itemBuilder: (BuildContext context, int index) {
                 return Container(
                   decoration: const BoxDecoration(
@@ -58,7 +58,7 @@ class FoundationPage extends StatelessWidget {
                     ),
                   ),
                   child: ListTile(
-                    title: Text(foundationPageListView[index]),
+                    title: Text(_foundationPageListView[index]),
                     trailing: const Icon(Icons.arrow_forward),
                     onTap: () {
                       // TODO 各コラムの詳細ページに遷移できるようにする

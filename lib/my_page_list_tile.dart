@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
-class MyPageListTile {
+class ListTileDomain {
   final String text;
   final IconData icon;
-  MyPageListTile(this.text, this.icon);
+  ListTileDomain(this.text, this.icon);
 }
