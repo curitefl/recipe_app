@@ -6,7 +6,7 @@ import 'package:recipe_app/text_data.dart';
 
 class ProfileEditPage extends StatelessWidget {
   final String title;
-  final List<String> servings = List.generate(10, (index) => '${index + 1}');
+  final List<String> _servings = List.generate(10, (index) => '${index + 1}');
 
   ProfileEditPage({Key? key, required this.title}) : super(key: key);
 
@@ -32,9 +32,9 @@ class ProfileEditPage extends StatelessWidget {
                   ),
                   looping: false,
                   itemExtent: 30.0,
-                  children: servings.map((number) => Text(number)).toList(),
+                  children: _servings.map((number) => Text(number)).toList(),
                   onSelectedItemChanged: (index) {
-                    readModel.selectServings(servings[index]);
+                    readModel.selectServings(_servings[index]);
                   },
                 ),
               ),

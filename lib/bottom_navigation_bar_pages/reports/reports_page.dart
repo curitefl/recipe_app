@@ -3,7 +3,7 @@ import 'package:recipe_app/my_page_list_tile.dart';
 import 'package:recipe_app/text_data.dart';
 
 class ReportsPage extends StatelessWidget {
-  final List<ListTileDomain> reportsPageListView = [
+  final List<ListTileDomain> _reportsPageListView = [
     ListTileDomain(TextData.report, Icons.analytics_outlined),
   ];
 
@@ -13,7 +13,7 @@ class ReportsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       child: ListView.builder(
-        itemCount: reportsPageListView.length,
+        itemCount: _reportsPageListView.length,
         itemBuilder: (BuildContext context, int index) {
           return Container(
             decoration: const BoxDecoration(
@@ -22,11 +22,11 @@ class ReportsPage extends StatelessWidget {
               ),
             ),
             child: ListTile(
-              leading: Icon(reportsPageListView[index].icon),
-              title: Text(reportsPageListView[index].text),
+              leading: Icon(_reportsPageListView[index].icon),
+              title: Text(_reportsPageListView[index].text),
               trailing: const Icon(Icons.arrow_forward),
               onTap: () {
-                Navigator.of(context).pushNamed('/${reportsPageListView[index].text}');
+                Navigator.of(context).pushNamed('/${_reportsPageListView[index].text}');
               },
             ),
           );

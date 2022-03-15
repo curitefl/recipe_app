@@ -3,7 +3,7 @@ import 'package:recipe_app/text_data.dart';
 
 class FavoriteRecipePage extends StatelessWidget {
   final String title;
-  static const List<String> tabTexts = [
+  static const List<String> _tabTexts = [
     TextData.mainDishes,
     TextData.sideDishes,
     TextData.soup,
@@ -16,7 +16,7 @@ class FavoriteRecipePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: tabTexts.length,
+      length: _tabTexts.length,
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
@@ -24,8 +24,8 @@ class FavoriteRecipePage extends StatelessWidget {
           bottom: TabBar(
             isScrollable: true,
             tabs: [
-              for (int i = 0; i < tabTexts.length; ++i) ...{
-                Tab(text: tabTexts[i]),
+              for (int i = 0; i < _tabTexts.length; ++i) ...{
+                Tab(text: _tabTexts[i]),
               }
             ],
           ),

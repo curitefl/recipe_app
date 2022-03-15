@@ -12,7 +12,7 @@ import 'package:recipe_app/text_data.dart';
 class MyPage extends StatelessWidget {
   final String title;
 
-  final List<BottomBarItem> bottomBarItems = [
+  final List<BottomBarItem> _bottomBarItems = [
     BottomBarItem(TextData.home, Icons.home_outlined, HomePage()),
     BottomBarItem(TextData.foodStuffs, Icons.kitchen, const FoodStuffsPage()),
     BottomBarItem(TextData.recipes, Icons.blender, RecipePage()),
@@ -31,10 +31,10 @@ class MyPage extends StatelessWidget {
           child: Scaffold(
             appBar: AppBar(
               centerTitle: true,
-              title: Text(bottomBarItems[model.selectedIndex].label),
+              title: Text(_bottomBarItems[model.selectedIndex].label),
             ),
             body: PageView(
-              children: bottomBarItems.map((widget) => widget.page).toList(),
+              children: _bottomBarItems.map((widget) => widget.page).toList(),
               controller: model.pageController,
               onPageChanged: model.onItemTapped,
             ),
@@ -46,9 +46,9 @@ class MyPage extends StatelessWidget {
               currentIndex: model.selectedIndex,
               onTap: model.onItemTapped,
               items: [
-                for (int i = 0; i < bottomBarItems.length; i++) ...{
+                for (int i = 0; i < _bottomBarItems.length; i++) ...{
                   BottomNavigationBarItem(
-                      label: bottomBarItems[i].label, icon: Icon(bottomBarItems[i].icon)),
+                      label: _bottomBarItems[i].label, icon: Icon(_bottomBarItems[i].icon)),
                 }
               ],
             ),
