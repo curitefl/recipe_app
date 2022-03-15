@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class MyPageModel extends ChangeNotifier {
-  int _selectedPageIndex = 4;
+  static const int _maxPage = 4;
+  int _selectedPageIndex = _maxPage;
 
   int get selectedIndex => _selectedPageIndex;
   PageController? _pageController;
@@ -9,7 +10,7 @@ class MyPageModel extends ChangeNotifier {
   PageController? get pageController => _pageController;
 
   Future<bool> backButtonPress() async {
-    _selectedPageIndex = 4;
+    _selectedPageIndex = _maxPage;
     return true;
   }
 
