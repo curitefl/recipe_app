@@ -24,7 +24,7 @@ class FoodStuffsPageModel extends ChangeNotifier {
   List<FoodStuff> get foodStuffList => _foodStuffList;
 
   void incrementAmount(index){
-    if(0 > index || index >= foodStuffList.length){
+    if(index < 0 || index >= foodStuffList.length){
       return;
     }
     foodStuffList[index].foodStuffAmount+=100;
@@ -32,7 +32,7 @@ class FoodStuffsPageModel extends ChangeNotifier {
   }
 
   void decrementAmount(index){
-    if(0 > index || index >= foodStuffList.length){
+    if(index < 0 || index >= foodStuffList.length){
       return;
     }
     if(foodStuffList[index].foodStuffAmount == 0){
