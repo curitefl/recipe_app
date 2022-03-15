@@ -22,10 +22,17 @@ class FoodStuffsPageModel extends ChangeNotifier {
   ];
 
   void incrementAmount(index){
+    if(0 > index || index >= foodStuffList.length){
+      return;
+    }
     foodStuffList[index].foodStuffAmount+=100;
     notifyListeners();
   }
+
   void decrementAmount(index){
+    if(0 > index || index >= foodStuffList.length){
+      return;
+    }
     if(foodStuffList[index].foodStuffAmount == 0){
       return;
     }
