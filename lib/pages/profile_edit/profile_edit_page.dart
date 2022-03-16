@@ -102,7 +102,7 @@ class ProfileEditPage extends StatelessWidget {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(TextData.required),
+                    const Text(TextData.required),
                     TextField(
                       controller: model.getNicknameController(),
                       onSubmitted: (text) {

@@ -64,7 +64,7 @@ class FoundationPage extends StatelessWidget {
                     trailing: const Icon(Icons.arrow_forward),
                     onTap: () {
                       Navigator.pushNamed(context, '/${TextData.webViewPage}',
-                        arguments: ScreenArguments(foundationPageListView[index],
+                        arguments: ScreenArguments(_foundationPageListView[index],
                         ),);
                       // Navigator.of(context).pushNamed('/${TextData.webViewPage}');
                     },
