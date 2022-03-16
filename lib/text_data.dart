@@ -1,7 +1,7 @@
 class TextData {
   static const String appTitle = 'レシピアプリ';
 
-  static const String favoriteRecipe= 'お気に入りレシピ';
+  static const String favoriteRecipe = 'お気に入りレシピ';
   static const String columns = 'コラム';
   static const String profileEdit = 'プロフィール変更';
   static const String mailRegistration = 'メールアドレス登録';
@@ -82,19 +82,112 @@ class TextData {
   static const String fireStoreInitialDateOfBirth = '2000/1/1';
 
   static const String gram = 'グラム';
-  static const String onion = 'たまねぎ';
-  static const String carrot = 'にんじん';
-  static const String burdock = 'ごぼう';
-  static const String chineseCabbage = '白菜';
-  static const String tomato = 'トマト';
-  static const String okra = 'オクラ';
-  static const String lettuce = 'レタス';
-  static const String shiitake = 'しいたけ';
-  static const String eggplant = 'ナス';
-  static const String japaneseWhiteRadish = '大根';
-  static const String greenOnion = 'ネギ';
-  static const String cucumber = 'きゅうり';
-  static const String pumpkin = 'かぼちゃ';
-  static const String potato = 'じゃがいも';
-  static const String spinach = 'ほうれん草';
+  static const String hiragana = 'hiragana';
+
+  static const Map<String, String> onion = {
+    'kanji': '玉葱',
+    'hiragana': 'たまねぎ',
+    'katakana': 'タマネギ',
+    'alphabet': 'tamanegi',
+    'combination': '玉ねぎ',
+  };
+
+  static const Map<String, String> carrot = {
+    'kanji': '人参',
+    'hiragana': 'にんじん',
+    'katakana': 'ニンジン',
+    'alphabet': 'ninjin',
+  };
+
+  static const Map<String, String> burdock = {
+    'kanji': '御坊',
+    'hiragana': 'ごぼう',
+    'katakana': 'ゴボウ',
+    'alphabet': 'gobou',
+  };
+
+  static const Map<String, String> chineseCabbage = {
+    'kanji': '白菜',
+    'hiragana': 'はくさい',
+    'katakana': 'ハクサイ',
+    'alphabet': 'hakusai',
+  };
+
+  static const Map<String, String> tomato = {
+    'kanji': '蕃茄',
+    'hiragana': 'とまと',
+    'katakana': 'トマト',
+    'alphabet': 'tomato',
+  };
+
+  static const Map<String, String> okra = {
+    'kanji': '秋葵',
+    'hiragana': 'おくら',
+    'katakana': 'オクラ',
+    'alphabet': 'okura',
+  };
+
+  static const Map<String, String> lettuce = {
+    'kanji': '萵苣',
+    'hiragana': 'れたす',
+    'katakana': 'レタス',
+    'alphabet': 'retasu',
+  };
+
+  static const Map<String, String> shiitake = {
+    'kanji': '椎茸',
+    'hiragana': 'しいたけ',
+    'katakana': 'シイタケ',
+    'alphabet': 'shiitake',
+  };
+
+  static const Map<String, String> eggplant = {
+    'kanji': '茄子',
+    'hiragana': 'なす',
+    'katakana': 'ナス',
+    'alphabet': 'nasu',
+  };
+
+  static const Map<String, String> japaneseWhiteRadish = {
+    'kanji': '大根',
+    'hiragana': 'だいこん',
+    'katakana': 'ダイコン',
+    'alphabet': 'daikon',
+  };
+
+  static const Map<String, String> greenOnion = {
+    'kanji': '葱',
+    'hiragana': 'ねぎ',
+    'katakana': 'ネギ',
+    'alphabet': 'negi',
+  };
+
+  static const Map<String, String> cucumber = {
+    'kanji': '胡瓜',
+    'hiragana': 'きゅうり',
+    'katakana': 'キュウリ',
+    'alphabet': 'kyuuri',
+  };
+
+  static const Map<String, String> pumpkin = {
+    'kanji': '南瓜',
+    'hiragana': 'かぼちゃ',
+    'katakana': 'カボチャ',
+    'alphabet': 'kabocha',
+  };
+
+  static const Map<String, String> potato = {
+    'kanji': '馬鈴薯',
+    'hiragana': 'じゃがいも',
+    'katakana': 'ジャガイモ',
+    'alphabet': 'jagaimo',
+  };
+
+  static const Map<String, String> spinach = {
+    'kanji': '菠薐草',
+    'hiragana': 'ほうれんそう',
+    'katakana': 'ホウレンソウ',
+    'alphabet': 'hourensou',
+    'combination': 'ほうれん草',
+  };
 }

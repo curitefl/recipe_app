@@ -15,7 +15,7 @@ Future<void> main() async {
   runApp(
       MultiProvider(
           providers: [
-            ChangeNotifierProvider<FoodStuffsPageModel>(create: (context) => FoodStuffsPageModel()),
+            ChangeNotifierProvider<FoodStuffsPageModel>(create: (context) => FoodStuffsPageModel()..initFoodStuffListForView()),
             ChangeNotifierProvider<MyPageModel>(create: (context) => MyPageModel()..initPageController()),
             ChangeNotifierProvider<ProfileEditPageModel>(create: (context) => ProfileEditPageModel()..fetchProfile()),
             ChangeNotifierProvider<SignInPageModel>(create: (context) => SignInPageModel()),
