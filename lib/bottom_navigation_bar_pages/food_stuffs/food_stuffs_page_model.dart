@@ -3,7 +3,7 @@ import 'package:recipe_app/food_stuff.dart';
 import 'package:recipe_app/text_data.dart';
 
 class FoodStuffsPageModel extends ChangeNotifier {
-  final List<FoodStuff> _foodStuffList = [
+  final List<FoodStuff> _foodStuffListOriginal = [
     FoodStuff(TextData.onion, 0, 'images/onion.png'),
     FoodStuff(TextData.carrot, 0, 'images/carrot.png'),
     FoodStuff(TextData.burdock, 0, 'images/burdock.png'),
@@ -21,7 +21,14 @@ class FoodStuffsPageModel extends ChangeNotifier {
     FoodStuff(TextData.spinach, 0, 'images/spinach.png'),
   ];
 
-  List<FoodStuff> get foodStuffList => _foodStuffList;
+  List<FoodStuff> _foodStuffListForView = [];
+  bool _hasSearched = false;
+
+  List<FoodStuff> get foodStuffListForView => _foodStuffListForView;
+
+  void initFoodStuffListForView() {
+    _foodStuffListForView = [..._foodStuffListOriginal];
+  }
 
   void incrementAmount(index){
     if(index < 0 || index >= foodStuffList.length){
