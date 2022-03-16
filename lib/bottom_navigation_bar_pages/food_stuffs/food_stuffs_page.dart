@@ -21,19 +21,18 @@ class FoodStuffsPage extends StatelessWidget {
               ),
               onSubmitted: (String inputPhrase) {
                 model.searchFoodStuffs(inputPhrase);
-                  print(model.foodStuffList.map((foodStuff) => foodStuff.foodStuffName).toList());
               },
           ),
             Expanded(
               child: GridView.count(
                   crossAxisCount: 3,
-                  children: List.generate(model.foodStuffList.length, (index) {
+                  children: List.generate(model.foodStuffListForView.length, (index) {
                     return Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Stack(
                         children: [
                           Image.asset(
-                            model.foodStuffList[index].foodImagePath,
+                            model.foodStuffListForView[index].foodImagePath,
                             width: 100.0,
                             height: 100.0,
                           ),
@@ -42,11 +41,11 @@ class FoodStuffsPage extends StatelessWidget {
                             child: Column(
                               children: [
                                 Text(
-                                  model.foodStuffList[index].foodStuffName,
+                                  model.foodStuffListForView[index].foodStuffName,
                                   style: Theme.of(context).textTheme.headline4,
                                 ),
                                 Text(
-                                  '${model.foodStuffList[index].foodStuffAmount}${TextData.gram}',
+                                  '${model.foodStuffListForView[index].foodStuffAmount}${TextData.gram}',
                                   style: Theme.of(context).textTheme.headline4,
                                 ),
                                 const Spacer(),
