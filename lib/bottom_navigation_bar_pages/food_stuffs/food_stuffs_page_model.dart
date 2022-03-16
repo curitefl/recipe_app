@@ -31,26 +31,26 @@ class FoodStuffsPageModel extends ChangeNotifier {
   }
 
   void incrementAmount(index){
-    if(index < 0 || index >= foodStuffList.length){
+    if(index < 0 || index >= _foodStuffListForView.length){
       return;
     }
-    foodStuffList[index].foodStuffAmount+=100;
+    _foodStuffListForView[index].foodStuffAmount+=100;
     notifyListeners();
   }
 
   void decrementAmount(index){
-    if(index < 0 || index >= foodStuffList.length){
+    if(index < 0 || index >= _foodStuffListForView.length){
       return;
     }
-    if(foodStuffList[index].foodStuffAmount == 0){
+    if(_foodStuffListForView[index].foodStuffAmount == 0){
       return;
     }
-    else if (foodStuffList[index].foodStuffAmount < 0){
-      foodStuffList[index].foodStuffAmount = 0;
+    else if (_foodStuffListForView[index].foodStuffAmount < 0){
+      _foodStuffListForView[index].foodStuffAmount = 0;
       notifyListeners();
     }
     else {
-      foodStuffList[index].foodStuffAmount-=100;
+      _foodStuffListForView[index].foodStuffAmount-=100;
       notifyListeners();
     }
   }
