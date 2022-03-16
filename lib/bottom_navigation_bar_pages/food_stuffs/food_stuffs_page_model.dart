@@ -65,13 +65,13 @@ class FoodStuffsPageModel extends ChangeNotifier {
       _hasSearched = false;
     }
     else if(inputPhrase != "" && _hasSearched == false) {
-      _foodStuffListForView.removeWhere((item) => !item.foodStuffName.contains(inputPhrase));
+      _foodStuffListForView.removeWhere((item) => !item.foodStuffName.values.toString().contains(inputPhrase));
       _hasSearched = true;
     }
     else if (inputPhrase != "" && _hasSearched == true) {
       _foodStuffListForView.clear();
       initFoodStuffListForView();
-      _foodStuffListForView.removeWhere((item) => !item.foodStuffName.contains(inputPhrase));
+      _foodStuffListForView.removeWhere((item) => !item.foodStuffName.values.toString().contains(inputPhrase));
       _hasSearched = true;
     }
     notifyListeners();

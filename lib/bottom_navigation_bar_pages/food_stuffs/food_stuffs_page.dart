@@ -41,7 +41,7 @@ class FoodStuffsPage extends StatelessWidget {
                             child: Column(
                               children: [
                                 Text(
-                                  model.foodStuffListForView[index].foodStuffName,
+                                  model.foodStuffListForView[index].foodStuffName[TextData.hiragana].toString(),
                                   style: Theme.of(context).textTheme.headline4,
                                 ),
                                 Text(

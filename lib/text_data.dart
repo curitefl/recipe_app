@@ -82,6 +82,7 @@ class TextData {
   static const String fireStoreInitialDateOfBirth = '2000/1/1';
 
   static const String gram = 'グラム';
+  static const String hiragana = 'hiragana';
 
   static const Map<String, String> onion = {
     'kanji': '玉葱',
