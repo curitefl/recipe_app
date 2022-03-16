@@ -54,4 +54,26 @@ class FoodStuffsPageModel extends ChangeNotifier {
       notifyListeners();
     }
   }
+
+  void searchFoodStuffs(inputPhrase) {
+    if(inputPhrase == "" && _hasSearched == false) {
+      return;
+    }
+    else if(inputPhrase == "" && _hasSearched == true) {
+      _foodStuffListForView.clear();
+      initFoodStuffListForView();
+      _hasSearched = false;
+    }
+    else if(inputPhrase != "" && _hasSearched == false) {
+      _foodStuffListForView.removeWhere((item) => !item.foodStuffName.contains(inputPhrase));
+      _hasSearched = true;
+    }
+    else if (inputPhrase != "" && _hasSearched == true) {
+      _foodStuffListForView.clear();
+      initFoodStuffListForView();
+      _foodStuffListForView.removeWhere((item) => !item.foodStuffName.contains(inputPhrase));
+      _hasSearched = true;
+    }
+    notifyListeners();
+  }
 }
