@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_app/screen_arguments.dart';
 import 'package:recipe_app/text_data.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FoundationPage extends StatelessWidget {
   final String title;
@@ -16,17 +18,21 @@ class FoundationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text(title),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(50.0.h),
+        child: AppBar(
+          centerTitle: true,
+          title: Text(title),
+          titleTextStyle: Theme.of(context).textTheme.headline3,
+        ),
       ),
       body: Column(
         children: [
-          const Padding(
-            padding: EdgeInsets.all(8.0),
+          Padding(
+            padding: EdgeInsets.all(8.0.w),
             child: TextField(
               decoration: InputDecoration(
-                prefixIcon: Icon(
+                prefixIcon: const Icon(
                   Icons.search_outlined,
                   color: Colors.pink,
                 ),
@@ -34,13 +40,13 @@ class FoundationPage extends StatelessWidget {
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(
                     color: Colors.pink,
-                    width: 2.0,
+                    width: 2.0.w,
                   ),
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(
                     color: Colors.pink,
-                    width: 2.0,
+                    width: 2.0.w,
                   ),
                 ),
               ),
@@ -57,12 +63,18 @@ class FoundationPage extends StatelessWidget {
                       bottom: BorderSide(color: Colors.black38),
                     ),
                   ),
-                  child: ListTile(
-                    title: Text(_foundationPageListView[index]),
-                    trailing: const Icon(Icons.arrow_forward),
-                    onTap: () {
-                      // TODO 各コラムの詳細ページに遷移できるようにする
-                    },
+                  child: Padding(
+                    padding: EdgeInsets.all(8.0.w),
+                    child: ListTile(
+                      title: Text(_foundationPageListView[index]),
+                      trailing: const Icon(Icons.arrow_forward),
+                      onTap: () {
+                        Navigator.pushNamed(context, '/${TextData.webViewPage}',
+                          arguments: ScreenArguments(_foundationPageListView[index],
+                          ),);
+                        // Navigator.of(context).pushNamed('/${TextData.webViewPage}');
+                      },
+                    ),
                   ),
                 );
               },

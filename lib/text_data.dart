@@ -190,4 +190,7 @@ class TextData {
     'alphabet': 'hourensou',
     'combination': 'ほうれん草',
   };
+
+  static const String webViewPage = 'webViewPage';
+  static const String googleSearch = 'https://www.google.com/search?q=';
 }

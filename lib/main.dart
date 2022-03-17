@@ -3,11 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:recipe_app/bottom_navigation_bar_pages/food_stuffs/food_stuffs_page_model.dart';
 import 'package:recipe_app/bottom_navigation_bar_pages/my_page/my_page_model.dart';
-import 'package:recipe_app/pages/greeting/greeting_page.dart';
-import 'package:recipe_app/pages/sign_in/sign_in_page.dart';
 import 'package:recipe_app/pages/sign_in/sign_in_page_model.dart';
 import 'package:recipe_app/text_data.dart';
 import 'package:recipe_app/pages/index.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,36 +27,56 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: TextData.appTitle,
-      theme: ThemeData(
-        primarySwatch: Colors.amber,
-        textTheme: TextTheme(
-          headline4: TextStyle(
-            fontSize: 16.0,
-            color: Colors.black,
-            backgroundColor: Colors.white.withOpacity(0.7),
+    return ScreenUtilInit(
+        designSize: const Size(393.0, 830.0),
+        builder: () => MaterialApp(
+          title: TextData.appTitle,
+          theme: ThemeData(
+            primarySwatch: Colors.amber,
+            textTheme: TextTheme(
+              headline1: TextStyle(
+                fontSize: 24.0.sp,
+                color: Colors.black54,
+              ),
+              headline2: TextStyle(
+                fontSize: 20.0.sp,
+              ),
+              headline3: TextStyle(
+                fontSize: 14.0.sp,
+                color: Colors.black,
+              ),
+              headline6: TextStyle(
+                fontSize: 10.0.sp,
+              ),
+              subtitle1: TextStyle(
+                fontSize: 16.0.sp,
+              ),
+              bodyText1: TextStyle(
+                fontSize: 14.0.sp,
+                backgroundColor: Colors.white.withOpacity(0.7),
+              ),
+              button: TextStyle(
+                fontSize: 12.0.sp,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            iconTheme: IconThemeData(
+              size: 24.0.h,
+            ),
           ),
-          headline5: const TextStyle(
-            fontSize: 16.0,
-          ),
-          headline6: const TextStyle(
-            fontSize: 20.0,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ),
-      home: const SignInPage(),
-      routes: <String, WidgetBuilder> {
-        '/${TextData.welcome}': (BuildContext context) => const GreetingPage(),
-        '/${TextData.myPage}': (BuildContext context) => MyPage(title: TextData.myPage),
-        '/${TextData.favoriteRecipe}': (BuildContext context) => const FavoriteRecipePage(title: TextData.favoriteRecipe),
-        '/${TextData.columns}': (BuildContext context) => const FoundationPage(title: TextData.columns),
-        '/${TextData.profileEdit}': (BuildContext context) => ProfileEditPage(title: TextData.profileEdit),
-        '/${TextData.mailRegistration}': (BuildContext context) => const MailRegisterPage(title: TextData.mailRegistration),
-        '/${TextData.fridgeShare}': (BuildContext context) => const FridgeSharePage(title: TextData.fridgeShare),
-        '/${TextData.settings}': (BuildContext context) => const SettingsPage(title: TextData.settings),
-      },
+          home: const SignInPage(),
+          routes: <String, WidgetBuilder> {
+            '/${TextData.welcome}': (BuildContext context) => const GreetingPage(),
+            '/${TextData.myPage}': (BuildContext context) => MyPage(title: TextData.myPage),
+            '/${TextData.favoriteRecipe}': (BuildContext context) => const FavoriteRecipePage(title: TextData.favoriteRecipe),
+            '/${TextData.columns}': (BuildContext context) => const FoundationPage(title: TextData.columns),
+            '/${TextData.profileEdit}': (BuildContext context) => ProfileEditPage(title: TextData.profileEdit),
+            '/${TextData.mailRegistration}': (BuildContext context) => const MailRegisterPage(title: TextData.mailRegistration),
+            '/${TextData.fridgeShare}': (BuildContext context) => const FridgeSharePage(title: TextData.fridgeShare),
+            '/${TextData.settings}': (BuildContext context) => const SettingsPage(title: TextData.settings),
+            '/${TextData.webViewPage}': (BuildContext context) => const WebViewPage(title: TextData.webViewPage),
+          },
+        )
     );
   }
 }

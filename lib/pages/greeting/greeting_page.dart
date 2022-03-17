@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recipe_app/screen_arguments.dart';
 import 'package:recipe_app/text_data.dart';
 
@@ -16,10 +17,14 @@ class GreetingPage extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text('${args.message}${TextData.welcome}',
-                style: Theme.of(context).textTheme.headline6,),
+                style: Theme.of(context).textTheme.headline2,),
             ElevatedButton(
                 onPressed: () => Navigator.of(context).pushReplacementNamed('/${TextData.myPage}',),
-                child: const Text(TextData.goToMyPage)),
+                child: Padding(
+                  padding: EdgeInsets.all(3.0.sp),
+                  child: Text(TextData.goToMyPage,
+                  style: Theme.of(context).textTheme.bodyText2,),
+                )),
           ],
         ),
       ),
