@@ -13,17 +13,22 @@ class FoodStuffsPage extends StatelessWidget {
       builder: (context, model, child) {
         return Column(
           children: [
-            TextField(
-              decoration: const InputDecoration(
-                prefixIcon: Icon(
-                  Icons.search_outlined,
+            Padding(
+              padding: EdgeInsets.all(8.0.w),
+              child: TextField(
+                decoration: InputDecoration(
+                  prefixIcon: Icon(
+                    Icons.search_outlined,
+                    size: IconTheme.of(context).size,
+                  ),
+                  hintText: TextData.search,
+                  hintStyle: Theme.of(context).textTheme.subtitle1,
                 ),
-                hintText: TextData.search,
-              ),
-              onSubmitted: (String inputPhrase) {
-                model.searchFoodStuffs(inputPhrase);
-              },
+                onSubmitted: (String inputPhrase) {
+                  model.searchFoodStuffs(inputPhrase);
+                },
           ),
+            ),
             Expanded(
               child: GridView.count(
                   crossAxisCount: 3,
@@ -34,8 +39,8 @@ class FoodStuffsPage extends StatelessWidget {
                         children: [
                           Image.asset(
                             model.foodStuffListForView[index].foodImagePath,
-                            width: 100.0.w,
-                            height: 100.0.h,
+                            width: 150.0.w,
+                            height: 150.0.h,
                           ),
                           Align(
                             alignment: Alignment.topCenter,
@@ -43,11 +48,11 @@ class FoodStuffsPage extends StatelessWidget {
                               children: [
                                 Text(
                                   model.foodStuffListForView[index].foodStuffName[TextData.hiragana].toString(),
-                                  style: Theme.of(context).textTheme.headline4,
+                                  style: Theme.of(context).textTheme.bodyText1,
                                 ),
                                 Text(
                                   '${model.foodStuffListForView[index].foodStuffAmount}${TextData.gram}',
-                                  style: Theme.of(context).textTheme.headline4,
+                                  style: Theme.of(context).textTheme.bodyText1,
                                 ),
                                 const Spacer(),
                                 Padding(

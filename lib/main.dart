@@ -34,18 +34,34 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             primarySwatch: Colors.amber,
             textTheme: TextTheme(
-              headline4: TextStyle(
-                fontSize: 16.0.sp,
-                color: Colors.black,
-                backgroundColor: Colors.white.withOpacity(0.7),
+              headline1: TextStyle(
+                fontSize: 24.0.sp,
+                color: Colors.black54,
               ),
-              headline5: TextStyle(
-                fontSize: 16.0.sp,
+              headline2: TextStyle(
+                fontSize: 20.0.sp,
+              ),
+              headline3: TextStyle(
+                fontSize: 14.0.sp,
+                color: Colors.black,
               ),
               headline6: TextStyle(
-                fontSize: 20.0.sp,
+                fontSize: 10.0.sp,
+              ),
+              subtitle1: TextStyle(
+                fontSize: 16.0.sp,
+              ),
+              bodyText1: TextStyle(
+                fontSize: 14.0.sp,
+                backgroundColor: Colors.white.withOpacity(0.7),
+              ),
+              button: TextStyle(
+                fontSize: 12.0.sp,
                 fontWeight: FontWeight.bold,
               ),
+            ),
+            iconTheme: IconThemeData(
+              size: 24.0.h,
             ),
           ),
           home: const SignInPage(),

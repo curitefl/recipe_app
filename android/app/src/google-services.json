@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "197613418291",
+    "project_id": "recipe-app-e4e5e",
+    "storage_bucket": "recipe-app-e4e5e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:197613418291:android:678205335764bc0c853046",
+        "android_client_info": {
+          "package_name": "co.bluena.recipe_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "197613418291-q5ho5h726uke59qb217jprq7ke29j1pg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "co.bluena.recipe_app",
+            "certificate_hash": "49476bbdf43c4c1c471ed328ed863495398dfc2c"
+          }
+        },
+        {
+          "client_id": "197613418291-elj4ttpq539fmvl7h31ra8vtlvlq6thm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBa2_gH0iZZ8m9YEa_gbhCY4J9tiSchfNc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "197613418291-elj4ttpq539fmvl7h31ra8vtlvlq6thm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

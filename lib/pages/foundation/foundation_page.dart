@@ -18,9 +18,13 @@ class FoundationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text(title),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(50.0.h),
+        child: AppBar(
+          centerTitle: true,
+          title: Text(title),
+          titleTextStyle: Theme.of(context).textTheme.headline3,
+        ),
       ),
       body: Column(
         children: [
@@ -59,15 +63,18 @@ class FoundationPage extends StatelessWidget {
                       bottom: BorderSide(color: Colors.black38),
                     ),
                   ),
-                  child: ListTile(
-                    title: Text(_foundationPageListView[index]),
-                    trailing: const Icon(Icons.arrow_forward),
-                    onTap: () {
-                      Navigator.pushNamed(context, '/${TextData.webViewPage}',
-                        arguments: ScreenArguments(_foundationPageListView[index],
-                        ),);
-                      // Navigator.of(context).pushNamed('/${TextData.webViewPage}');
-                    },
+                  child: Padding(
+                    padding: EdgeInsets.all(8.0.w),
+                    child: ListTile(
+                      title: Text(_foundationPageListView[index]),
+                      trailing: const Icon(Icons.arrow_forward),
+                      onTap: () {
+                        Navigator.pushNamed(context, '/${TextData.webViewPage}',
+                          arguments: ScreenArguments(_foundationPageListView[index],
+                          ),);
+                        // Navigator.of(context).pushNamed('/${TextData.webViewPage}');
+                      },
+                    ),
                   ),
                 );
               },

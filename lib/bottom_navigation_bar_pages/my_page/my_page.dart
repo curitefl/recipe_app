@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:recipe_app/bottom_navigation_bar_pages/food_stuffs/food_stuffs_page.dart';
 import 'package:recipe_app/bottom_navigation_bar_pages/home/home_page.dart';
@@ -29,9 +30,13 @@ class MyPage extends StatelessWidget {
         return WillPopScope(
           onWillPop: () => model.backButtonPress(),
           child: Scaffold(
-            appBar: AppBar(
-              centerTitle: true,
-              title: Text(_bottomBarItems[model.selectedIndex].label),
+            appBar: PreferredSize(
+              preferredSize: Size.fromHeight(50.0.h),
+              child: AppBar(
+                centerTitle: true,
+                title: Text(_bottomBarItems[model.selectedIndex].label,
+                style: Theme.of(context).textTheme.headline3),
+              ),
             ),
             body: PageView(
               children: _bottomBarItems.map((widget) => widget.page).toList(),
@@ -44,11 +49,17 @@ class MyPage extends StatelessWidget {
               selectedItemColor: Colors.black54,
               unselectedItemColor: Colors.white,
               currentIndex: model.selectedIndex,
+              selectedFontSize: 12.0.sp,
+              unselectedFontSize: 12.0.sp,
               onTap: model.onItemTapped,
               items: [
                 for (int i = 0; i < _bottomBarItems.length; i++) ...{
                   BottomNavigationBarItem(
-                      label: _bottomBarItems[i].label, icon: Icon(_bottomBarItems[i].icon)),
+                      label: _bottomBarItems[i].label,
+                      icon: Icon(_bottomBarItems[i].icon,
+                        size: Theme.of(context).iconTheme.size,
+                      ),
+                  ),
                 }
               ],
             ),

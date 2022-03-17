@@ -89,9 +89,13 @@ class ProfileEditPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text(title),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(50.0.h),
+        child: AppBar(
+          centerTitle: true,
+          title: Text(title),
+          titleTextStyle: Theme.of(context).textTheme.headline3,
+        ),
       ),
       body: Column(
         children: [
