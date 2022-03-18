@@ -2,11 +2,11 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:collection/collection.dart';
 import 'package:http/http.dart' as http;
-import 'package:youtube_api/src/model/video.dart';
-import 'package:youtube_api/src/model/youtube_video.dart';
-export 'package:youtube_api/src/model/youtube_video.dart';
-import 'package:youtube_api/src/util/_api.dart';
-import 'package:youtube_api/src/util/get_duration.dart';
+import 'package:recipe_app/src/model/video.dart';
+import 'package:recipe_app/src/model/youtube_video.dart';
+export 'package:recipe_app/src/model/youtube_video.dart';
+import 'package:recipe_app/src/util/_api.dart';
+import 'package:recipe_app/src/util/get_duration.dart';
 
 class YoutubeAPI {
   String? type;

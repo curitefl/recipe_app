@@ -1,4 +1,4 @@
-import 'package:youtube_api/src/model/thumbnails.dart';
+import 'package:recipe_app/src/model/thumbnails.dart';
 
 class YouTubeVideo {
   late Thumbnails thumbnail;

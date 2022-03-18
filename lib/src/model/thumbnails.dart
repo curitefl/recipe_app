@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:youtube_api/src/model/thumbnail.dart';
+import 'package:recipe_app/src/model/thumbnail.dart';
 
 class Thumbnails {
   final Thumbnail small;
