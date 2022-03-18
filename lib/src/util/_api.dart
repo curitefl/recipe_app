@@ -26,12 +26,13 @@ class ApiHelper {
     String query, {
     String? type,
     String? regionCode,
+    String? channelId,
     required String videoDuration,
     required String order,
   }) {
     this.query = query;
     this.type = type ?? this.type;
-    this.channelId = null;
+    this.channelId = channelId ?? this.channelId;
     final options = {
       "q": "${this.query}",
       "part": "snippet",
@@ -40,6 +41,7 @@ class ApiHelper {
       "type": "${this.type}",
       "order": order,
       "videoDuration": videoDuration,
+      "channelId": "${this.channelId}",
     };
     if (regionCode != null) options['regionCode'] = regionCode;
     print(options);
