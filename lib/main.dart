@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:recipe_app/pages/web_view/web_view_page.dart';
+import 'package:recipe_app/bottom_navigation_bar_pages/my_page/pages/foundation/web_view/web_view_page_model.dart';
 import 'package:recipe_app/text_data.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recipe_app/bottom_navigation_bar_pages/my_page/index.dart';
@@ -16,6 +16,7 @@ Future<void> main() async {
             ChangeNotifierProvider<MyPageModel>(create: (context) => MyPageModel()..initPageController()),
             ChangeNotifierProvider<ProfileEditPageModel>(create: (context) => ProfileEditPageModel()..fetchProfile()),
             ChangeNotifierProvider<SignInPageModel>(create: (context) => SignInPageModel()),
+            ChangeNotifierProvider<WebViewPageModel>(create: (context) => WebViewPageModel()..isAndroid()),
             ChangeNotifierProvider<VideoPageModel>(create: (context) => VideoPageModel()..initFutureAlbum()),
           ],
           child: const MyApp()));
