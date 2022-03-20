@@ -5,7 +5,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:recipe_app/text_data.dart';
 
-class RecipePageModel extends ChangeNotifier {
+class VideoPageModel extends ChangeNotifier {
   late Future<Album> futureAlbum;
 
   void initFutureAlbum() {
