@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:recipe_app/pages/profile_edit/profile_edit_page_model.dart';
+import 'package:recipe_app/bottom_navigation_bar_pages/my_page/pages/profile_edit/profile_edit_page_model.dart';
 import 'package:recipe_app/text_data.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
