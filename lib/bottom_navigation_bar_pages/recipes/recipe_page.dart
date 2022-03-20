@@ -15,27 +15,25 @@ class RecipePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      child: ListView.builder(
-        itemCount: _recipePageListView.length,
-        itemBuilder: (BuildContext context, int index) {
-          return Container(
-            decoration: const BoxDecoration(
-              border: Border(
-                bottom: BorderSide(color: Colors.black38),
-              ),
-            ),
-            child: Padding(
-              padding: EdgeInsets.all(8.0.w),
-              child: ListTile(
-                leading: Icon(_recipePageListView[index].icon),
-                title: Text(_recipePageListView[index].text),
-                trailing: const Icon(Icons.arrow_forward),
-                onTap: () {
-                  Navigator.of(context).pushNamed('/${_recipePageListView[index].text}');
-                },
-              ),
-            ),
+    return Center(
+      child: Consumer<RecipePageModel>(
+        builder: (context, model, child) {
+          return FutureBuilder<Album>(
+            future: model.futureAlbum,
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return Column(
+                    children: [
+                      Text(snapshot.data!.title),
+                      Text(snapshot.data!.description),
+                    ]
+                );
+              } else if (snapshot.hasError) {
+                return Text('${snapshot.error}');
+              }
+              // By default, show a loading spinner.
+              return const CircularProgressIndicator();
+            },
           );
         },
       ),
