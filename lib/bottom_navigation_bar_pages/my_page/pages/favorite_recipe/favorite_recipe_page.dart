@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recipe_app/text_data.dart';
 
 class FavoriteRecipePage extends StatelessWidget {

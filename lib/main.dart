@@ -1,12 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:recipe_app/bottom_navigation_bar_pages/food_stuffs/food_stuffs_page_model.dart';
-import 'package:recipe_app/bottom_navigation_bar_pages/my_page/my_page_model.dart';
-import 'package:recipe_app/bottom_navigation_bar_pages/recipes/pages/video_page.dart';
-import 'package:recipe_app/bottom_navigation_bar_pages/recipes/pages/video_page_model.dart';
+import 'package:recipe_app/pages/web_view/web_view_page.dart';
 import 'package:recipe_app/text_data.dart';
-import 'package:recipe_app/pages/index.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recipe_app/bottom_navigation_bar_pages/my_page/index.dart';
 
