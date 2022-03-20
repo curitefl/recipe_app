@@ -3,13 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:recipe_app/bottom_navigation_bar_pages/food_stuffs/food_stuffs_page_model.dart';
 import 'package:recipe_app/bottom_navigation_bar_pages/my_page/my_page_model.dart';
-import 'package:recipe_app/bottom_navigation_bar_pages/recipes/recipe_page_model.dart';
-import 'package:recipe_app/pages/greeting/greeting_page.dart';
-import 'package:recipe_app/pages/sign_in/sign_in_page.dart';
-import 'package:recipe_app/pages/sign_in/sign_in_page_model.dart';
+import 'package:recipe_app/bottom_navigation_bar_pages/recipes/pages/video_page.dart';
+import 'package:recipe_app/bottom_navigation_bar_pages/recipes/pages/video_page_model.dart';
 import 'package:recipe_app/text_data.dart';
 import 'package:recipe_app/pages/index.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:recipe_app/bottom_navigation_bar_pages/my_page/index.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,7 +20,7 @@ Future<void> main() async {
             ChangeNotifierProvider<MyPageModel>(create: (context) => MyPageModel()..initPageController()),
             ChangeNotifierProvider<ProfileEditPageModel>(create: (context) => ProfileEditPageModel()..fetchProfile()),
             ChangeNotifierProvider<SignInPageModel>(create: (context) => SignInPageModel()),
-            ChangeNotifierProvider<RecipePageModel>(create: (context) => RecipePageModel()..initFutureAlbum()),
+            ChangeNotifierProvider<VideoPageModel>(create: (context) => VideoPageModel()..initFutureAlbum()),
           ],
           child: const MyApp()));
 }
@@ -79,6 +78,7 @@ class MyApp extends StatelessWidget {
             '/${TextData.fridgeShare}': (BuildContext context) => const FridgeSharePage(title: TextData.fridgeShare),
             '/${TextData.settings}': (BuildContext context) => const SettingsPage(title: TextData.settings),
             '/${TextData.webViewPage}': (BuildContext context) => const WebViewPage(title: TextData.webViewPage),
+            '/${TextData.videos}': (BuildContext context) => const VideoPage(title: TextData.videos),
           },
         )
     );

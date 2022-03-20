@@ -7,6 +7,7 @@ class TextData {
   static const String mailRegistration = 'メールアドレス登録';
   static const String fridgeShare = '冷蔵庫共有';
   static const String settings = '設定';
+  static const String videos = '動画';
 
   static const String home = 'ホーム';
   static const String foodStuffs = '食材';
