@@ -22,7 +22,7 @@ class RecipePage extends StatelessWidget {
             future: model.futureAlbum,
             builder: (context, snapshot) {
               if (snapshot.hasData) {
-                return Column(
+                return ListView(
                     children: [
                       Text(snapshot.data!.title),
                       Text(snapshot.data!.description),
