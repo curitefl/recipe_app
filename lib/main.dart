@@ -18,7 +18,7 @@ Future<void> main() async {
             ChangeNotifierProvider<ProfileEditPageModel>(create: (context) => ProfileEditPageModel()..fetchProfile()),
             ChangeNotifierProvider<SignInPageModel>(create: (context) => SignInPageModel()),
             ChangeNotifierProvider<WebViewPageModel>(create: (context) => WebViewPageModel()..isAndroid()),
-            ChangeNotifierProvider<VideoPageModel>(create: (context) => VideoPageModel()..initFutureAlbum()),
+            ChangeNotifierProvider<RecipePageModel>(create: (context) => RecipePageModel()..callAPI()),
           ],
           child: const MyApp()));
 }
@@ -45,6 +45,14 @@ class MyApp extends StatelessWidget {
               headline3: TextStyle(
                 fontSize: 14.0.sp,
                 color: Colors.black,
+              ),
+              headline4: TextStyle(
+                fontSize: 24.0.sp,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+              headline5: TextStyle(
+                fontSize: 18.0.sp,
               ),
               headline6: TextStyle(
                 fontSize: 10.0.sp,
