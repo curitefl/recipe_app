@@ -195,9 +195,9 @@ class TextData {
   static const String webViewPage = 'webViewPage';
   static const String googleSearch = 'https://www.google.com/search?q=';
 
-  static const String youtubeV3APIURL = "https://www.googleapis.com/youtube/v3/videos?id=";
-  static const String youtubeVideoID = "X48VuDVv0do";
+  static const String youtubeChannelID = "UCb0jMRgVdSxanToDdNobhjA";
   static const String youtubeV3APIKey = "AIzaSyAvdhPss_s6AoxEjmZumJxS8-5HExH9J2Q";
-  static const String youtubeURLPart = "snippet";
-  static const String failedToLoadAlbum = "Failed to load album";
+  static const String queryKeyword = 'たまねぎを使ったレシピ';
+  static const String relevance = 'relevance';
+  static const String any = 'any';
 }
