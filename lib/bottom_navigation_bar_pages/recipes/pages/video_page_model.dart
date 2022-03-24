@@ -7,7 +7,7 @@ class VideoPageModel extends ChangeNotifier {
   bool _isPlayerReady = false;
 
   YoutubePlayerController _controller = YoutubePlayerController(
-    initialVideoId: 'iLnmTe5Q2Qw',
+    initialVideoId: '',
     flags: YoutubePlayerFlags(
       autoPlay: true,
       mute: true,
