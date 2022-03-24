@@ -14,7 +14,6 @@ class RecipePageModel extends ChangeNotifier {
       videoDuration: TextData.any,
       channelId: TextData.youtubeChannelID,
     );
-    videoResult = await youtube.nextPage();
     notifyListeners();
   }
 }
