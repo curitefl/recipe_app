@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
+import 'package:recipe_app/bottom_navigation_bar_pages/recipes/pages/video_page_model.dart';
 import 'package:recipe_app/video_arguments.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class VideoPage extends StatelessWidget {
   final String title;
@@ -22,6 +25,22 @@ class VideoPage extends StatelessWidget {
       body: Center(
         child: ListView(
           children: [
+            Consumer<VideoPageModel>(
+              builder: (context, model, child) {
+                return YoutubePlayer(
+                  controller: model.controller,
+                  showVideoProgressIndicator: true,
+                  progressIndicatorColor: Colors.amber,
+                  progressColors: const ProgressBarColors(
+                    playedColor: Colors.amber,
+                    handleColor: Colors.amberAccent,
+                  ),
+                  onReady: () {
+                    model.controller.addListener(model.listener);
+                    },
+                );
+              }
+            ),
             Image.network(
               args.youtubeVideo.thumbnail.medium.url ?? '',
               width: 120.0.w,
