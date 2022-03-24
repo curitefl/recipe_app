@@ -10,6 +10,7 @@ class RecipePageModel extends ChangeNotifier {
 
   Future<void> callAPI() async {
     String query = TextData.queryKeyword;
+    // TODO queryが10文字以上じゃないとエラーが出る問題は調査中
     _videoResult = await _youtube.search(
       query,
       order: TextData.relevance,
