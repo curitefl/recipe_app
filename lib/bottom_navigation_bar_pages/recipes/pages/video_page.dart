@@ -26,16 +26,21 @@ class VideoPage extends StatelessWidget {
         child: ListView(
           children: [
             Consumer<VideoPageModel>(builder: (context, model, child) {
-              return YoutubePlayer(
-                controller: model.initVideoID(args.youtubeVideo.id.toString()),
-                showVideoProgressIndicator: true,
-                progressIndicatorColor: Colors.amber,
-                progressColors: const ProgressBarColors(
-                  playedColor: Colors.amber,
-                  handleColor: Colors.amberAccent,
+              return YoutubePlayerBuilder(
+                player: YoutubePlayer(
+                  controller: model.initVideoID(args.youtubeVideo.id.toString()),
+                  showVideoProgressIndicator: true,
+                  progressIndicatorColor: Colors.amber,
+                  progressColors: const ProgressBarColors(
+                    playedColor: Colors.amber,
+                    handleColor: Colors.amberAccent,
+                  ),
+                  onReady: () {
+                    model.controller.addListener(model.listener);
+                  },
                 ),
-                onReady: () {
-                  model.controller.addListener(model.listener);
+                builder: (context, player) {
+                  return player;
                 },
               );
             }),
