@@ -27,8 +27,7 @@ class VideoPage extends StatelessWidget {
           children: [
             Consumer<VideoPageModel>(builder: (context, model, child) {
               return YoutubePlayer(
-                controller:
-                    YoutubePlayerController(initialVideoId: args.youtubeVideo.id.toString()),
+                controller: model.initVideoID(args.youtubeVideo.id.toString()),
                 showVideoProgressIndicator: true,
                 progressIndicatorColor: Colors.amber,
                 progressColors: const ProgressBarColors(

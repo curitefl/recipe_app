@@ -4,17 +4,16 @@ import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 class VideoPageModel extends ChangeNotifier {
   late PlayerState _playerState;
   late YoutubeMetaData _videoMetaData;
-  bool _isPlayerReady = false;
+  final bool _isPlayerReady = false;
 
-  YoutubePlayerController _controller = YoutubePlayerController(
-    initialVideoId: '',
-    flags: YoutubePlayerFlags(
-      autoPlay: true,
-      mute: true,
-    ),
-  );
+  late YoutubePlayerController _controller;
 
   YoutubePlayerController get controller => _controller;
+
+  YoutubePlayerController initVideoID(String initialVideoId) {
+    _controller = YoutubePlayerController(initialVideoId: initialVideoId);
+    return controller;
+  }
 
   void listener() {
     if (_isPlayerReady && !_controller.value.isFullScreen) {
