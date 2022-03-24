@@ -7,6 +7,7 @@ class TextData {
   static const String mailRegistration = 'メールアドレス登録';
   static const String fridgeShare = '冷蔵庫共有';
   static const String settings = '設定';
+  static const String videos = '動画';
 
   static const String home = 'ホーム';
   static const String foodStuffs = '食材';
@@ -193,4 +194,10 @@ class TextData {
 
   static const String webViewPage = 'webViewPage';
   static const String googleSearch = 'https://www.google.com/search?q=';
+
+  static const String youtubeChannelID = "UCb0jMRgVdSxanToDdNobhjA";
+  static const String youtubeV3APIKey = "AIzaSyAvdhPss_s6AoxEjmZumJxS8-5HExH9J2Q";
+  static const String queryKeyword = 'たまねぎを使ったレシピ';
+  static const String relevance = 'relevance';
+  static const String any = 'any';
 }
