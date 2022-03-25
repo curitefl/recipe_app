@@ -19,7 +19,7 @@ Future<void> main() async {
             ChangeNotifierProvider<ProfileEditPageModel>(create: (context) => ProfileEditPageModel()..fetchProfile()),
             ChangeNotifierProvider<SignInPageModel>(create: (context) => SignInPageModel()),
             ChangeNotifierProvider<WebViewPageModel>(create: (context) => WebViewPageModel()..isAndroid()),
-            ChangeNotifierProvider<RecipePageModel>(create: (context) => RecipePageModel()..callAPI()),
+            ChangeNotifierProvider<RecipePageModel>(create: (context) => RecipePageModel()),
             ChangeNotifierProvider<VideoPageModel>(create: (context) => VideoPageModel()),
           ],
           child: const MyApp()));

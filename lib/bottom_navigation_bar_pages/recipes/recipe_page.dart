@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:recipe_app/bottom_navigation_bar_pages/food_stuffs/food_stuffs_page_model.dart';
 import 'package:recipe_app/bottom_navigation_bar_pages/recipes/recipe_page_model.dart';
 import 'package:recipe_app/src/model/youtube_video.dart';
 import 'package:recipe_app/text_data.dart';
@@ -11,8 +12,15 @@ class RecipePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    FoodStuffsPageModel foodstuff = context.read<FoodStuffsPageModel>();
+    final queryKeyword = foodstuff.foodStuffListOriginal.map((foodstuff) {
+      if(foodstuff.foodStuffAmount != 0){
+        return foodstuff.foodStuffName['hiragana'];
+      }
+    }).whereType<String>().toList().toString();
     return Material(
       child: Consumer<RecipePageModel>(builder: (context, model, child) {
+        model.callAPI(queryKeyword);
         return ListView(
           children: model.videoResult
               .map(

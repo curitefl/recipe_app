@@ -197,7 +197,6 @@ class TextData {
 
   static const String youtubeChannelID = "UCb0jMRgVdSxanToDdNobhjA";
   static const String youtubeV3APIKey = "AIzaSyAvdhPss_s6AoxEjmZumJxS8-5HExH9J2Q";
-  static const String queryKeyword = 'たまねぎ';
   static const String relevance = 'relevance';
   static const String any = 'any';
 }
