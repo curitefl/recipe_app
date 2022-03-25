@@ -14,7 +14,6 @@ class RecipePageModel extends ChangeNotifier {
       query,
       order: TextData.relevance,
       videoDuration: TextData.any,
-      channelId: TextData.youtubeChannelID,
     );
     notifyListeners();
   }
