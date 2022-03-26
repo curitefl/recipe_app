@@ -20,6 +20,9 @@ class RecipePage extends StatelessWidget {
     }).whereType<String>().toList().toString();
     return Material(
       child: Consumer<RecipePageModel>(builder: (context, model, child) {
+        if(queryKeyword == "[]") {
+          return const CircularProgressIndicator();
+        }
         model.callAPI(queryKeyword);
         return ListView(
           children: model.videoResult
