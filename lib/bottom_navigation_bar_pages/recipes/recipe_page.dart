@@ -29,7 +29,9 @@ class RecipePage extends StatelessWidget {
       },
       child: Consumer<RecipePageModel>(builder: (context, model, child) {
         if (model.isLoading && model.videoResult.isEmpty) {
-          return Center(child: SizedBox(width: 50.0.w, height: 50.0.h, child: const CircularProgressIndicator()));
+          return Center(
+              child: SizedBox(
+                  width: 50.0.w, height: 50.0.h, child: const CircularProgressIndicator()));
         } else if (!model.isLoading && model.videoResult.isNotEmpty) {
           return ListView(
             children: model.videoResult

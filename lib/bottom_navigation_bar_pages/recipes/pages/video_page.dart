@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:recipe_app/bottom_navigation_bar_pages/recipes/pages/video_page_model.dart';
 import 'package:recipe_app/video_arguments.dart';
+import 'package:recipe_app/youtube_album.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class VideoPage extends StatelessWidget {
@@ -42,14 +43,34 @@ class VideoPage extends StatelessWidget {
                 children: [
                   player,
                   SizedBox(height: 24.0.h),
-                  Text(
-                    args.youtubeVideo.title,
-                    style: Theme.of(context).textTheme.headline4,
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 8.0.w),
+                    child: Text(
+                      args.youtubeVideo.title,
+                      style: Theme.of(context).textTheme.headline4,
+                    ),
                   ),
                   SizedBox(height: 24.0.h),
-                  Text(
-                    args.youtubeVideo.description.toString(),
-                    style: Theme.of(context).textTheme.headline2,
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 8.0.w),
+                    child: FutureBuilder<YoutubeAlbum>(
+                      future: model.futureAlbum,
+                      builder: (context, snapshot) {
+                        if (snapshot.hasData) {
+                          return Text(
+                            snapshot.data!.description,
+                            style: Theme.of(context).textTheme.headline2,
+                          );
+                        } else if (snapshot.hasError) {
+                          return Text(snapshot.error.toString());
+                        }
+                        return Center(
+                            child: SizedBox(
+                                width: 50.0.w,
+                                height: 50.0.h,
+                                child: const CircularProgressIndicator()));
+                      },
+                    ),
                   ),
                 ],
               ),
