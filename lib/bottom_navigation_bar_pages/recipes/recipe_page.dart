@@ -12,25 +12,35 @@ class RecipePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    FoodStuffsPageModel foodstuff = context.read<FoodStuffsPageModel>();
-    final queryKeyword = foodstuff.foodStuffListOriginal.map((foodstuff) {
-      if(foodstuff.foodStuffAmount != 0){
-        return foodstuff.foodStuffName['hiragana'];
-      }
-    }).whereType<String>().toList().toString();
-    return Material(
+    return ChangeNotifierProxyProvider<FoodStuffsPageModel, RecipePageModel>(
+      create: (context) => RecipePageModel(),
+      update: (context, foodStuffsPageModel, recipePageModel) {
+        final queryKeyword = foodStuffsPageModel.foodStuffListOriginal
+            .map((foodstuff) {
+              if (foodstuff.foodStuffAmount != 0) {
+                return foodstuff.foodStuffName[TextData.hiragana];
+              }
+            })
+            .whereType<String>()
+            .toList()
+            .toString();
+        recipePageModel!.callAPI(queryKeyword);
+        return recipePageModel;
+      },
       child: Consumer<RecipePageModel>(builder: (context, model, child) {
-        if(queryKeyword == "[]") {
-          return const CircularProgressIndicator();
+        if (model.isLoading && model.videoResult.isEmpty) {
+          return Center(child: SizedBox(width: 50.0.w, height: 50.0.h, child: const CircularProgressIndicator()));
+        } else if (!model.isLoading && model.videoResult.isNotEmpty) {
+          return ListView(
+            children: model.videoResult
+                .map(
+                  (video) => buildInkWell(context, video),
+                )
+                .toList(),
+          );
+        } else {
+          return const Center(child: Text(TextData.notFoundRecipe));
         }
-        model.callAPI(queryKeyword);
-        return ListView(
-          children: model.videoResult
-              .map(
-                (video) => buildInkWell(context, video),
-              )
-              .toList(),
-        );
       }),
     );
   }

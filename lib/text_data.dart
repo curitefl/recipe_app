@@ -199,4 +199,6 @@ class TextData {
   static const String youtubeV3APIKey = "AIzaSyAvdhPss_s6AoxEjmZumJxS8-5HExH9J2Q";
   static const String relevance = 'relevance';
   static const String any = 'any';
+
+  static const String notFoundRecipe = '食材に合ったレシピが見つかりませんでした';
 }
