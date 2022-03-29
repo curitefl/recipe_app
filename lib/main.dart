@@ -7,10 +7,13 @@ import 'package:recipe_app/bottom_navigation_bar_pages/recipes/recipe_page_model
 import 'package:recipe_app/text_data.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recipe_app/bottom_navigation_bar_pages/my_page/index.dart';
+import 'package:recipe_app/push_notification.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  PushNotification pushNotification = PushNotification();
+  pushNotification.setNotification();
   runApp(
       MultiProvider(
           providers: [
