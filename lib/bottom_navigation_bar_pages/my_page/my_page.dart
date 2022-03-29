@@ -16,7 +16,7 @@ class MyPage extends StatelessWidget {
   final List<BottomBarItem> _bottomBarItems = [
     BottomBarItem(TextData.home, Icons.home_outlined, HomePage()),
     BottomBarItem(TextData.foodStuffs, Icons.kitchen, const FoodStuffsPage()),
-    BottomBarItem(TextData.recipes, Icons.blender, RecipePage()),
+    BottomBarItem(TextData.recipes, Icons.blender, const RecipePage()),
     BottomBarItem(TextData.report, Icons.analytics_outlined, ReportsPage()),
     BottomBarItem(TextData.myPage, Icons.perm_identity, MyPageListView()),
   ];

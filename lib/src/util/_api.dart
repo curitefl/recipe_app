@@ -41,9 +41,9 @@ class ApiHelper {
       "type": "${this.type}",
       "order": order,
       "videoDuration": videoDuration,
-      "channelId": "${this.channelId}",
     };
     if (regionCode != null) options['regionCode'] = regionCode;
+    if (channelId != null) options['channelId'] = channelId;
     print(options);
     Uri url = new Uri.https(baseURL, "youtube/v3/search", options);
     return url;

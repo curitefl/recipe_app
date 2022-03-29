@@ -25,6 +25,7 @@ class FoodStuffsPageModel extends ChangeNotifier {
   bool _hasSearched = false;
 
   List<FoodStuff> get foodStuffListForView => _foodStuffListForView;
+  List<FoodStuff> get foodStuffListOriginal => _foodStuffListOriginal;
 
   void initFoodStuffListForView() {
     _foodStuffListForView = [..._foodStuffListOriginal];
