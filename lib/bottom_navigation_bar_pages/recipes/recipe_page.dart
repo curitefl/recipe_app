@@ -32,16 +32,16 @@ class RecipePage extends StatelessWidget {
           return Center(
               child: SizedBox(
                   width: 50.0.w, height: 50.0.h, child: const CircularProgressIndicator()));
-        } else if (!model.isLoading && !model.videoResult.isEmpty) {
-          return ListView(
-            children: model.videoResult
-                .map(
-                  (video) => buildInkWell(context, video),
-                )
-                .toList(),
-          );
+        } else if (!model.isLoading && model.videoResult.isEmpty) {
+          return const Center(child: Text(TextData.notFoundRecipe));
         }
-        return const Center(child: Text(TextData.notFoundRecipe));
+        return ListView(
+          children: model.videoResult
+              .map(
+                (video) => buildInkWell(context, video),
+          )
+              .toList(),
+        );
       }),
     );
   }

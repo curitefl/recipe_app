@@ -56,19 +56,19 @@ class VideoPage extends StatelessWidget {
                     child: FutureBuilder<YoutubeAlbum>(
                       future: model.futureAlbum,
                       builder: (context, snapshot) {
-                        if (snapshot.hasData) {
-                          return Text(
-                            snapshot.data!.description,
-                            style: Theme.of(context).textTheme.headline2,
-                          );
+                        if (!snapshot.hasData) {
+                          return Center(
+                              child: SizedBox(
+                                  width: 50.0.w,
+                                  height: 50.0.h,
+                                  child: const CircularProgressIndicator()));
                         } else if (snapshot.hasError) {
                           return Text(snapshot.error.toString());
                         }
-                        return Center(
-                            child: SizedBox(
-                                width: 50.0.w,
-                                height: 50.0.h,
-                                child: const CircularProgressIndicator()));
+                        return Text(
+                          snapshot.data!.description,
+                          style: Theme.of(context).textTheme.headline2,
+                        );
                       },
                     ),
                   ),
