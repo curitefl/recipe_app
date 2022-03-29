@@ -32,7 +32,7 @@ class RecipePage extends StatelessWidget {
           return Center(
               child: SizedBox(
                   width: 50.0.w, height: 50.0.h, child: const CircularProgressIndicator()));
-        } else if (!model.isLoading && model.videoResult.isNotEmpty) {
+        } else if (!model.isLoading && !model.videoResult.isEmpty) {
           return ListView(
             children: model.videoResult
                 .map(
@@ -40,9 +40,8 @@ class RecipePage extends StatelessWidget {
                 )
                 .toList(),
           );
-        } else {
-          return const Center(child: Text(TextData.notFoundRecipe));
         }
+        return const Center(child: Text(TextData.notFoundRecipe));
       }),
     );
   }
