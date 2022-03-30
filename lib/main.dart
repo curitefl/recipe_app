@@ -4,16 +4,17 @@ import 'package:provider/provider.dart';
 import 'package:recipe_app/bottom_navigation_bar_pages/my_page/pages/foundation/web_view/web_view_page_model.dart';
 import 'package:recipe_app/bottom_navigation_bar_pages/recipes/pages/video_page_model.dart';
 import 'package:recipe_app/bottom_navigation_bar_pages/recipes/recipe_page_model.dart';
+import 'package:recipe_app/push_notification_model.dart';
 import 'package:recipe_app/text_data.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recipe_app/bottom_navigation_bar_pages/my_page/index.dart';
-import 'package:recipe_app/push_notification.dart';
+
+final PushNotificationModel pushNotification = PushNotificationModel();
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  PushNotification pushNotification = PushNotification();
-  pushNotification.setNotification();
+  pushNotification.initFirebaseMessaging();
   runApp(
       MultiProvider(
           providers: [
