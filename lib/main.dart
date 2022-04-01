@@ -11,7 +11,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recipe_app/bottom_navigation_bar_pages/my_page/index.dart';
 
 Future<void> backgroundHandler(RemoteMessage message) async{
-  print(message.data.toString());
+  await Firebase.initializeApp();
+  print('バックグラウンドハンドラー${message.data.toString()}');
   print(message.notification!.title);
 }
 
@@ -19,6 +20,9 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   FirebaseMessaging.onBackgroundMessage(backgroundHandler);
+  final PushNotificationModel pushNotificationModel = PushNotificationModel();
+  pushNotificationModel.initFirebaseMessaging();
+  pushNotificationModel.getFirebaseMessagingToken();
   runApp(
       MultiProvider(
           providers: [

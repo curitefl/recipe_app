@@ -1,9 +1,22 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 
 class PushNotificationModel {
+  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
+  void getFirebaseMessagingToken() {
+    _firebaseMessaging.getToken().then((token) {
+      print("トークン：$token");
+    });
+  }
   void initFirebaseMessaging() {
 
-    FirebaseMessaging.instance.getInitialMessage();
+    ///アプリケーションが終了した状態でも動作する
+    ///通知をタップしたら処理が実行される
+    FirebaseMessaging.instance.getInitialMessage().then((message) {
+      if(message != null) {
+        final routeFromMessage = message.data['route'];
+        print(routeFromMessage);
+      }
+    });
 
     ///アプリがフォアグランドにある時に呼ばれる
     ///アプリがバックグラウンドにある時に通知を受信すると
