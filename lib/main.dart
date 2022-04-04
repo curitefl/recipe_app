@@ -10,6 +10,7 @@ import 'package:recipe_app/push_notification_model.dart';
 import 'package:recipe_app/text_data.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recipe_app/bottom_navigation_bar_pages/my_page/index.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 Future<void> backgroundHandler(RemoteMessage message) async{
   await Firebase.initializeApp();
@@ -39,6 +40,13 @@ Future<void> main() async {
   final PushNotificationModel pushNotificationModel = PushNotificationModel();
   pushNotificationModel.initFirebaseMessaging();
   pushNotificationModel.getFirebaseMessagingToken();
+  final packageInfo = await PackageInfo.fromPlatform();
+  final version = packageInfo.version;
+  final buildNumber = packageInfo.buildNumber;
+  final appName = packageInfo.appName;
+  print('アプリ名＝$appName');
+  print('アプリバージョン＝$version');
+  print('ビルド番号＝$buildNumber');
   runApp(
       MultiProvider(
           providers: [

@@ -19,7 +19,15 @@ class GreetingPage extends StatelessWidget {
             Text('${args.message}${TextData.welcome}',
                 style: Theme.of(context).textTheme.headline2,),
             ElevatedButton(
-                onPressed: () => Navigator.of(context).pushReplacementNamed('/${TextData.myPage}',),
+                onPressed: () {
+                  if(Theme.of(context).platform == TargetPlatform.android){
+                    print('これはアンドロイド端末だよ');
+                  }
+                  if(Theme.of(context).platform == TargetPlatform.iOS){
+                    print('これはiOS端末だよ');
+                  }
+                  Navigator.of(context).pushReplacementNamed('/${TextData.myPage}',);
+                },
                 child: Padding(
                   padding: EdgeInsets.all(3.0.sp),
                   child: Text(TextData.goToMyPage,
