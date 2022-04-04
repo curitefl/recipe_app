@@ -40,10 +40,10 @@ Future<void> main() async {
   final PushNotificationModel pushNotificationModel = PushNotificationModel();
   pushNotificationModel.initFirebaseMessaging();
   pushNotificationModel.getFirebaseMessagingToken();
-  final packageInfo = await PackageInfo.fromPlatform();
-  final version = packageInfo.version;
-  final buildNumber = packageInfo.buildNumber;
-  final appName = packageInfo.appName;
+  final PackageInfo packageInfo = await PackageInfo.fromPlatform();
+  final String version = packageInfo.version;
+  final String buildNumber = packageInfo.buildNumber;
+  final String appName = packageInfo.appName;
   print('アプリ名＝$appName');
   print('アプリバージョン＝$version');
   print('ビルド番号＝$buildNumber');
