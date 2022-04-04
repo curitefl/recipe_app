@@ -13,7 +13,8 @@ import 'package:recipe_app/bottom_navigation_bar_pages/my_page/index.dart';
 
 Future<void> backgroundHandler(RemoteMessage message) async{
   await Firebase.initializeApp();
-  print('バックグラウンドハンドラー${message.data.toString()}');
+  print('バックグラウンドハンドラー通過確認');
+  print(message.data.toString());
   print(message.notification!.title);
 }
 
