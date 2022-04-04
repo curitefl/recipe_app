@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
 import 'package:recipe_app/bottom_navigation_bar_pages/my_page/pages/foundation/web_view/web_view_page_model.dart';
 import 'package:recipe_app/bottom_navigation_bar_pages/recipes/pages/video_page_model.dart';
@@ -11,6 +12,7 @@ import 'package:recipe_app/text_data.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recipe_app/bottom_navigation_bar_pages/my_page/index.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:recipe_app/version_check_service.dart';
 
 Future<void> backgroundHandler(RemoteMessage message) async{
   await Firebase.initializeApp();
@@ -21,6 +23,11 @@ Future<void> backgroundHandler(RemoteMessage message) async{
 
 late AndroidNotificationChannel channel;
 late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
+GetIt locator = GetIt.instance;
+
+void setupLocator() {
+  locator.registerLazySingleton<VersionCheckService>(() => VersionCheckService());
+}
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -40,10 +47,13 @@ Future<void> main() async {
   final PushNotificationModel pushNotificationModel = PushNotificationModel();
   pushNotificationModel.initFirebaseMessaging();
   pushNotificationModel.getFirebaseMessagingToken();
+  setupLocator();
+  final checker = locator<VersionCheckService>();
+  checker.versionCheck();
   final PackageInfo packageInfo = await PackageInfo.fromPlatform();
+  final String appName = packageInfo.appName;
   final String version = packageInfo.version;
   final String buildNumber = packageInfo.buildNumber;
-  final String appName = packageInfo.appName;
   print('アプリ名＝$appName');
   print('アプリバージョン＝$version');
   print('ビルド番号＝$buildNumber');

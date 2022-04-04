@@ -17,11 +17,13 @@ class VersionCheckService {
       await firebaseRemoteConfig.fetchAndActivate();
       int newVersion = firebaseRemoteConfig.getInt(configName);
       if (newVersion > currentVersion) {
+        print('ビルドバージョンが古いです');
         return true;
       }
     } catch (exception) {
       print('リモート設定をフェッチできません。キャッシュされた値またはデフォルト値が使用されます。');
     }
+    print('ビルドバージョンは最新です');
     return false;
   }
 }
