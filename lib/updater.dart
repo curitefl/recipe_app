@@ -35,8 +35,9 @@ class _UpdaterState extends State<Updater> {
 
   /// 更新版案内ダイアログを表示
   void _showUpdateDialog(bool needUpdate) {
-    if (!needUpdate) return;
-
+    if (!needUpdate) {
+      return;
+    }
     showDialog(
       context: context,
       barrierDismissible: false,
@@ -71,13 +72,13 @@ class _UpdaterState extends State<Updater> {
       },
     );
   }
+}
 
-  /// 指定のURLを起動する. App Store or Play Storeのリンク
-  void _launchURL(String url) async {
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
-    }
+/// 指定のURLを起動する. App Store or Play Storeのリンク
+void _launchURL(String url) async {
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
   }
 }

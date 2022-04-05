@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recipe_app/screen_arguments.dart';
@@ -20,11 +21,13 @@ class GreetingPage extends StatelessWidget {
                 style: Theme.of(context).textTheme.headline2,),
             ElevatedButton(
                 onPressed: () {
-                  if(Theme.of(context).platform == TargetPlatform.android){
-                    print('これはアンドロイド端末だよ');
-                  }
-                  if(Theme.of(context).platform == TargetPlatform.iOS){
-                    print('これはiOS端末だよ');
+                    if (kDebugMode) {
+                      if(Theme.of(context).platform == TargetPlatform.android){
+                      print('これはアンドロイド端末だよ');
+                    }
+                      if(Theme.of(context).platform == TargetPlatform.iOS){
+                        print('これはiOS端末だよ');
+                      }
                   }
                   Navigator.of(context).pushReplacementNamed('/${TextData.myPage}',);
                 },

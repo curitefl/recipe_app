@@ -1,10 +1,10 @@
+import 'package:flutter/foundation.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
+import 'package:recipe_app/text_data.dart';
 import 'package:version/version.dart';
 
 class VersionCheckService {
-  static const String configName = 'force_update_app_version';
-
   Future<bool> versionCheck() async {
     final PackageInfo packageInfo = await PackageInfo.fromPlatform();
     Version currentVersion = Version.parse(packageInfo.version);
@@ -16,15 +16,21 @@ class VersionCheckService {
           minimumFetchInterval: Duration.zero),
       );
       await firebaseRemoteConfig.fetchAndActivate();
-      Version newVersion = Version.parse(firebaseRemoteConfig.getString(configName));
+      Version newVersion = Version.parse(firebaseRemoteConfig.getString(TextData.firebaseRemoteConfigName));
       if (newVersion > currentVersion) {
-        print('アプリバージョンが古いです');
+        if (kDebugMode) {
+          print(TextData.appVersionIsLatest);
+        }
         return true;
       }
     } catch (exception) {
-      print('リモート設定をフェッチできません。キャッシュされた値またはデフォルト値が使用されます。');
+      if (kDebugMode) {
+        print(TextData.unableToFetchRemoteConfig);
+      }
     }
-    print('アプリバージョンは最新です');
+    if (kDebugMode) {
+      print(TextData.appVersionIsOlder);
+    }
     return false;
   }
 }
