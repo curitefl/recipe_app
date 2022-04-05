@@ -1,5 +1,6 @@
 class TextData {
   static const String appTitle = 'レシピアプリ';
+  static const String appVersion = 'Version';
 
   static const String favoriteRecipe = 'お気に入りレシピ';
   static const String columns = 'コラム';
@@ -204,4 +205,10 @@ class TextData {
   static const String failedToLoadAlbum = "Failed to load album";
 
   static const String notFoundRecipe = '食材に合ったレシピが見つかりませんでした';
+
+  static const appStoreURL = 'https://apps.apple.com/jp/app/id[アプリのApple ID]?mt=8';
+  static const playStoreURL = 'https://play.google.com/store/apps/details?id=[アプリのパッケージ名]';
+  static const updateDialogTitle = "バージョン更新のお知らせ";
+  static const updateDialogMessage = "新しいバージョンのアプリが利用可能です。ストアより更新版を入手して、ご利用下さい。";
+  static const updateDialogButtonLabel = "今すぐ更新";
 }

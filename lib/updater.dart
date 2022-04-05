@@ -3,12 +3,13 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:recipe_app/text_data.dart';
 import 'package:recipe_app/version_check_service.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'package:recipe_app/main.dart';
 
-/// 強制アップデートダイアログを出す為のダミーに近いStatefulWidget
+/// 強制アップデートダイアログを出す為のダミーStatefulWidget
 class Updater extends StatefulWidget {
   const Updater({Key? key}) : super(key: key);
 
@@ -32,12 +33,6 @@ class _UpdaterState extends State<Updater> {
     );
   }
 
-  // FIXME ストアにアプリを登録したらurlが入れられる
-  static const APP_STORE_URL = 'https://apps.apple.com/jp/app/id[アプリのApple ID]?mt=8';
-
-  // FIXME ストアにアプリを登録したらurlが入れられる
-  static const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=[アプリのパッケージ名]';
-
   /// 更新版案内ダイアログを表示
   void _showUpdateDialog(bool needUpdate) {
     if (!needUpdate) return;
@@ -46,33 +41,30 @@ class _UpdaterState extends State<Updater> {
       context: context,
       barrierDismissible: false,
       builder: (BuildContext context) {
-        final title = "バージョン更新のお知らせ";
-        final message = "新しいバージョンのアプリが利用可能です。ストアより更新版を入手して、ご利用下さい。";
-        final btnLabel = "今すぐ更新";
         return Platform.isIOS
             ? CupertinoAlertDialog(
-                title: Text(title),
-                content: Text(message),
+                title: const Text(TextData.updateDialogTitle),
+                content: const Text(TextData.updateDialogMessage),
                 actions: <Widget>[
                   TextButton(
-                    child: Text(
-                      btnLabel,
-                      style: const TextStyle(color: Colors.red),
+                    child: const Text(
+                      TextData.updateDialogButtonLabel,
+                      style: TextStyle(color: Colors.red),
                     ),
-                    onPressed: () => _launchURL(APP_STORE_URL),
+                    onPressed: () => _launchURL(TextData.appStoreURL),
                   ),
                 ],
               )
             : AlertDialog(
-                title: Text(title),
-                content: Text(message),
+                title: const Text(TextData.updateDialogTitle),
+                content: const Text(TextData.updateDialogMessage),
                 actions: <Widget>[
                   TextButton(
-                    child: Text(
-                      btnLabel,
-                      style: const TextStyle(color: Colors.red),
+                    child: const Text(
+                      TextData.updateDialogButtonLabel,
+                      style: TextStyle(color: Colors.red),
                     ),
-                    onPressed: () => _launchURL(PLAY_STORE_URL),
+                    onPressed: () => _launchURL(TextData.playStoreURL),
                   ),
                 ],
               );
