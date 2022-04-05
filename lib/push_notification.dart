@@ -3,7 +3,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 import 'main.dart';
 
-class PushNotificationModel {
+class PushNotification {
   final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
 
   void getFirebaseMessagingToken() {

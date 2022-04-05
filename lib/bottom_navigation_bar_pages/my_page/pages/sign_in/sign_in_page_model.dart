@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:recipe_app/text_data.dart';
 
 class SignInPageModel extends ChangeNotifier {
@@ -53,5 +54,10 @@ class SignInPageModel extends ChangeNotifier {
   Future signOut () async {
     await _fireBaseAuth.signOut();
     await _googleSignIn.signOut();
+  }
+
+  Future<String> getAppVersion() async {
+    final PackageInfo packageInfo = await PackageInfo.fromPlatform();
+    return packageInfo.version;
   }
 }

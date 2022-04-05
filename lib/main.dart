@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:recipe_app/bottom_navigation_bar_pages/my_page/pages/foundation/web_view/web_view_page_model.dart';
 import 'package:recipe_app/bottom_navigation_bar_pages/recipes/pages/video_page_model.dart';
 import 'package:recipe_app/bottom_navigation_bar_pages/recipes/recipe_page_model.dart';
-import 'package:recipe_app/push_notification_model.dart';
+import 'package:recipe_app/push_notification.dart';
 import 'package:recipe_app/text_data.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recipe_app/bottom_navigation_bar_pages/my_page/index.dart';
@@ -43,9 +43,9 @@ Future<void> main() async {
       .resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()
       ?.createNotificationChannel(channel);
 
-  final PushNotificationModel pushNotificationModel = PushNotificationModel();
-  pushNotificationModel.initFirebaseMessaging();
-  pushNotificationModel.getFirebaseMessagingToken();
+  final PushNotification pushNotification = PushNotification();
+  pushNotification.initFirebaseMessaging();
+  pushNotification.getFirebaseMessagingToken();
   setupLocator();
   final checker = locator<VersionCheckService>();
   checker.versionCheck();
