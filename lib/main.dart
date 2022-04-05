@@ -49,6 +49,7 @@ Future<void> main() async {
   setupLocator();
   final checker = locator<VersionCheckService>();
   checker.versionCheck();
+
   runApp(
       MultiProvider(
           providers: [
