@@ -7,7 +7,7 @@ import 'package:version/version.dart';
 class VersionCheckService {
   Future<bool> versionCheck() async {
     final PackageInfo packageInfo = await PackageInfo.fromPlatform();
-    Version currentVersion = Version.parse(packageInfo.version);
+    final Version currentVersion = Version.parse(packageInfo.version);
     final FirebaseRemoteConfig firebaseRemoteConfig = FirebaseRemoteConfig.instance;
 
     try {
@@ -16,7 +16,7 @@ class VersionCheckService {
           minimumFetchInterval: Duration.zero),
       );
       await firebaseRemoteConfig.fetchAndActivate();
-      Version newVersion = Version.parse(firebaseRemoteConfig.getString(TextData.firebaseRemoteConfigName));
+      final Version newVersion = Version.parse(firebaseRemoteConfig.getString(TextData.firebaseRemoteConfigName));
       if (newVersion > currentVersion) {
         if (kDebugMode) {
           print(TextData.appVersionIsLatest);
