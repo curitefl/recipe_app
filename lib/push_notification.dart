@@ -16,8 +16,8 @@ class PushNotification {
   }
 
   void initFirebaseMessaging() {
-    ///アプリケーションが終了した状態でも動作する
-    ///通知をタップしたら処理が実行される
+    /* アプリケーションが終了した状態でも動作する
+    通知をタップしたら処理が実行される */
     FirebaseMessaging.instance.getInitialMessage().then((message) {
       if (message == null) {
         return;
@@ -29,9 +29,9 @@ class PushNotification {
       }
     });
 
-    ///アプリがフォアグランドにある時に呼ばれる
-    ///アプリがバックグラウンドにある時に通知を受信すると
-    ///端末に通知は届くが、以下の処理は呼ばれない
+    /* アプリがフォアグランドにある時に呼ばれる
+    アプリがバックグラウンドにある時に通知を受信すると
+    端末に通知は届くが、以下の処理は呼ばれない */
     FirebaseMessaging.onMessage.listen((message) {
       RemoteNotification? notification = message.notification;
       if (notification == null) {
@@ -54,9 +54,9 @@ class PushNotification {
           ));
     });
 
-    ///アプリがバックグラウンドで起動中（アプリが終了していない状態）で
-    ///通知をタップすると呼び出される
-    ///アプリがフォアグランドにある時は通知が来ない
+    /* アプリがバックグラウンドで起動中（アプリが終了していない状態）で
+    通知をタップすると呼び出される
+    アプリがフォアグランドにある時は通知が来ない */
     FirebaseMessaging.onMessageOpenedApp.listen((message) {
       if (kDebugMode) {
         final routeFromMessage = message.data['route'];
