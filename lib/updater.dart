@@ -3,11 +3,10 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:recipe_app/global_notification.dart';
 import 'package:recipe_app/text_data.dart';
 import 'package:recipe_app/version_check_service.dart';
 import 'package:url_launcher/url_launcher.dart';
-
-import 'package:recipe_app/main.dart';
 
 /// 強制アップデートダイアログを出す為のダミーStatefulWidget
 class Updater extends StatefulWidget {
@@ -20,7 +19,7 @@ class Updater extends StatefulWidget {
 class _UpdaterState extends State<Updater> {
   @override
   void initState() {
-    final checker = locator<VersionCheckService>();
+    final checker = GlobalNotification.locator<VersionCheckService>();
     checker.versionCheck().then((needUpdate) => _showUpdateDialog(needUpdate));
 
     super.initState();

@@ -3,11 +3,11 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
 import 'package:recipe_app/bottom_navigation_bar_pages/my_page/pages/foundation/web_view/web_view_page_model.dart';
 import 'package:recipe_app/bottom_navigation_bar_pages/recipes/pages/video_page_model.dart';
 import 'package:recipe_app/bottom_navigation_bar_pages/recipes/recipe_page_model.dart';
+import 'package:recipe_app/global_notification.dart';
 import 'package:recipe_app/push_notification.dart';
 import 'package:recipe_app/text_data.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -23,12 +23,8 @@ Future<void> backgroundHandler(RemoteMessage message) async{
   }
 }
 
-late AndroidNotificationChannel channel;
-late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
-GetIt locator = GetIt.instance;
-
 void setupLocator() {
-  locator.registerLazySingleton<VersionCheckService>(() => VersionCheckService());
+  GlobalNotification.locator.registerLazySingleton<VersionCheckService>(() => VersionCheckService());
 }
 
 Future<void> main() async {
@@ -36,21 +32,21 @@ Future<void> main() async {
   await Firebase.initializeApp();
   FirebaseMessaging.onBackgroundMessage(backgroundHandler);
 
-  channel = const AndroidNotificationChannel(
+  GlobalNotification.channel = const AndroidNotificationChannel(
     'high_importance_channel', // id
     'High Importance Notifications', // title
     importance: Importance.max,
   );
-  flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
-  await flutterLocalNotificationsPlugin
+  GlobalNotification.flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+  await GlobalNotification.flutterLocalNotificationsPlugin
       .resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()
-      ?.createNotificationChannel(channel);
+      ?.createNotificationChannel(GlobalNotification.channel);
 
   final PushNotification pushNotification = PushNotification();
   pushNotification.initFirebaseMessaging();
   pushNotification.getFirebaseMessagingToken();
   setupLocator();
-  final checker = locator<VersionCheckService>();
+  final checker = GlobalNotification.locator<VersionCheckService>();
   checker.versionCheck();
 
   runApp(

@@ -1,8 +1,7 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-
-import 'main.dart';
+import 'package:recipe_app/global_notification.dart';
 
 class PushNotification {
   final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
@@ -41,14 +40,14 @@ class PushNotification {
         print(message.notification!.body);
         print(message.notification!.title);
       }
-      flutterLocalNotificationsPlugin.show(
+      GlobalNotification.flutterLocalNotificationsPlugin.show(
           notification.hashCode,
           notification.title,
           notification.body,
           NotificationDetails(
             android: AndroidNotificationDetails(
-              channel.id,
-              channel.name,
+              GlobalNotification.channel.id,
+              GlobalNotification.channel.name,
               icon: 'launch_background',
             ),
           ));
