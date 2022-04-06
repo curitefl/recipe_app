@@ -19,7 +19,7 @@ class VersionCheckService {
       final Version newVersion = Version.parse(firebaseRemoteConfig.getString(TextData.firebaseRemoteConfigName));
       if (newVersion > currentVersion) {
         if (kDebugMode) {
-          print(TextData.appVersionIsLatest);
+          print(TextData.appVersionIsOlder);
         }
         return true;
       }
@@ -29,7 +29,7 @@ class VersionCheckService {
       }
     }
     if (kDebugMode) {
-      print(TextData.appVersionIsOlder);
+      print(TextData.appVersionIsLatest);
     }
     return false;
   }
