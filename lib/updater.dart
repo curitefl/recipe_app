@@ -76,9 +76,9 @@ class _UpdaterState extends State<Updater> {
 
 /// 指定のURLを起動する. App Store or Play Storeのリンク
 void _launchURL(String url) async {
-  if (await canLaunch(url)) {
-    await launch(url);
-  } else {
+  final bool _canLaunch = await canLaunch(url);
+  if (!_canLaunch) {
     throw 'Could not launch $url';
   }
+  await launch(url);
 }
