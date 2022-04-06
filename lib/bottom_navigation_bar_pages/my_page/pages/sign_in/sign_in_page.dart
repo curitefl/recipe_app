@@ -5,112 +5,108 @@ import 'package:recipe_app/bottom_navigation_bar_pages/my_page/pages/sign_in/sig
 import 'package:recipe_app/screen_arguments.dart';
 import 'package:recipe_app/text_data.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:recipe_app/updater.dart';
+import 'package:recipe_app/dialog_util.dart';
 
 class SignInPage extends StatelessWidget {
   const SignInPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    DialogUtil().forceUpdateDialog(context);
     return Scaffold(
-      body: Stack(
-        children: [
-          Center(
-            child: Padding(
-              padding: EdgeInsets.all(8.0.w),
-              child: Consumer<SignInPageModel>(builder: (context, model, child) {
-                return Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    ElevatedButton(
+      body: Center(
+        child: Padding(
+          padding: EdgeInsets.all(8.0.w),
+          child: Consumer<SignInPageModel>(builder: (context, model, child) {
+            return Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                ElevatedButton(
+                  child: Padding(
+                    padding: EdgeInsets.all(3.0.sp),
+                    child: const Text(TextData.useAsGuest),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.green,
+                    textStyle: Theme.of(context).textTheme.button,
+                  ),
+                  onPressed: () {
+                    Navigator.pushNamed(
+                      context,
+                      '/${TextData.welcome}',
+                      arguments: ScreenArguments(
+                        '${TextData.guest}${TextData.honorific}',
+                      ),
+                    );
+                  },
+                ),
+                SizedBox(height: 8.0.h),
+                ButtonTheme(
+                  minWidth: 350.0.w,
+                  child: ElevatedButton(
                       child: Padding(
-                        padding: EdgeInsets.all(3.0.sp),
-                        child: const Text(TextData.useAsGuest),
+                        padding: EdgeInsets.all(3.0.w),
+                        child: const Text(TextData.signInWithGoogle),
                       ),
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.green,
                         textStyle: Theme.of(context).textTheme.button,
                       ),
-                      onPressed: () {
+                      onPressed: () async {
+                        await model.signIn();
+                        final User? user = model.user;
                         Navigator.pushNamed(
                           context,
                           '/${TextData.welcome}',
                           arguments: ScreenArguments(
-                            '${TextData.guest}${TextData.honorific}',
+                            '${user!.email}${TextData.honorific}',
                           ),
                         );
-                      },
-                    ),
-                    SizedBox(height: 8.0.h),
-                    ButtonTheme(
-                      minWidth: 350.0.w,
-                      child: ElevatedButton(
-                          child: Padding(
-                            padding: EdgeInsets.all(3.0.w),
-                            child: const Text(TextData.signInWithGoogle),
+                      }),
+                ),
+                SizedBox(height: 8.0.h),
+                ButtonTheme(
+                  minWidth: 350.0.w,
+                  child: ElevatedButton(
+                      child: Padding(
+                        padding: EdgeInsets.all(3.0.w),
+                        child: const Text(TextData.signOutOfGoogle),
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.grey,
+                        onPrimary: Colors.white,
+                        textStyle: Theme.of(context).textTheme.button,
+                      ),
+                      onPressed: () async {
+                        await model.signOut();
+                        const SnackBar snackBar = SnackBar(
+                          content: Text(
+                            TextData.youHaveSignedOut,
+                            style: TextStyle(fontWeight: FontWeight.bold),
                           ),
-                          style: ElevatedButton.styleFrom(
-                            textStyle: Theme.of(context).textTheme.button,
-                          ),
-                          onPressed: () async {
-                            await model.signIn();
-                            final User? user = model.user;
-                            Navigator.pushNamed(
-                              context,
-                              '/${TextData.welcome}',
-                              arguments: ScreenArguments(
-                                '${user!.email}${TextData.honorific}',
-                              ),
-                            );
-                          }),
-                    ),
-                    SizedBox(height: 8.0.h),
-                    ButtonTheme(
-                      minWidth: 350.0.w,
-                      child: ElevatedButton(
-                          child: Padding(
-                            padding: EdgeInsets.all(3.0.w),
-                            child: const Text(TextData.signOutOfGoogle),
-                          ),
-                          style: ElevatedButton.styleFrom(
-                            primary: Colors.grey,
-                            onPrimary: Colors.white,
-                            textStyle: Theme.of(context).textTheme.button,
-                          ),
-                          onPressed: () async {
-                            await model.signOut();
-                            const SnackBar snackBar = SnackBar(
-                              content: Text(
-                                TextData.youHaveSignedOut,
-                                style: TextStyle(fontWeight: FontWeight.bold),
-                              ),
-                              backgroundColor: Colors.grey,
-                            );
-                            ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                          }),
-                    ),
-                    SizedBox(height: 8.0.h),
-                    Text(
-                      TextData.pleaseSignOutFirst,
+                          backgroundColor: Colors.grey,
+                        );
+                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                      }),
+                ),
+                SizedBox(height: 8.0.h),
+                Text(
+                  TextData.pleaseSignOutFirst,
+                  style: Theme.of(context).textTheme.headline3,
+                ),
+                SizedBox(height: 8.0.h),
+                FutureBuilder(
+                  future: model.getAppVersion(),
+                  builder: (context, snapshot) {
+                    return Text(
+                      '${TextData.appVersion}: ${snapshot.data}',
                       style: Theme.of(context).textTheme.headline3,
-                    ),
-                    SizedBox(height: 8.0.h),
-                    FutureBuilder(
-                      future: model.getAppVersion(),
-                      builder: (context, snapshot) {
-                        return Text(
-                          '${TextData.appVersion}: ${snapshot.data}',
-                          style: Theme.of(context).textTheme.headline3,
-                        );
-                      }
-                    ),
-                  ],
-                );
-              }),
-            ),
-          ),
-          const Updater(),
-        ],
+                    );
+                  }
+                ),
+              ],
+            );
+          }),
+        ),
       ),
     );
   }
