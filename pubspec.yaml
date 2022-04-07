@@ -22,6 +22,13 @@ dependencies:
   google_sign_in: ^5.2.4
   youtube_api: ^1.0.4
   youtube_player_flutter: ^8.0.0
+  firebase_messaging: ^11.2.11
+  flutter_local_notifications: ^9.4.0
+  package_info_plus: ^1.4.0
+  url_launcher: ^6.0.20
+  firebase_remote_config: ^2.0.3
+  get_it: ^7.2.0
+  version: ^2.0.0
 
 dev_dependencies:
   flutter_test:

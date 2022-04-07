@@ -1,5 +1,6 @@
 class TextData {
   static const String appTitle = 'レシピアプリ';
+  static const String appVersion = 'Version';
 
   static const String favoriteRecipe = 'お気に入りレシピ';
   static const String columns = 'コラム';
@@ -9,6 +10,7 @@ class TextData {
   static const String settings = '設定';
   static const String videos = '動画';
 
+  static const String signInPage = 'サインインページ';
   static const String home = 'ホーム';
   static const String foodStuffs = '食材';
   static const String recipes = 'レシピ';
@@ -204,4 +206,15 @@ class TextData {
   static const String failedToLoadAlbum = "Failed to load album";
 
   static const String notFoundRecipe = '食材に合ったレシピが見つかりませんでした';
+
+  static const String appStoreURL = 'https://apps.apple.com/jp/app/id[アプリのApple ID]?mt=8';
+  static const String playStoreURL = 'https://play.google.com/store/apps/details?id=[アプリのパッケージ名]';
+  static const String updateDialogTitle = "バージョン更新のお知らせ";
+  static const String updateDialogMessage = "新しいバージョンのアプリが利用可能です。ストアより更新版を入手して、ご利用下さい。";
+  static const String updateDialogButtonLabel = "今すぐ更新";
+
+  static const String firebaseRemoteConfigName = 'force_update_app_version';
+  static const String unableToFetchRemoteConfig = 'リモート設定をフェッチできません。キャッシュされた値またはデフォルト値が使用されます。';
+  static const String appVersionIsLatest = 'アプリバージョンは最新です';
+  static const String appVersionIsOlder = 'アプリバージョンが古いです';
 }

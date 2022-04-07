@@ -91,6 +91,16 @@ class SignInPage extends StatelessWidget {
                   TextData.pleaseSignOutFirst,
                   style: Theme.of(context).textTheme.headline3,
                 ),
+                SizedBox(height: 8.0.h),
+                FutureBuilder(
+                  future: model.getAppVersion(),
+                  builder: (context, snapshot) {
+                    return Text(
+                      '${TextData.appVersion}: ${snapshot.data}',
+                      style: Theme.of(context).textTheme.headline3,
+                    );
+                  }
+                ),
               ],
             );
           }),
