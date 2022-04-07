@@ -10,6 +10,7 @@ class TextData {
   static const String settings = '設定';
   static const String videos = '動画';
 
+  static const String signInPage = 'サインインページ';
   static const String home = 'ホーム';
   static const String foodStuffs = '食材';
   static const String recipes = 'レシピ';

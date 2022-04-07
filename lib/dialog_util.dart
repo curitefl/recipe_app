@@ -9,12 +9,12 @@ import 'package:url_launcher/url_launcher.dart';
 
 class DialogUtil {
 
-  void forceUpdateDialog(BuildContext context) async{
+  Future<bool> forceUpdateDialog(BuildContext context) async{
     final checker = GlobalNotification.locator<VersionCheckService>();
     final bool needUpdate = await checker.versionCheck();
 
     if (!needUpdate) {
-      return;
+      return needUpdate;
     }
 
     showDialog(
@@ -50,6 +50,7 @@ class DialogUtil {
               );
       },
     );
+    return needUpdate;
   }
 
   /// 指定のURLを起動する. App Store or Play Storeのリンク

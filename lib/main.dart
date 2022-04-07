@@ -9,6 +9,7 @@ import 'package:recipe_app/bottom_navigation_bar_pages/recipes/pages/video_page_
 import 'package:recipe_app/bottom_navigation_bar_pages/recipes/recipe_page_model.dart';
 import 'package:recipe_app/global_notification.dart';
 import 'package:recipe_app/push_notification.dart';
+import 'package:recipe_app/splash_page.dart';
 import 'package:recipe_app/text_data.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recipe_app/bottom_navigation_bar_pages/my_page/index.dart';
@@ -113,8 +114,9 @@ class MyApp extends StatelessWidget {
               size: 24.0.h,
             ),
           ),
-          home: const SignInPage(),
+          home: const SplashPage(),
           routes: <String, WidgetBuilder> {
+            '/${TextData.signInPage}': (BuildContext context) => const SignInPage(),
             '/${TextData.welcome}': (BuildContext context) => const GreetingPage(),
             '/${TextData.myPage}': (BuildContext context) => MyPage(title: TextData.myPage),
             '/${TextData.favoriteRecipe}': (BuildContext context) => const FavoriteRecipePage(title: TextData.favoriteRecipe),
