@@ -40,14 +40,14 @@ class PushNotification {
         print(message.notification!.body);
         print(message.notification!.title);
       }
-      GlobalNotification.flutterLocalNotificationsPlugin.show(
+      flutterLocalNotificationsPlugin.show(
           notification.hashCode,
           notification.title,
           notification.body,
           NotificationDetails(
             android: AndroidNotificationDetails(
-              GlobalNotification.channel.id,
-              GlobalNotification.channel.name,
+              androidNotificationChannel.id,
+              androidNotificationChannel.name,
               icon: 'launch_background',
             ),
           ));

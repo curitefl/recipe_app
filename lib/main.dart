@@ -25,7 +25,7 @@ Future<void> backgroundHandler(RemoteMessage message) async{
 }
 
 void setupLocator() {
-  GlobalNotification.locator.registerLazySingleton<VersionCheckService>(() => VersionCheckService());
+  getItLocator.registerLazySingleton<VersionCheckService>(() => VersionCheckService());
 }
 
 Future<void> main() async {
@@ -33,21 +33,21 @@ Future<void> main() async {
   await Firebase.initializeApp();
   FirebaseMessaging.onBackgroundMessage(backgroundHandler);
 
-  GlobalNotification.channel = const AndroidNotificationChannel(
+  androidNotificationChannel = const AndroidNotificationChannel(
     'high_importance_channel', // id
     'High Importance Notifications', // title
     importance: Importance.max,
   );
-  GlobalNotification.flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
-  await GlobalNotification.flutterLocalNotificationsPlugin
+  flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+  await flutterLocalNotificationsPlugin
       .resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()
-      ?.createNotificationChannel(GlobalNotification.channel);
+      ?.createNotificationChannel(androidNotificationChannel);
 
   final PushNotification pushNotification = PushNotification();
   pushNotification.initFirebaseMessaging();
   pushNotification.getFirebaseMessagingToken();
   setupLocator();
-  final checker = GlobalNotification.locator<VersionCheckService>();
+  final checker = getItLocator<VersionCheckService>();
   checker.versionCheck();
 
   runApp(

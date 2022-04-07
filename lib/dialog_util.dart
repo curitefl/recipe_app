@@ -10,7 +10,7 @@ import 'package:url_launcher/url_launcher.dart';
 class DialogUtil {
 
   Future<bool> forceUpdateDialog(BuildContext context) async{
-    final checker = GlobalNotification.locator<VersionCheckService>();
+    final checker = getItLocator<VersionCheckService>();
     final bool needUpdate = await checker.versionCheck();
 
     if (!needUpdate) {
