@@ -5,14 +5,12 @@ import 'package:recipe_app/bottom_navigation_bar_pages/my_page/pages/sign_in/sig
 import 'package:recipe_app/screen_arguments.dart';
 import 'package:recipe_app/text_data.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:recipe_app/dialog_util.dart';
 
 class SignInPage extends StatelessWidget {
   const SignInPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    DialogUtil().forceUpdateDialog(context);
     return Scaffold(
       body: Center(
         child: Padding(
