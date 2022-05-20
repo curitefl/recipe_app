@@ -7,11 +7,9 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:recipe_app/global_notification.dart';
 import 'package:recipe_app/presentation/view/splash_page.dart';
 import 'package:recipe_app/push_notification.dart';
-import 'package:recipe_app/splash_page.dart';
 import 'package:recipe_app/text_data.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recipe_app/bottom_navigation_bar_pages/my_page/index.dart';
-import 'package:recipe_app/version_check_service.dart';
 
 Future<void> backgroundHandler(RemoteMessage message) async{
   await Firebase.initializeApp();
@@ -20,10 +18,6 @@ Future<void> backgroundHandler(RemoteMessage message) async{
     print(message.data.toString());
     print(message.notification!.title);
   }
-}
-
-void setupLocator() {
-  getItLocator.registerLazySingleton<VersionCheckService>(() => VersionCheckService());
 }
 
 Future<void> main() async {
@@ -44,9 +38,6 @@ Future<void> main() async {
   final PushNotification pushNotification = PushNotification();
   pushNotification.initFirebaseMessaging();
   pushNotification.getFirebaseMessagingToken();
-  setupLocator();
-  final checker = getItLocator<VersionCheckService>();
-  checker.versionCheck();
 
   runApp(
     // TODO Riverpodに置き換えていく
