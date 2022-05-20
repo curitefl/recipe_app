@@ -3,11 +3,9 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:provider/provider.dart';
-import 'package:recipe_app/bottom_navigation_bar_pages/my_page/pages/foundation/web_view/web_view_page_model.dart';
-import 'package:recipe_app/bottom_navigation_bar_pages/recipes/pages/video_page_model.dart';
-import 'package:recipe_app/bottom_navigation_bar_pages/recipes/recipe_page_model.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:recipe_app/global_notification.dart';
+import 'package:recipe_app/presentation/view/splash_page.dart';
 import 'package:recipe_app/push_notification.dart';
 import 'package:recipe_app/splash_page.dart';
 import 'package:recipe_app/text_data.dart';
@@ -51,17 +49,21 @@ Future<void> main() async {
   checker.versionCheck();
 
   runApp(
-      MultiProvider(
-          providers: [
-            ChangeNotifierProvider<FoodStuffsPageModel>(create: (context) => FoodStuffsPageModel()..initFoodStuffListForView()),
-            ChangeNotifierProvider<MyPageModel>(create: (context) => MyPageModel()..initPageController()),
-            ChangeNotifierProvider<ProfileEditPageModel>(create: (context) => ProfileEditPageModel()..fetchProfile()),
-            ChangeNotifierProvider<SignInPageModel>(create: (context) => SignInPageModel()),
-            ChangeNotifierProvider<WebViewPageModel>(create: (context) => WebViewPageModel()..isAndroid()),
-            ChangeNotifierProvider<RecipePageModel>(create: (context) => RecipePageModel()),
-            ChangeNotifierProvider<VideoPageModel>(create: (context) => VideoPageModel()),
-          ],
-          child: const MyApp()));
+    // TODO Riverpodに置き換えていく
+      // MultiProvider(
+      //     providers: [
+      //       ChangeNotifierProvider<FoodStuffsPageModel>(create: (context) => FoodStuffsPageModel()..initFoodStuffListForView()),
+      //       ChangeNotifierProvider<MyPageModel>(create: (context) => MyPageModel()..initPageController()),
+      //       ChangeNotifierProvider<ProfileEditPageModel>(create: (context) => ProfileEditPageModel()..fetchProfile()),
+      //       ChangeNotifierProvider<SignInPageModel>(create: (context) => SignInPageModel()),
+      //       ChangeNotifierProvider<WebViewPageModel>(create: (context) => WebViewPageModel()..isAndroid()),
+      //       ChangeNotifierProvider<RecipePageModel>(create: (context) => RecipePageModel()),
+      //       ChangeNotifierProvider<VideoPageModel>(create: (context) => VideoPageModel()),
+      //     ],
+      //     child: const MyApp(),
+      // ),
+    const ProviderScope(child: MyApp()),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -71,7 +73,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
         designSize: const Size(393.0, 830.0),
-        builder: () => MaterialApp(
+        builder: (_) => MaterialApp(
           title: TextData.appTitle,
           theme: ThemeData(
             primarySwatch: Colors.amber,
