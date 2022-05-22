@@ -213,7 +213,6 @@ class TextData {
   static const String updateDialogMessage = "新しいバージョンのアプリが利用可能です。ストアより更新版を入手して、ご利用下さい。";
   static const String updateDialogButtonLabel = "今すぐ更新";
 
-  static const String firebaseRemoteConfigName = 'force_update_app_version';
   static const String unableToFetchRemoteConfig = 'リモート設定をフェッチできません。キャッシュされた値またはデフォルト値が使用されます。';
   static const String appVersionIsLatest = 'アプリバージョンは最新です';
   static const String appVersionIsOlder = 'アプリバージョンが古いです';
