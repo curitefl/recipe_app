@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:recipe_app/text_data.dart';
 import 'package:recipe_app/youtube_album.dart';
@@ -35,8 +36,9 @@ class VideoPageModel extends ChangeNotifier {
   }
 
   Future<YoutubeAlbum> fetchAlbum() async {
+    final String youtubeApiKey = await _fetchYoutubeApiKey();
     final url = Uri.parse(
-        '${TextData.youtubeV3APIURL}${controller.initialVideoId}&key=${TextData.youtubeV3APIKey}&part=${TextData.youtubeURLPart}');
+        '${TextData.youtubeV3APIURL}${controller.initialVideoId}&key=$youtubeApiKey&part=${TextData.youtubeURLPart}');
     final response = await http.get(url);
 
     if (response.statusCode == 200) {
@@ -47,5 +49,14 @@ class VideoPageModel extends ChangeNotifier {
     // If the server did not return a 200 OK response,
     // then throw an exception.
     throw Exception(TextData.failedToLoadAlbum);
+  }
+
+  Future<String> _fetchYoutubeApiKey() async {
+    final DocumentSnapshot snapshot = await FirebaseFirestore.instance
+        .collection(TextData.api)
+        .doc(TextData.youtubeV3APIKey)
+        .get();
+    final Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
+    return data[TextData.youtubeV3APIKey];
   }
 }
