@@ -198,7 +198,8 @@ class TextData {
   static const String googleSearch = 'https://www.google.com/search?q=';
 
   static const String youtubeChannelID = "UCb0jMRgVdSxanToDdNobhjA";
-  static const String youtubeV3APIKey = "AIzaSyAvdhPss_s6AoxEjmZumJxS8-5HExH9J2Q";
+  static const String api = 'api';
+  static const String youtubeV3APIKey = 'youtube_api_key';
   static const String relevance = 'relevance';
   static const String any = 'any';
   static const String youtubeV3APIURL = "https://www.googleapis.com/youtube/v3/videos?id=";
